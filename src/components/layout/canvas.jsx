@@ -1,7 +1,14 @@
+import { useEffect, useRef, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Preload } from '@react-three/drei'
+import {
+  OrbitControls,
+  Preload,
+  MapControls,
+  Stars,
+  Sky,
+} from '@react-three/drei'
+
 import useStore from '@/helpers/store'
-import { useEffect, useRef } from 'react'
 
 const LControl = () => {
   const dom = useStore((state) => state.dom)
@@ -9,28 +16,35 @@ const LControl = () => {
 
   useEffect(() => {
     if (control) {
-      dom.current.style['touch-action'] = 'none'
+      dom.current.style['touch-action'] = 'auto'
     }
   }, [dom, control])
-  // @ts-ignore
-  return <OrbitControls ref={control} domElement={dom.current} />
+  //   // @ts-ignore
+  return <MapControls ref={control} domElement={dom.current} />
+  // return <OrbitControls ref={control} domElement={dom.current} />
+  //   // return <OrbitControls />
+  // return
 }
+
 const LCanvas = ({ children }) => {
   const dom = useStore((state) => state.dom)
 
   return (
-    <Canvas
-      mode='concurrent'
-      style={{
-        position: 'absolute',
-        top: 0,
-      }}
-      onCreated={(state) => state.events.connect(dom.current)}
-    >
-      <LControl />
-      <Preload all />
-      {children}
-    </Canvas>
+    <>
+      {/* <div> */}
+      <Canvas
+        mode='concurrent'
+        // camera={{ fov: 35, position: [0, 2, 15] }}
+        // gl={{ alpha: true }}
+        dpr={[1, 2]}
+        onCreated={(state) => state.events.connect(dom.current)}
+      >
+        <LControl />
+        {/* <Preload all /> */}
+        {children}
+      </Canvas>
+      {/* </div> */}
+    </>
   )
 }
 

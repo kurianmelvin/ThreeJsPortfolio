@@ -2,7 +2,14 @@ import * as THREE from 'three'
 import { useFrame, extend } from '@react-three/fiber'
 import { useRef, useState } from 'react'
 import useStore from '@/helpers/store'
-import { shaderMaterial } from '@react-three/drei'
+import {
+  shaderMaterial,
+  Stars,
+  SpotLight,
+  Sky,
+  Sparkles,
+  Text,
+} from '@react-three/drei'
 
 import vertex from './glsl/shader.vert'
 import fragment from './glsl/shader.frag'
@@ -29,9 +36,9 @@ const Shader = (props) => {
   const router = useStore((state) => state.router)
 
   useFrame((state, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = meshRef.current.rotation.y += 0.01
-    }
+    // if (meshRef.current) {
+    //   meshRef.current.rotation.x = meshRef.current.rotation.y += 0.001
+    // }
     if (meshRef.current.material) {
       meshRef.current.material.uniforms.time.value +=
         Math.sin(delta / 2) * Math.cos(delta / 2)
@@ -39,20 +46,23 @@ const Shader = (props) => {
   })
 
   return (
-    <mesh
-      ref={meshRef}
-      scale={hovered ? 1.1 : 1}
-      onClick={() => {
-        router.push(`/box`)
-      }}
-      onPointerOver={(e) => setHover(true)}
-      onPointerOut={(e) => setHover(false)}
-      {...props}
-    >
-      <boxBufferGeometry args={[1, 1, 1]} />
-      {/* @ts-ignore */}
-      <colorShiftMaterial key={ColorShiftMaterial.key} time={3} />
-    </mesh>
+    <>
+      <mesh
+        ref={meshRef}
+        scale={hovered ? 1.1 : 1}
+        onClick={() => {
+          router.push(`/box`)
+        }}
+        onPointerOver={(e) => setHover(true)}
+        onPointerOut={(e) => setHover(false)}
+        {...props}
+      >
+        <boxBufferGeometry args={[1, 1, 1]} />
+        {/* @ts-ignore */}
+        <colorShiftMaterial key={ColorShiftMaterial.key} time={3} />
+        {/* <SpotLight position={[0, 1, 0]} /> */}
+      </mesh>
+    </>
   )
 }
 

@@ -1,10 +1,9 @@
 import Head from 'next/head'
 
-const titleDefault = 'React Three Next Starter'
-const url = 'https://react-three-next.vercel.app/'
-const description =
-  'The easiest and fastest way to create a 3D website using React Three Fiber and NextJS'
-const author = 'Author'
+const titleDefault = 'Melvins Portfolio'
+const url = 'https://kurianmelvin.com/'
+const description = 'My Portfolio and a bit about me.'
+const author = 'Melvin Kurian'
 
 const Header = ({ title = titleDefault }) => {
   return (
@@ -62,21 +61,21 @@ const Header = ({ title = titleDefault }) => {
         <link rel='apple-touch-startup-image' href='/startup.png' />
 
         {/* Meta Tags for HTML pages on Mobile */}
-        {/* <meta name="format-detection" content="telephone=yes"/>
-        <meta name="HandheldFriendly" content="true"/>  */}
+        <meta name='format-detection' content='telephone=yes' />
+        <meta name='HandheldFriendly' content='true' />
         <meta
           name='viewport'
           content='width=device-width, minimum-scale=1, initial-scale=1.0'
         />
-        <meta name='theme-color' content='#000' />
+        <meta name='theme-color' content='#CC9544' />
         <link rel='shortcut icon' href='/icons/favicon.ico' />
 
         {/* 
       Twitter Summary card
         documentation: https://dev.twitter.com/cards/getting-started
         Be sure validate your Twitter card markup on the documentation site. */}
-        <meta name='twitter:card' content='summary' />
-        <meta name='twitter:site' content='@onirenaud' />
+        {/* <meta name='twitter:card' content='summary' /> */}
+        {/* <meta name='twitter:site' content='@onirenaud' /> */}
       </Head>
     </>
   )

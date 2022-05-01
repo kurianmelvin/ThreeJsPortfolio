@@ -1,12 +1,20 @@
+import React, { Suspense, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import useStore from '@/helpers/store'
-import { useEffect } from 'react'
 import Header from '@/config'
 import Dom from '@/components/layout/dom'
 import partition from '@/helpers/partition'
 import '@/styles/index.css'
 import dynamic from 'next/dynamic'
-
+import {
+  OrbitControls,
+  Preload,
+  Html,
+  useProgress,
+  Loader,
+  Sky,
+  Stars,
+} from '@react-three/drei'
 const LCanvas = dynamic(() => import('@/components/layout/canvas'), {
   ssr: false,
 })
@@ -16,8 +24,8 @@ const Balance = ({ child }) => {
 
   return (
     <>
-      <Dom>{dom}</Dom>
       <LCanvas>{r3f}</LCanvas>
+      <Dom>{dom}</Dom>
     </>
   )
 }
@@ -30,7 +38,7 @@ function App({ Component, pageProps = { title: 'index' } }) {
   }, [router])
 
   const child = Component(pageProps).props.children
-  
+
   return (
     <>
       <Header title={pageProps.title} />
