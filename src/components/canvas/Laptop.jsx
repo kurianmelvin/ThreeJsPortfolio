@@ -13,6 +13,7 @@ import {
   Html,
   OrbitControls,
   Loader,
+  FlyControls,
 } from '@react-three/drei'
 import { useSpring } from '@react-spring/core'
 import { a as three } from '@react-spring/three'
@@ -35,15 +36,23 @@ function Laptop() {
             open={open}
             hinge={props.open.to([0, 1.3], [1.575, -0.425])}
           />
+          <FlyControls
+            //rs = 0.005
+            rollSpeed={0.005}
+            //ms =0.5
+            movementSpeed={100}
+            dragToLook={true}
+            // autoForward={false}
+          />
         </group>
-        <Environment preset='city' />
+        <Environment preset='night' />
       </Suspense>
       <ContactShadows
         rotation-x={Math.PI / 2}
         position={[0, 0, 0]}
         opacity={0.4}
-        width={20}
-        height={20}
+        width={200}
+        height={200}
         blur={2}
         far={4.5}
       />

@@ -18,7 +18,7 @@ import {
 } from '@react-three/drei'
 import { a as three } from '@react-spring/three'
 import useStore from '@/helpers/store'
-
+import LoadingScreen from '@/components/canvas/LoadingScreen'
 const vec = new THREE.Vector3()
 
 function LaptopComponent({ open, hinge, ...props }) {
@@ -65,11 +65,12 @@ function LaptopComponent({ open, hinge, ...props }) {
               <div
                 className='wrapper'
                 onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
-                onPointerOut={(e) => setHovered(false)}
+                onPointerOut={(e) => (e.stopPropagation(), setHovered(false))}
                 onClick={() => {
                   router.push(`/imagegallery`)
                 }}
               >
+                <LoadingScreen />
                 <Instructions />
               </div>
             </Html>

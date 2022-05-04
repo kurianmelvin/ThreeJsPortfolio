@@ -14,6 +14,10 @@
     height: 100%;
     margin: 0;
     padding: 0;
+    /* background: #000000; */
+    /* background-image: url('../../public/b1.JPG');
+    background-size: cover;
+    background-position: center; */
     overflow: hidden;
   }
   /* @media only screen and (max-height: 1000px) {
@@ -24,13 +28,25 @@
 }
 
 .content {
-  width: 334px;
-  height: 216px;
+  width: 100px;
+  height: 100px;
   background: #ffffff;
 }
 .wrapper {
   width: 100%;
   height: 100%;
 }
-
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(4, 19, 85);
+  font-size: 10vw;
+}
 /* top-0 left-0 z-10 w-screen h-screen overflow-hidden dom */

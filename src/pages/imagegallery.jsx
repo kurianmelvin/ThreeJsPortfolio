@@ -9,6 +9,8 @@ import {
   Stars,
   FlyControls,
 } from '@react-three/drei'
+import { useEffect, useRef, Suspense } from 'react'
+import LoadingScreen from '@/components/canvas/LoadingScreen'
 const ImageGallery = dynamic(() => import('@/components/canvas/ImageGallery'), {
   ssr: false,
 })
@@ -16,8 +18,11 @@ const ImageGallery = dynamic(() => import('@/components/canvas/ImageGallery'), {
 const R3F = () => {
   return (
     <>
-      <ImageGallery route='/' />
-      <Stars />
+      <Suspense fallback={null}>
+        <Stars />
+      </Suspense>
+
+      <ImageGallery route='/ImageGallery' />
     </>
   )
 }
