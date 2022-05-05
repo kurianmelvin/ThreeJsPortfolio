@@ -1,11 +1,3 @@
-import dynamic from 'next/dynamic'
-import Laptop from '@/components/canvas/Laptop'
-import Welcome from '@/components/canvas/Welcome'
-import ImageGallery from '@/components/canvas/ImageGallery'
-import Instructions from '@/components/dom/Instructions'
-import LoadingScreen from '@/components/canvas/LoadingScreen'
-//
-//
 import {
   OrbitControls,
   Preload,
@@ -17,6 +9,7 @@ import {
   Stars,
   Line,
   softShadows,
+  Text,
 } from '@react-three/drei'
 import { useEffect, useRef, Suspense } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
@@ -25,6 +18,33 @@ import Shader from '@/components/canvas/Shader/Shader'
 import BackgroundPlane from '@/components/canvas/Shader/BackgroundPlane'
 import ZoomToView from '@/components/canvas/ZoomToView'
 // ZoomToView
+
+//
+import dynamic from 'next/dynamic'
+//
+// import Laptop from '@/components/canvas/Laptop'
+const Laptop = dynamic(() => import('@/components/canvas/Laptop'), {
+  ssr: false,
+})
+//
+// import Welcome from '@/components/canvas/Welcome'
+const Welcome = dynamic(() => import('@/components/canvas/Welcome'), {
+  ssr: false,
+})
+//
+// import ImageGallery from '@/components/canvas/ImageGallery'
+// import Instructions from '@/components/dom/Instructions'
+//
+// import LoadingScreen from '@/components/canvas/LoadingScreen'
+const LoadingScreen = dynamic(
+  () => import('@/components/canvas/LoadingScreen'),
+  {
+    ssr: false,
+  }
+)
+//
+//
+
 //
 // Dynamic import is used to prevent a payload when the website start that will include threejs r3f etc..
 // WARNING ! errors might get obfuscated by using dynamic import.
@@ -44,13 +64,18 @@ const R3F = () => {
       {/* <BackgroundPlane /> */}
       {/* <Shader /> */}
       <Suspense fallback={null}>
-        {/* <Cloud
+        <Sky
+          distance={40000}
+          // Xpositive = Right, XNegative = Left   // YPositive = Up, YNegative = Sun Down  // ZPositive = Back, ZNegative = Front
+          azimuth={0.25}
+        />
+        <Cloud
           speed={2}
           opacity={0.2}
           width={300}
           depth={2}
           segments={300}
-          color='white'
+          color='black'
         />
         <Cloud
           Position={[-10, -10, 0]}
@@ -60,16 +85,12 @@ const R3F = () => {
           depth={2}
           segments={300}
           color='white'
-        /> */}
-        <Sky
-          distance={40000}
-          // Xpositive = Right, XNegative = Left   // YPositive = Up, YNegative = Sun Down  // ZPositive = Back, ZNegative = Front
-
-          azimuth={0.25}
         />
+
+        <Welcome />
+        <Laptop />
       </Suspense>
-      <Welcome />
-      <Laptop />
+
       <OrbitControls />
     </>
   )
