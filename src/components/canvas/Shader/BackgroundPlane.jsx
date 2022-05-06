@@ -1,6 +1,6 @@
-import React, { Suspense, useMemo, useEffect, useRef } from 'react'
+import React, { Suspense, useMemo, useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
-import { useFrame, useThree } from '@react-three/fiber'
+import { useFrame, useThree, useLoader } from '@react-three/fiber'
 import {
   OrbitControls,
   Preload,
@@ -12,29 +12,112 @@ import {
   Stars,
   Line,
   softShadows,
+  useTexture,
+  Stage,
+  Environment,
+  MeshReflectorMaterial,
+  useAspect,
+  FlyControls,
 } from '@react-three/drei'
+import { usePlane, useBox, Physics } from '@react-three/cannon'
+
+//
+//
+
+function Scene() {
+  const [colorMap] = useTexture(['b501.jpg'])
+  // const props = useTexture({
+  //   colorMap: 'b301.jpeg',
+  // })
+  return (
+    <>
+      {/* <Stage intensity={1} contactShadowOpacity={0}> */}
+      <ambientLight intensity={5} />
+      <Environment
+        resolution={2048}
+        background={true}
+        map={colorMap}
+        // files={'t1.jpeg'}
+        // path={'/'}
+      />
+      <group position={[0, -3.2, 0]}>
+        <mesh
+          map={colorMap}
+          rotation={[-Math.PI / 2, 0, 0]}
+          position={[0, 0, 0]}
+        >
+          <planeGeometry args={[30, 30]} />
+          <MeshReflectorMaterial
+            blur={[300, 100]}
+            resolution={2048}
+            mixBlur={0}
+            mixStrength={50}
+            roughness={0}
+            depthScale={1.2}
+            minDepthThreshold={0.4}
+            maxDepthThreshold={1.4}
+            color='#101010'
+            metalness={0.5}
+          />
+        </mesh>
+      </group>
+      {/* </Stage> */}
+    </>
+  )
+}
+
+const Plane = (props) => {
+  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], ...props }))
+
+  return (
+    <mesh ref={ref}>
+      <planeGeometry args={[100, 100]} />
+      <meshStandardMaterial color='#ffffff' />
+    </mesh>
+  )
+}
+//this plane function is good
+//
 
 function Rig() {
-  const camera = useThree((state) => state.camera)
+  const [colorMap] = useTexture(['t1.jpeg'])
+  // const camera = useThree((state) => state.camera)
 
   //
-  useFrame(({ clock }) => {
-    camera.position.z = Math.sin(clock.elapsedTime) * 0.05
-  })
+  // useFrame(({ clock }) => {
+  //   camera.position.z = Math.sin(clock.elapsedTime) * 20
+  // })
+  // //
+  // useFrame(({ clock }) => {
+  //   camera.position.z = Math.sin(clock.elapsedTime) * 0.05
+  // })
+
   return (
     <Suspense fallback={null}>
-      <Cloud
-        position={[0, 0, -10]}
-        speed={1}
-        opacity={0.5}
-        width={50}
-        depth={20}
-        segments={100}
-        color='tomato'
-      />
-      <Cloud position={[-10, 5, 6]} speed={0.2} opacity={0.5} />
-
+      <group position={[0, -3.19, 0]}>
+        <mesh
+          // map={colorMap}
+          rotation={[-Math.PI / 2, 0, 0]}
+          position={[0, 0, 0]}
+        >
+          <planeGeometry args={[50, 50]} />
+          <MeshReflectorMaterial
+            blur={[300, 100]}
+            resolution={2048}
+            mixBlur={0}
+            mixStrength={50}
+            roughness={0}
+            depthScale={1.2}
+            minDepthThreshold={0.4}
+            maxDepthThreshold={1.4}
+            color='#101010'
+            metalness={0.5}
+          />
+        </mesh>
+      </group>
+      {/*  */}
       <Sky
+        // map={colorMap}
         distance={40000}
         // Xpositive = Right, XNegative = Left   // YPositive = Up, YNegative = Sun Down  // ZPositive = Back, ZNegative = Front
         sunPosition={[0, 0.5, 1]}
@@ -50,6 +133,16 @@ function BackgroundPlane() {
   return (
     <>
       <Rig />
+      {/* <Scene /> */}
+      {/* <FlyControls
+        //rs = 0.005
+        rollSpeed={0.005}
+        //ms =0.5
+        movementSpeed={3}
+        dragToLook={false}
+        autoForward={false}
+      /> */}
+      <OrbitControls zoomSpeed={10} enableRotate={false} />
     </>
   )
 }
