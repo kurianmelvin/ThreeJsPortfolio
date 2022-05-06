@@ -10,7 +10,16 @@ import {
   FlyControls,
 } from '@react-three/drei'
 import { useEffect, useRef, Suspense } from 'react'
-import LoadingScreen from '@/components/canvas/LoadingScreen'
+//
+// import LoadingScreen from '@/components/canvas/LoadingScreen'
+// const LoadingScreen = dynamic(
+//   () => import('@/components/canvas/LoadingScreen'),
+//   {
+//     ssr: false,
+//   }
+// )
+//
+//
 const ImageGallery = dynamic(() => import('@/components/canvas/ImageGallery'), {
   ssr: false,
 })
@@ -20,9 +29,8 @@ const R3F = () => {
     <>
       <Suspense fallback={null}>
         <Stars />
+        <ImageGallery route='/ImageGallery' />
       </Suspense>
-
-      <ImageGallery route='/ImageGallery' />
     </>
   )
 }

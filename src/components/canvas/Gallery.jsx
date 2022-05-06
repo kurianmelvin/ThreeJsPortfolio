@@ -32,7 +32,7 @@ function Gallery({ images }) {
       <fog attach='fog' args={['#191920', 0, 15]} />
       <Environment preset='city' />
       {/* <group position={[0, -0.5, 0]}> */}
-      <group position={[0, -0.5, 0]}>
+      <group position={[0, -0.5, 0]} dispose={null}>
         <Frames images={images} />
 
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
@@ -40,7 +40,7 @@ function Gallery({ images }) {
           <MeshReflectorMaterial
             blur={[300, 100]}
             resolution={2048}
-            mixBlur={1}
+            mixBlur={0}
             mixStrength={40}
             roughness={1}
             depthScale={1.2}
@@ -76,7 +76,7 @@ function Frames({images, q = new THREE.Quaternion(),  p = new THREE.Vector3(),})
       clicked.current.parent.getWorldQuaternion(q)
     } else {
       //defalut position moving the frames back when the window loads
-      p.set(0, 0.5, 8)
+      p.set(0, 0.5, 9)
       q.identity()
     }
   })
@@ -91,10 +91,11 @@ function Frames({images, q = new THREE.Quaternion(),  p = new THREE.Vector3(),})
     <>
       <group
         ref={ref}
-        // onClick={(e) => (e.stopPropagation(),setLocation(clicked.current === e.object? '/item/' + e.object.name: '/item/' + e.object.name))} /* prettier-ignore */
+        // onClick={(e) => (e.stopPropagation(), setLocation(clicked.current === e.object ? '/' : '/item/' + e.object.name))} /* prettier-ignore */
         onClick={(e) => (e.stopPropagation(),setLocation(clicked.current = '/item/' + e.object.name))} /* prettier-ignore */
         // onPointerMissed={() => setLocation('/imagegallery')}
         onPointerMissed={() => setLocation('/imagegallery')}
+        dispose={null}
       >
         {images.map((props) => (
           <>
@@ -105,7 +106,7 @@ function Frames({images, q = new THREE.Quaternion(),  p = new THREE.Vector3(),})
               //movSpeed 0.05
               movementSpeed={0.04}
               dragToLook={false}
-              // autoForward = {true}
+              // autoForward = {false}
             />
           </>
         ))}
@@ -131,7 +132,7 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
     image.current.material.zoom = 1 /* prettier-ignore */
     //inside image scale
     image.current.scale.x = THREE.MathUtils.lerp(image.current.scale.x, (hovered ? 1 : 1),0.05) /* prettier-ignore */
-    image.current.scale.y = THREE.MathUtils.lerp(image.current.scale.y, (hovered ? 1 : 1),0.05) /* prettier-ignore */
+    image.current.scale.y = THREE.MathUtils.lerp(image.current.scale.y, (hovered ? 1.2 : 1),0.05) /* prettier-ignore */
     //the border and hover color of the frames
 
     // frame.current.scale.x = THREE.MathUtils.lerp(frame.current.scale.x, 0.85 * (hovered ? 2.85 : 1),0.01) /* prettier-ignore */
@@ -140,7 +141,7 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
   })
   return (
     <>
-      <group {...props}>
+      <group {...props} dispose={null}>
         <mesh
           name={name}
           onPointerOver={(e) => (e.stopPropagation(), hover(true))}
@@ -150,7 +151,7 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
           scale={[hovered ? 3 : 1, GOLDENRATIO, 0.05]}
           // positions the frames
           position={[0, 1, -1]}
-          dispose={null}
+          // dispose={null}
         >
           <boxGeometry />
           {/* the border of the image frames  */}
@@ -186,7 +187,7 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
             //this positions the images infront of the frame
             position={[0, 0, 1]}
             url={url}
-            scale={[5, 3, 0]}
+            // scale={[5, 3, 0]}
             alt={''}
           />
         </mesh>

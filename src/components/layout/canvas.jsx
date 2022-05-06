@@ -1,13 +1,19 @@
-import { useEffect, useRef, Suspense } from 'react'
+// import { useEffect, useRef, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import {
-  OrbitControls,
-  Preload,
-  MapControls,
-  Stars,
-  Sky,
-} from '@react-three/drei'
-import LoadingScreen from '@/components/canvas/LoadingScreen'
+// import {
+//   OrbitControls,
+//   Preload,
+//   Html,
+//   useProgress,
+//   Loader,
+//   Sky,
+//   Cloud,
+//   Stars,
+//   Line,
+//   softShadows,
+//   Text,
+// } from '@react-three/drei'
+
 import useStore from '@/helpers/store'
 
 const LCanvas = ({ children }) => {
@@ -15,13 +21,7 @@ const LCanvas = ({ children }) => {
 
   return (
     <>
-      <Canvas
-        // camera={{ fov: 35, position: [0, 2, 15] }}
-        // gl={{ alpha: true }}
-        // dpr={[1, 2]}
-        onCreated={(state) => state.events.connect(dom.current)}
-      >
-        {/* <LoadingScreen /> */}
+      <Canvas onCreated={(state) => state.events.connect(dom.current)}>
         {children}
       </Canvas>
     </>

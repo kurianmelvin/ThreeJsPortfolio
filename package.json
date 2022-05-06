@@ -29,6 +29,7 @@
     "@react-three/fiber": "^8.0.10",
     "babel-plugin-glsl": "^1.0.0",
     "glsl-random": "^0.0.5",
+    "lodash.random": "^3.2.0",
     "next": "^12.1.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

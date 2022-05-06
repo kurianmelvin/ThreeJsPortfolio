@@ -8,7 +8,7 @@ function LoadingScreen() {
   return active ? (
     <>
       <Html>
-        <div className='loader'>
+        <div className='loadingScreen'>
           <p>Loading...{Math.floor(progress)}%</p>
         </div>
       </Html>

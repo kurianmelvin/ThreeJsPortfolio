@@ -5,6 +5,7 @@ import {
   Environment,
   ContactShadows,
   shaderMaterial,
+  useGLTF,
   Stars,
   SpotLight,
   Sky,
@@ -14,6 +15,7 @@ import {
   OrbitControls,
   Loader,
   FlyControls,
+  MapControls,
 } from '@react-three/drei'
 import { useSpring } from '@react-spring/core'
 import { a as three } from '@react-spring/three'
@@ -25,37 +27,18 @@ function Laptop() {
   const router = useStore((state) => state.router)
   return (
     <>
-      <three.pointLight
-        position={[0, 4, 0]}
-        intensity={1.5}
-        // color={props.open.to([0, 1], ['#f0f0f0', '#d25578'])}
-      />
-      <Suspense fallback={null}>
-        <group onClick={(e) => (e.stopPropagation(), setOpen(!open))}>
-          <LaptopComponent
-            open={open}
-            hinge={props.open.to([0, 1.3], [1.575, -0.425])}
-          />
-          <FlyControls
-            //rs = 0.005
-            rollSpeed={0.005}
-            //ms =0.5
-            movementSpeed={100}
-            dragToLook={true}
-            // autoForward={false}
-          />
-        </group>
-        <Environment preset='night' />
-      </Suspense>
-      <ContactShadows
-        rotation-x={Math.PI / 2}
-        position={[0, 0, 0]}
-        opacity={0.4}
-        width={200}
-        height={200}
-        blur={2}
-        far={4.5}
-      />
+      {/* pontlight/ambientLight for the laptop */}
+      <three.pointLight position={[0, 4, 0]} intensity={1.5} />
+
+      <group
+        onClick={(e) => (e.stopPropagation(), setOpen(!open))}
+        dispose={null}
+      >
+        <LaptopComponent
+          open={open}
+          hinge={props.open.to([0, 1.3], [1.575, -0.425])}
+        />
+      </group>
     </>
   )
 }

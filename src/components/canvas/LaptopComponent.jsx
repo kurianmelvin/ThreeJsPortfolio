@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import React, { Suspense, useEffect, useRef, useState } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import Instructions from '@/components/dom/Instructions'
+// import { Canvas, useFrame } from '@react-three/fiber'
+// import Instructions from '@/components/dom/Instructions'
 import {
   Environment,
   ContactShadows,
@@ -18,10 +18,11 @@ import {
 } from '@react-three/drei'
 import { a as three } from '@react-spring/three'
 import useStore from '@/helpers/store'
-import LoadingScreen from '@/components/canvas/LoadingScreen'
+// import LoadingScreen from '@/components/canvas/LoadingScreen'
 const vec = new THREE.Vector3()
 
 function LaptopComponent({ open, hinge, ...props }) {
+  const [htmlHidden, setHtmlHidden] = useState()
   const router = useStore((state) => state.router)
   const group = useRef()
   // Load model
@@ -42,8 +43,8 @@ function LaptopComponent({ open, hinge, ...props }) {
         {...props}
         onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
         onPointerOut={(e) => setHovered(false)}
+        position={[0, -3, -10]}
         dispose={null}
-        position={[0, -3, -6]}
       >
         <three.group rotation-x={hinge} position={[0, -0.04, 0.41]}>
           <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
@@ -56,22 +57,44 @@ function LaptopComponent({ open, hinge, ...props }) {
               geometry={nodes['Cube008_1'].geometry}
             />
             <Html
-              className='content'
-              rotation-x={-Math.PI / 2}
-              position={[0, 0.14, -0.09]}
-              transform
+              className='HTMLcontent'
               occlude
+              onOcclude={setHtmlHidden}
+              style={{
+                // transition: 'all 0.01s',
+                opacity: htmlHidden ? 0 : 1,
+              }}
+              //  transform: `scale(${htmlHidden ? 0.5 : 1})`,
+              transform
+              rotation-x={-Math.PI / 2}
+              position={[0, 0, 0]}
+
+              // distanceFactor={10}
+              // fullscreen
+              // sprite={false}
             >
-              <div
-                className='wrapper'
-                onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
-                onPointerOut={(e) => (e.stopPropagation(), setHovered(false))}
-                onClick={() => {
-                  router.push(`/imagegallery`)
-                }}
-              >
-                <LoadingScreen />
-                <Instructions />
+              <div className='grid-container'>
+                <div
+                  onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
+                  onPointerOut={(e) => (e.stopPropagation(), setHovered(false))}
+                  onClick={() => {
+                    router.push(`/imagegallery`)
+                  }}
+                >
+                  Image Gallery
+                </div>
+
+                <div
+                // onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
+                // onPointerOut={(e) => (e.stopPropagation(), setHovered(false))}
+                // onClick={() => {
+                //   router.push(`/box`)
+                // }}
+                >
+                  About
+                </div>
+                <div>Project</div>
+                <div>Connect</div>
               </div>
             </Html>
           </group>

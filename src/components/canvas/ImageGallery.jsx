@@ -13,51 +13,57 @@ import {
 // const pexel = (id) =>
 //   `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`
 const images = [
-  // Front
-  { position: [0, 0, 2], rotation: [0, 0, 0], url: '/b1.jpg' },
-
-  /////
-  // Back left
-  { position: [-1.8, 0, 1], rotation: [0, 0, 0], url: '/b12.jpeg' },
-  // // Back right
-  { position: [1.8, 0, 1], rotation: [0, 0, 0], url: '/b13.jpeg' },
-
-  ////
-  // Left back 3
-  {
-    position: [-2, 0, 2],
-    rotation: [0, Math.PI / 2.5, 0],
-    url: '/b4.jpeg',
-  },
-
-  //left middle 2
-  {
-    position: [-2.15, 0, 4],
-    rotation: [0, Math.PI / 2.5, 0],
-    url: '/b5.jpg',
-  },
-  // LEFT FRONT 1
+  //1 LEFT FRONT 1
   {
     position: [-2, 0, 6],
     rotation: [0, Math.PI / 2.5, 0],
-    url: '/b6.jpeg',
+    url: '/b1.jpeg',
+  },
+  // 2 left middle 2
+  {
+    position: [-2.15, 0, 4],
+    rotation: [0, Math.PI / 2.5, 0],
+    url: '/b2.jpeg',
+  },
+  //3 Left back 3
+  {
+    position: [-2, 0, 2],
+    rotation: [0, Math.PI / 2.5, 0],
+    url: '/b3.JPEG',
   },
 
+  ///
+  //4 Back left
+  { position: [-1.8, 0, 1], rotation: [0, 0, 0], url: '/b4.jpeg' },
+  //
+  ////
+  // // 5 MIDDLE m3
+  // { position: [0.5, 0, 2.5], rotation: [0, 0, 0], url: '/b11.JPG' },
+  // //
+  // 5 MIDDLE m2
+  { position: [0, 0, 0], rotation: [0, 0, 0], url: '/b11.jpg' },
+  //
+  // 5 MIDDLE m1
+  { position: [0, 0, 6], rotation: [0, 0, 0], url: '/b5.JPG' },
+  //
+  //
+  //6 // Back right
+  { position: [1.8, 0, 1], rotation: [0, 0, 0], url: '/b6.jpeg' },
   ////
   ////
-  // Right back 3
+  //7 Right back 3
   {
     position: [2, 0, 2],
     rotation: [0, -Math.PI / 2.5, 0],
-    url: '/b7.jpeg',
+    url: '/b7.JPEG',
   },
-  // Right middle 2
+  //8 Right middle 2
   {
     position: [2.15, 0, 4],
     rotation: [0, -Math.PI / 2.5, 0],
     url: '/b8.jpeg',
   },
-  // right front 1
+  //9 right front 1
   {
     position: [2, 0, 6],
     rotation: [0, -Math.PI / 2.5, 0],

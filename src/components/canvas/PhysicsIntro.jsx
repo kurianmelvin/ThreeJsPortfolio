@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, Suspense } from 'react'
 import * as THREE from 'three'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
@@ -89,13 +89,22 @@ const Char = ({ config, char, i }) => {
   }))
 
   return (
-    //this sets the position AFTER the useBox position
-    //This group ROTATION sets the Angle of the Text
-    <group>
+    <group dispose={null}>
       {/* this is the text mesh, adjusting the position here positions the text on the canvas */}
-      <mesh ref={ref}>
+      <mesh ref={ref} dispose={null}>
         <textGeometry args={[char, config]} />
-        <meshStandardMaterial color={stringToColor(char + i)} />
+        <MeshReflectorMaterial
+          blur={[300, 100]}
+          //   resolution={2048}
+          mixBlur={1}
+          mixStrength={100}
+          roughness={0}
+          depthScale={1.2}
+          minDepthThreshold={0.4}
+          maxDepthThreshold={1.4}
+          color='red'
+          metalness={0.5}
+        />
       </mesh>
     </group>
   )
@@ -107,35 +116,26 @@ const Char = ({ config, char, i }) => {
 const Wrapper = ({ text, text2 }) => {
   const loader = new FontLoader()
   const font = loader.parse(Kanit)
-  //   const font = useLoader(
-  //     FontLoader,
-  //     'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/fonts/helvetiker_regular.typeface.json'
-  //   )
+
   const configFont = useMemo(
     () => ({
       font,
       size: 1.8,
       height: 0.3,
-      //   curveSegments: 2,
-      //   bevelEnabled: true,
-      //   bevelThickness: 0.1,
-      //   bevelSize: 0.1,
-      //   bevelOffset: 0,
-      //   bevelSegments: 6,
+      curveSegments: 2,
+      bevelEnabled: true,
+      bevelThickness: 0.1,
+      bevelSize: 0.1,
+      bevelOffset: 0,
+      bevelSegments: 6,
     }),
     [font]
   )
 
   return (
     <>
-      <ambientLight />
-      {/* <spotLight
-        penumbra={0.5}
-        angle={0.5}
-        intensity={1.5}
-        position={[-400, 200, 50]}
-        castShadow
-      /> */}
+      {/* <ambientLight /> */}
+
       {/* The Physics gravity determines how much the item bounces apart */}
       {/* increase negative YPosition have closer bounce off  */}
       <Physics gravity={[0, -20, 0]} step={0}>
@@ -145,7 +145,11 @@ const Wrapper = ({ text, text2 }) => {
               {/* This sets the position AFTER the useBox position  */}
               {/* This Mesh ROTATION sets the Angle of the Text */}
               {/* Melvin Kurian */}
-              <mesh position={[-15, -0.3, -5]} rotation={[0, 0.7, 0]}>
+              <mesh
+                position={[-15, -0.3, -5]}
+                rotation={[0, 0.7, 0]}
+                dispose={null}
+              >
                 <Char
                   key={`${char}-${i}`}
                   char={char}
@@ -162,7 +166,11 @@ const Wrapper = ({ text, text2 }) => {
         {text2.split('.').map((char, i) => {
           return (
             <>
-              <mesh position={[-10, -0.4, -6]} rotation={[0, -0.6, 0.02]}>
+              <mesh
+                position={[-10, -0.4, -6]}
+                rotation={[0, -0.6, 0]}
+                dispose={null}
+              >
                 <Char
                   key={`${char}-${i}`}
                   char={char}
@@ -181,24 +189,23 @@ const Wrapper = ({ text, text2 }) => {
 
 Wrapper.defaultProps = {
   //   text: 'Melvin Kurian',
-  text: 'Melvin Kurian',
-  text2: 'Software Engineer',
+  text: 'MELVIN KURIAN',
+  text2: 'SOFTWARE ENGINEER',
 }
 
 function PhysicsIntro() {
   return (
     <>
-      <Wrapper />
-      <Sky
-        distance={40000}
-        // Xpositive = Right, XNegative = Left   // YPositive = Up, YNegative = Sun Down  // ZPositive = Back, ZNegative = Front
-        sunPosition={[0, 0.5, 1]}
-        // inclination={0}
-        azimuth={0.25}
-      />
-      <Stars factor={5} />
-      {/* <Wrapper /> */}
-      {/* <Sky /> */}
+      <Suspense fallback={null}>
+        <Sky
+          distance={4000}
+          // Xpositive = Right, XNegative = Left   // YPositive = Up, YNegative = Sun Down  // ZPositive = Back, ZNegative = Front
+          sunPosition={[0, 0.1, 2.5]}
+        />
+        <Stars />
+        <Wrapper />
+      </Suspense>
+
       <FlyControls
         //rs = 0.005
         rollSpeed={0.005}

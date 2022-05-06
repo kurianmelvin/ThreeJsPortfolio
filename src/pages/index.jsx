@@ -32,16 +32,21 @@ const Welcome = dynamic(() => import('@/components/canvas/Welcome'), {
   ssr: false,
 })
 //
+//
+// import Welcome from '@/components/canvas/Welcome'
+const PhysicsIntro = dynamic(() => import('@/components/canvas/PhysicsIntro'), {
+  ssr: false,
+})
 // import ImageGallery from '@/components/canvas/ImageGallery'
 // import Instructions from '@/components/dom/Instructions'
 //
 // import LoadingScreen from '@/components/canvas/LoadingScreen'
-const LoadingScreen = dynamic(
-  () => import('@/components/canvas/LoadingScreen'),
-  {
-    ssr: false,
-  }
-)
+// const LoadingScreen = dynamic(
+//   () => import('@/components/canvas/LoadingScreen'),
+//   {
+//     ssr: false,
+//   }
+// )
 //
 //
 
@@ -54,44 +59,27 @@ const LoadingScreen = dynamic(
 //   ssr: false,
 // })
 
-softShadows()
+// softShadows()
 // canvas components goes here
 const R3F = () => {
   return (
     <>
-      <LoadingScreen />
+      {/* <LoadingScreen /> */}
       {/* <ZoomToView /> */}
-      {/* <BackgroundPlane /> */}
+
       {/* <Shader /> */}
       <Suspense fallback={null}>
-        <Sky
-          distance={40000}
-          // Xpositive = Right, XNegative = Left   // YPositive = Up, YNegative = Sun Down  // ZPositive = Back, ZNegative = Front
-          azimuth={0.25}
-        />
-        <Cloud
-          speed={2}
-          opacity={0.2}
-          width={300}
-          depth={2}
-          segments={300}
-          color='black'
-        />
-        <Cloud
-          Position={[-10, -10, 0]}
-          speed={2}
-          opacity={0.01}
-          width={300}
-          depth={2}
-          segments={300}
-          color='white'
-        />
+        <Suspense fallback={null}>
+          <PhysicsIntro />
+          {/* <BackgroundPlane /> */}
+        </Suspense>
+        {/* <Welcome /> */}
 
-        <Welcome />
         <Laptop />
       </Suspense>
-
-      <OrbitControls />
+      {/* <BackgroundPlane /> */}
+      {/* <PhysicsIntro /> */}
+      {/* <OrbitControls /> */}
     </>
   )
 }
