@@ -12,6 +12,7 @@ import { extend, useLoader } from '@react-three/fiber'
 //
 import {
   OrbitControls,
+  FlyControls,
   Preload,
   Html,
   useProgress,
@@ -23,6 +24,7 @@ import {
   softShadows,
   Text,
   Stage,
+  MeshReflectorMaterial,
 } from '@react-three/drei'
 //
 //
@@ -38,7 +40,18 @@ const Plane = (props) => {
   return (
     <mesh ref={ref}>
       <planeGeometry args={[100, 100]} />
-      <meshStandardMaterial color='#ffffff' />
+      <MeshReflectorMaterial
+        blur={[300, 100]}
+        resolution={2048}
+        mixBlur={0}
+        mixStrength={50}
+        roughness={0}
+        depthScale={1.2}
+        minDepthThreshold={0.4}
+        maxDepthThreshold={1.4}
+        color='#101010'
+        metalness={0.5}
+      />
     </mesh>
   )
 }
@@ -68,20 +81,21 @@ function stringToColor(str) {
 //this function positions the text
 const Char = ({ config, char, i }) => {
   const [ref] = useBox(() => ({
-    mass: 10,
+    mass: 1,
     //positions the text as they fall
-    position: [i * 2, 5, -5],
-    // fixedRotation: 'true',
-
+    position: [i * 2, 10, -10],
+    fixedRotation: 'true',
     type: 'Dynamic',
   }))
 
   return (
+    //this sets the position AFTER the useBox position
+    //This group ROTATION sets the Angle of the Text
     <group>
       {/* this is the text mesh, adjusting the position here positions the text on the canvas */}
       <mesh ref={ref}>
         <textGeometry args={[char, config]} />
-        <meshStandardMaterial color={'#9c6398'} />
+        <meshStandardMaterial color={stringToColor(char + i)} />
       </mesh>
     </group>
   )
@@ -90,7 +104,7 @@ const Char = ({ config, char, i }) => {
 //
 //
 //
-const Wrapper = ({ text }) => {
+const Wrapper = ({ text, text2 }) => {
   const loader = new FontLoader()
   const font = loader.parse(Kanit)
   //   const font = useLoader(
@@ -122,15 +136,44 @@ const Wrapper = ({ text }) => {
         position={[-400, 200, 50]}
         castShadow
       /> */}
-
-      <Physics gravity={[0, -10, 0]} step={0}>
-        {text.split('').map((char, i) => {
+      {/* The Physics gravity determines how much the item bounces apart */}
+      {/* increase negative YPosition have closer bounce off  */}
+      <Physics gravity={[0, -20, 0]} step={0}>
+        {text.split('.').map((char, i) => {
           return (
-            <Char key={`${char}-${i}`} char={char} i={i} config={configFont} />
+            <>
+              {/* This sets the position AFTER the useBox position  */}
+              {/* This Mesh ROTATION sets the Angle of the Text */}
+              {/* Melvin Kurian */}
+              <mesh position={[-15, -0.3, -5]} rotation={[0, 0.7, 0]}>
+                <Char
+                  key={`${char}-${i}`}
+                  char={char}
+                  i={i}
+                  config={configFont}
+                />
+              </mesh>
+            </>
           )
         })}
-
-        <Plane position={[0, -5, 0]} />
+        {/* This sets the position AFTER the useBox position  */}
+        {/* This Mesh ROTATION sets the Angle of the Text */}
+        {/* "Software Engineer" */}
+        {text2.split('.').map((char, i) => {
+          return (
+            <>
+              <mesh position={[-10, -0.4, -6]} rotation={[0, -0.6, 0.02]}>
+                <Char
+                  key={`${char}-${i}`}
+                  char={char}
+                  i={i}
+                  config={configFont}
+                />
+              </mesh>
+            </>
+          )
+        })}
+        <Plane position={[0, -3.19, 0]} />
       </Physics>
     </>
   )
@@ -139,16 +182,31 @@ const Wrapper = ({ text }) => {
 Wrapper.defaultProps = {
   //   text: 'Melvin Kurian',
   text: 'Melvin Kurian',
+  text2: 'Software Engineer',
 }
 
 function PhysicsIntro() {
   return (
     <>
       <Wrapper />
-
+      <Sky
+        distance={40000}
+        // Xpositive = Right, XNegative = Left   // YPositive = Up, YNegative = Sun Down  // ZPositive = Back, ZNegative = Front
+        sunPosition={[0, 0.5, 1]}
+        // inclination={0}
+        azimuth={0.25}
+      />
+      <Stars factor={5} />
       {/* <Wrapper /> */}
-      <Sky />
-      <OrbitControls />
+      {/* <Sky /> */}
+      <FlyControls
+        //rs = 0.005
+        rollSpeed={0.005}
+        //ms =0.5
+        movementSpeed={3}
+        dragToLook={false}
+        autoForward={false}
+      />
     </>
   )
 }
