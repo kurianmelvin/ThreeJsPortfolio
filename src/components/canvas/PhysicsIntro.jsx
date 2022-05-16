@@ -44,8 +44,8 @@ extend({ TextGeometry })
 //this function positions the text
 const Char = ({ config, char, i }) => {
   const [ref] = useBox(() => ({
-    mass: 10,
-    // allowSleep: 'true',
+    mass: 3,
+    allowSleep: 'true',
     //positions the text as they fall
     position: [i * 2, 30, 0],
     fixedRotation: 'true',

@@ -29,7 +29,7 @@ const FloorPlane = (props) => {
 
   return (
     <mesh
-      receiveShadow
+      //   receiveShadow
       ref={ref}
       // dispose={null}
     >
@@ -43,7 +43,7 @@ const BackPlane = (props) => {
 
   return (
     <mesh
-      receiveShadow
+      //   receiveShadow
       ref={backref}
       // dispose={null}
     >
@@ -65,37 +65,36 @@ function KeyLight({ brightness, color }) {
       intensity={brightness}
       position={[0, -3.19, 0]}
       lookAt={[0, 0, 0]}
-      penumbra={1}
-      castShadow
+      //   penumbra={1}
+      //   castShadow
     />
   )
 }
 //blue light
-function FillLight({ brightness, color }) {
+function LeftLight({ brightness, color }) {
   return (
     <rectAreaLight
-      width={10}
+      width={20}
       height={100}
       intensity={brightness}
       color={color}
-      position={[0, 0, -85]}
-      //   lookAt={[0, 0, 0]}
-      //   penumbra={2}
-      castShadow
+      position={[-2, 0, -100]}
+      rotation={[0, 90, 0]}
+      //   castShadow
     />
   )
 }
-//white light
-function RimLight({ brightness, color }) {
+//purple light
+function RightLight({ brightness, color }) {
   return (
     <rectAreaLight
-      width={10}
+      width={20}
       height={100}
       intensity={brightness}
       color={color}
       position={[-2, 0, -100]}
       rotation={[0, 180, 0]}
-      castShadow
+      //   castShadow
     />
   )
 }
@@ -110,9 +109,9 @@ function HomeBackgroundPlane() {
       {/* //purple light */}
       {/* <KeyLight brightness={3} color={'white'} /> */}
       {/* //blue light */}
-      <FillLight brightness={40} color={'#00ADB5'} />
-      {/* //white light */}
-      <RimLight brightness={50} color={'#ffbdf4'} />
+      <LeftLight brightness={40} color={'#00ADB5'} />
+      {/* //purple light */}
+      <RightLight brightness={50} color={'#ffbdf4'} />
     </>
   )
 }
