@@ -1,7 +1,5 @@
-import * as THREE from 'three'
 import { useEffect, useRef, useState } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import useStore from '@/helpers/store'
+
 import {
   useCursor,
   MeshReflectorMaterial,
@@ -16,8 +14,12 @@ import {
   TrackballControls,
   ArcballControls,
 } from '@react-three/drei'
-import { useRoute, useLocation } from 'wouter'
+import { Canvas, useFrame } from '@react-three/fiber'
+import * as THREE from 'three'
 import getUuid from 'uuid-by-string'
+import { useRoute, useLocation } from 'wouter'
+
+import useStore from '@/helpers/store'
 
 //
 const GOLDENRATIO = 1.61803398875
@@ -118,13 +120,12 @@ function Frames({images, q = new THREE.Quaternion(),  p = new THREE.Vector3(),})
 // this function is related to the image and material on the image gallery
 function Frame({ url, c = new THREE.Color(), ...props }) {
   const [hovered, hover] = useState(false)
-  const [rnd] = useState(() => Math.random())
+  // const [rnd] = useState(() => Math.random())
   const image = useRef()
-  const frame = useRef()
+  // const frame = useRef()
   const name = getUuid(url)
 
   //
-
   useCursor(hovered)
   useFrame(() => {
     // inside image zoom and scale

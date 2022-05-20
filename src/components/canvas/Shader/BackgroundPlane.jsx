@@ -1,6 +1,6 @@
 import React, { Suspense, useMemo, useEffect, useRef, useState } from 'react'
-import * as THREE from 'three'
-import { useFrame, useThree, useLoader } from '@react-three/fiber'
+
+import { usePlane, useBox, Physics } from '@react-three/cannon'
 import {
   OrbitControls,
   Preload,
@@ -19,7 +19,8 @@ import {
   useAspect,
   FlyControls,
 } from '@react-three/drei'
-import { usePlane, useBox, Physics } from '@react-three/cannon'
+import { useFrame, useThree, useLoader } from '@react-three/fiber'
+import * as THREE from 'three'
 
 //
 //

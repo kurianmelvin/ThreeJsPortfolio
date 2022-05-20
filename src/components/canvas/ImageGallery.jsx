@@ -1,12 +1,15 @@
 import React, { Suspense } from 'react'
-import Gallery from '@/components/canvas/Gallery'
+
 import {
   OrbitControls,
   Preload,
   MapControls,
   FlyControls,
   ScrollControls,
+  Stars,
 } from '@react-three/drei'
+
+import Gallery from '@/components/canvas/Gallery'
 
 //  <Page position={[-width * 1, 0, 0]} urls={['/trip1.jpg', '/trip2.jpg', '/trip3.jpg']} />
 
@@ -74,9 +77,17 @@ const images = [
 function ImageGallery() {
   return (
     <>
-      {/* <Suspense fallback={null}> */}
-      <Gallery images={images} />
-      {/* </Suspense> */}
+      <Suspense fallback={null}>
+        <Stars
+        // radius={100}
+        // depth={1000}
+        // count={5000}
+        // factor={50}
+        // saturation={10}
+        // fade={true}
+        />
+        <Gallery images={images} />
+      </Suspense>
     </>
   )
 }

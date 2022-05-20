@@ -1,22 +1,25 @@
-import * as THREE from 'three'
 import React, { Suspense, useEffect, useRef, useState } from 'react'
+
 // import { Canvas, useFrame } from '@react-three/fiber'
 // import Instructions from '@/components/dom/Instructions'
-import {
-  Environment,
-  ContactShadows,
-  shaderMaterial,
-  useGLTF,
-  Stars,
-  SpotLight,
-  Sky,
-  Sparkles,
-  Text,
-  Html,
-  OrbitControls,
-  Loader,
-} from '@react-three/drei'
 import { a as three } from '@react-spring/three'
+import {
+  // Environment,
+  // ContactShadows,
+  // shaderMaterial,
+  useGLTF,
+  // Stars,
+  // SpotLight,
+  // Sky,
+  // Sparkles,
+  Text,
+  // Html,
+  // OrbitControls,
+  // Loader,
+  Sparkles,
+} from '@react-three/drei'
+import * as THREE from 'three'
+
 import useStore from '@/helpers/store'
 // import LoadingScreen from '@/components/canvas/LoadingScreen'
 const vec = new THREE.Vector3()
@@ -43,75 +46,55 @@ function LaptopComponent({ open, hinge, ...props }) {
         {...props}
         onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
         onPointerOut={(e) => setHovered(false)}
+        //position responsible for the placement of the whole laptop
         position={[0, -3, -10]}
+        rotation={[0, 0, 0]}
         dispose={null}
       >
         <three.group rotation-x={hinge} position={[0, -0.04, 0.41]}>
-          <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
+          <group
+            position={[0, 2.96, -0.13]}
+            rotation={[Math.PI / 2, 0, 0]}
+            // dispose={null}
+          >
             <mesh
-              material={materials.aluminium}
-              geometry={nodes['Cube008'].geometry}
+              geometry={nodes.Cube008.geometry}
+              material={nodes.Cube008.material}
             />
             <mesh
+              geometry={nodes.Cube008_1.geometry}
               material={materials['matte.001']}
-              geometry={nodes['Cube008_1'].geometry}
             />
-            <Html
-              className='HTMLcontent'
-              occlude
-              onOcclude={setHtmlHidden}
-              style={{
-                // transition: 'all 0.01s',
-                opacity: htmlHidden ? 0 : 1,
-              }}
-              //  transform: `scale(${htmlHidden ? 0.5 : 1})`,
-              transform
+
+            <Text
               rotation-x={-Math.PI / 2}
-              position={[0, 0, 0]}
-
-              // distanceFactor={10}
-              // fullscreen
-              // sprite={false}
+              position={[0, 0, 0.4]}
+              fontSize='1'
+              color={'tomato'}
+              letterSpacing={0.02}
+              overflowWrap={'normal'}
+              // onClick={() => {
+              //   router.push(`/`)
+              // }}
             >
-              <div className='grid-container'>
-                <div
-                  onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
-                  onPointerOut={(e) => (e.stopPropagation(), setHovered(false))}
-                  onClick={() => {
-                    router.push(`/imagegallery`)
-                  }}
-                >
-                  Image Gallery
-                </div>
-
-                <div
-                // onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
-                // onPointerOut={(e) => (e.stopPropagation(), setHovered(false))}
-                // onClick={() => {
-                //   router.push(`/box`)
-                // }}
-                >
-                  About
-                </div>
-                <div>Project</div>
-                <div>Connect</div>
-              </div>
-            </Html>
+              About Me
+            </Text>
           </group>
         </three.group>
         <mesh
-          material={materials.keys}
           geometry={nodes.keyboard.geometry}
+          material={materials.keys}
           position={[1.79, 0, 3.45]}
         />
         <group position={[0, -0.1, 3.39]}>
           <mesh
-            material={materials.aluminium}
-            geometry={nodes['Cube002'].geometry}
+            geometry={nodes.Cube002.geometry}
+            material={nodes.Cube002.material}
           />
+
           <mesh
+            geometry={nodes.Cube002_1.geometry}
             material={materials.trackpad}
-            geometry={nodes['Cube002_1'].geometry}
           />
         </group>
         <mesh
@@ -125,3 +108,4 @@ function LaptopComponent({ open, hinge, ...props }) {
 }
 
 export default LaptopComponent
+useGLTF.preload('/mac-draco.glb')

@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import useStore from '@/helpers/store'
-import Header from '@/config'
-import Dom from '@/components/layout/dom'
-import partition from '@/helpers/partition'
-import '@/styles/index.css'
+import React, { useEffect } from 'react'
+
 import dynamic from 'next/dynamic'
-import {
-  OrbitControls,
-  Preload,
-  Html,
-  useProgress,
-  Loader,
-  Sky,
-  Stars,
-} from '@react-three/drei'
+import { useRouter } from 'next/router'
+
+import Dom from '@/components/layout/dom'
+import Header from '@/config'
+import partition from '@/helpers/partition'
+import useStore from '@/helpers/store'
+
+import '@/styles/index.css'
+
+// import {
+//   OrbitControls,
+//   Preload,
+//   Html,
+//   useProgress,
+//   Loader,
+//   Sky,
+//   Stars,
+// } from '@react-three/drei'
 const LCanvas = dynamic(() => import('@/components/layout/canvas'), {
   ssr: false,
 })
@@ -24,12 +28,12 @@ const Balance = ({ child }) => {
 
   return (
     <>
-      <LCanvas>{r3f}</LCanvas>
       <Dom>{dom}</Dom>
+      <LCanvas>{r3f}</LCanvas>
     </>
   )
 }
-
+//Title should be "index"
 function App({ Component, pageProps = { title: 'index' } }) {
   const router = useRouter()
 

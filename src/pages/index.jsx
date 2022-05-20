@@ -1,26 +1,17 @@
-import {
-  OrbitControls,
-  Preload,
-  Html,
-  useProgress,
-  Loader,
-  Sky,
-  Cloud,
-  Stars,
-  Line,
-  softShadows,
-  Text,
-} from '@react-three/drei'
 import { useEffect, useRef, Suspense } from 'react'
-import { useFrame, useThree } from '@react-three/fiber'
-//
-import Shader from '@/components/canvas/Shader/Shader'
-import BackgroundPlane from '@/components/canvas/Shader/BackgroundPlane'
-import ZoomToView from '@/components/canvas/ZoomToView'
-// ZoomToView
 
+import { Html, useProgress } from '@react-three/drei'
+// import { useFrame, useThree } from '@react-three/fiber'
 //
 import dynamic from 'next/dynamic'
+import * as THREE from 'three'
+import { BackSide } from 'three'
+// import Shader from '@/components/canvas/Shader/Shader'
+// import BackgroundPlane from '@/components/canvas/Shader/BackgroundPlane'
+// import ZoomToView from '@/components/canvas/ZoomToView'
+// ZoomToView
+// import { useProgress, Html, Stars, Sky } from '@react-three/drei'
+//
 //
 // import Laptop from '@/components/canvas/Laptop'
 const Laptop = dynamic(() => import('@/components/canvas/Laptop'), {
@@ -28,19 +19,31 @@ const Laptop = dynamic(() => import('@/components/canvas/Laptop'), {
 })
 //
 // import Welcome from '@/components/canvas/Welcome'
-const Welcome = dynamic(() => import('@/components/canvas/Welcome'), {
-  ssr: false,
-})
+// const Welcome = dynamic(() => import('@/components/canvas/Welcome'), {
+//   ssr: false,
+// })
+
+import EarthButton from '@/components/canvas/EarthButton'
+// const EarthButton = dynamic(() => import('@/components/canvas/EarthButton'), {
+//   ssr: false,
+// })
 //
 //
 // import Welcome from '@/components/canvas/Welcome'
 const PhysicsIntro = dynamic(() => import('@/components/canvas/PhysicsIntro'), {
   ssr: false,
 })
+//
+//
+//
+const PhoneButtion = dynamic(() => import('@/components/canvas/PhoneButtion'), {
+  ssr: false,
+})
+
 // import ImageGallery from '@/components/canvas/ImageGallery'
 // import Instructions from '@/components/dom/Instructions'
 //
-// import LoadingScreen from '@/components/canvas/LoadingScreen'
+
 // const LoadingScreen = dynamic(
 //   () => import('@/components/canvas/LoadingScreen'),
 //   {
@@ -60,26 +63,30 @@ const PhysicsIntro = dynamic(() => import('@/components/canvas/PhysicsIntro'), {
 // })
 
 // softShadows()
+
+//
+
+function Loading() {
+  const { progress } = useProgress()
+  return (
+    <Html className='HTMLcontent' center>
+      {progress} % loaded
+    </Html>
+  )
+}
 // canvas components goes here
 const R3F = () => {
   return (
     <>
-      {/* <LoadingScreen /> */}
-      {/* <ZoomToView /> */}
+      <Suspense fallback={<Loading />}>
+        <PhysicsIntro />
 
-      {/* <Shader /> */}
-      <Suspense fallback={null}>
         <Suspense fallback={null}>
-          <PhysicsIntro />
-          {/* <BackgroundPlane /> */}
+          <PhoneButtion scale={[10, 10, 10]} />
+          <Laptop />
+          <EarthButton />
         </Suspense>
-        {/* <Welcome /> */}
-
-        <Laptop />
       </Suspense>
-      {/* <BackgroundPlane /> */}
-      {/* <PhysicsIntro /> */}
-      {/* <OrbitControls /> */}
     </>
   )
 }
@@ -98,7 +105,7 @@ export default Page
 export async function getStaticProps() {
   return {
     props: {
-      title: "Melvin's Portfolio",
+      title: 'Melvin Kurian Portfolio',
     },
   }
 }

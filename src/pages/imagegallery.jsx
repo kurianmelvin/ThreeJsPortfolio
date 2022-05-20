@@ -1,4 +1,5 @@
-import dynamic from 'next/dynamic'
+import { useEffect, useRef, Suspense } from 'react'
+
 import {
   OrbitControls,
   Preload,
@@ -9,7 +10,7 @@ import {
   Stars,
   FlyControls,
 } from '@react-three/drei'
-import { useEffect, useRef, Suspense } from 'react'
+import dynamic from 'next/dynamic'
 //
 // import LoadingScreen from '@/components/canvas/LoadingScreen'
 // const LoadingScreen = dynamic(
@@ -20,6 +21,7 @@ import { useEffect, useRef, Suspense } from 'react'
 // )
 //
 //
+
 const ImageGallery = dynamic(() => import('@/components/canvas/ImageGallery'), {
   ssr: false,
 })
@@ -27,10 +29,7 @@ const ImageGallery = dynamic(() => import('@/components/canvas/ImageGallery'), {
 const R3F = () => {
   return (
     <>
-      <Suspense fallback={null}>
-        <Stars />
-        <ImageGallery route='/ImageGallery' />
-      </Suspense>
+      <ImageGallery route='/ImageGallery' />
     </>
   )
 }

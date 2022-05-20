@@ -1,6 +1,5 @@
 import React, { Suspense, useMemo, useEffect, useRef, useState } from 'react'
-import * as THREE from 'three'
-import { useFrame, useThree, useLoader } from '@react-three/fiber'
+
 import {
   OrbitControls,
   Preload,
@@ -18,6 +17,8 @@ import {
   MeshReflectorMaterial,
   useAspect,
 } from '@react-three/drei'
+import { useFrame, useThree, useLoader } from '@react-three/fiber'
+import * as THREE from 'three'
 
 function Scene() {
   const size = useAspect(1800, 1000)

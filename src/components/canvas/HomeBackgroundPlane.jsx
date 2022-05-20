@@ -1,72 +1,74 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 //
 import { usePlane, useBox, Physics } from '@react-three/cannon'
-// import {
-//   OrbitControls,
-//   FlyControls,
-//   Preload,
-//   Html,
-//   useProgress,
-//   Loader,
-//   Sky,
-//   Cloud,
-//   Stars,
-//   Line,
-//   softShadows,
-//   Text,
-//   Stage,
-//   MeshReflectorMaterial,
-// } from '@react-three/drei'
+import {
+  OrbitControls,
+  MapControls,
+  //
+  FlyControls,
+  Environment,
+} from '@react-three/drei'
 //
 //
+import dynamic from 'next/dynamic'
+const CubeBackground = dynamic(
+  () => import('@/components/canvas/CubeBackground'),
+  {
+    ssr: false,
+  }
+)
+// softShadows()
 
-// const red = new THREE.MeshLambertMaterial({ color: 'red' })
-// const sphere = new THREE.SphereGeometry(1, 28, 28)
-
-const FloorPlane = (props) => {
+function FloorPlane({ color, ...props }) {
   const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], ...props }))
 
   return (
-    <mesh
-      //   receiveShadow
-      ref={ref}
-      // dispose={null}
-    >
-      <planeGeometry args={[300, 500]} />
-      <meshStandardMaterial color='#1B262C' />
-    </mesh>
+    <>
+      <mesh
+        //   receiveShadow
+        ref={ref}
+        // dispose={null}
+      >
+        <planeGeometry args={[500, 500]} />
+        <meshStandardMaterial color={color} />
+      </mesh>
+    </>
   )
 }
-const BackPlane = (props) => {
-  const [backref] = usePlane(() => ({ ...props }))
 
-  return (
-    <mesh
-      //   receiveShadow
-      ref={backref}
-      // dispose={null}
-    >
-      <planeGeometry args={[500, 500]} />
-      <meshStandardMaterial color='#1B262C' />
-    </mesh>
-  )
-}
+////BACK WALL PLANE////
+
+// function BackPlane({ color, ...props }) {
+//   const [backref] = usePlane(() => ({ ...props }))
+
+//   return (
+//     <mesh
+//       receiveShadow
+//       ref={backref}
+//       // dispose={null}
+//     >
+//       <planeGeometry args={[500, 500]} />
+//       <meshStandardMaterial color={color} />
+//       {/* <meshStandardMaterial color='white' /> */}
+//     </mesh>
+//   )
+// }
 
 // Lights
 //purple light
 //    <BackPlane position={[0, -1, -100]} />
-function KeyLight({ brightness, color }) {
+function MiddleLight({ brightness, color }) {
   return (
     <rectAreaLight
-      width={300}
-      height={10}
+      width={0.2}
+      height={100.01}
       color={color}
       intensity={brightness}
-      position={[0, -3.19, 0]}
-      lookAt={[0, 0, 0]}
-      //   penumbra={1}
-      //   castShadow
+      position={[0, 0, -99.9]}
+      // lookAt={[0, 0, 0]}
+
+      castShadow
     />
   )
 }
@@ -78,9 +80,8 @@ function LeftLight({ brightness, color }) {
       height={100}
       intensity={brightness}
       color={color}
-      position={[-2, 0, -100]}
-      rotation={[0, 90, 0]}
-      //   castShadow
+      position={[-0.6, 0, -100]}
+      rotation={[0, 90, -0.11]}
     />
   )
 }
@@ -92,9 +93,8 @@ function RightLight({ brightness, color }) {
       height={100}
       intensity={brightness}
       color={color}
-      position={[-2, 0, -100]}
-      rotation={[0, 180, 0]}
-      //   castShadow
+      position={[0.6, 0, -100]}
+      rotation={[0, 180, 0.11]}
     />
   )
 }
@@ -102,16 +102,29 @@ function RightLight({ brightness, color }) {
 function HomeBackgroundPlane() {
   return (
     <>
-      {/* // */}
-      {/* // */}
-      <FloorPlane position={[0, -3.19, 0]} />
-      <BackPlane position={[0, 0, -100]} />
-      {/* //purple light */}
-      {/* <KeyLight brightness={3} color={'white'} /> */}
-      {/* //blue light */}
-      <LeftLight brightness={40} color={'#00ADB5'} />
-      {/* //purple light */}
-      <RightLight brightness={50} color={'#ffbdf4'} />
+      {/* <BackPlane color={'#2a1b3f'} position={[0, 0, -100]} /> */}
+
+      {/* <FloorPlane color={'#E4FBFF'} position={[0, -3.19, 0]} /> */}
+      <FloorPlane color={'#E4FBFF'} position={[0, -3.19, 0]} />
+      <Suspense fallback={null}>
+        <CubeBackground scale={[2, 2, 2]} position={[0, 0, 0]} />
+      </Suspense>
+      <MiddleLight brightness={100} color={'#FFFFFF'} />
+
+      <LeftLight brightness={40} color={'#30AADD'} />
+      <RightLight brightness={50} color={'#F806CC'} />
+
+      <FlyControls
+        //rs = 0.005
+        rollSpeed={0.03}
+        //ms =0.5
+        movementSpeed={10}
+        dragToLook={false}
+        autoForward={false}
+        position={[0, 100, 200]}
+      />
+      {/* <MapControls enableRotate={false} /> */}
+      {/* <OrbitControls enableDamping={false} /> */}
     </>
   )
 }

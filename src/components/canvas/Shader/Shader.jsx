@@ -1,7 +1,5 @@
-import * as THREE from 'three'
-import { useFrame, extend } from '@react-three/fiber'
 import { useRef, useState } from 'react'
-import useStore from '@/helpers/store'
+
 import {
   shaderMaterial,
   Stars,
@@ -10,9 +8,12 @@ import {
   Sparkles,
   Text,
 } from '@react-three/drei'
+import { useFrame, extend } from '@react-three/fiber'
+import * as THREE from 'three'
 
-import vertex from './glsl/shader.vert'
 import fragment from './glsl/shader.frag'
+import vertex from './glsl/shader.vert'
+import useStore from '@/helpers/store'
 
 const ColorShiftMaterial = shaderMaterial(
   {

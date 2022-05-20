@@ -1,4 +1,3 @@
-import * as THREE from 'three'
 import React, {
   useState,
   useEffect,
@@ -6,10 +5,29 @@ import React, {
   useLayoutEffect,
   useMemo,
 } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+
 import { OrbitControls, Html } from '@react-three/drei'
+import { Canvas, useFrame } from '@react-three/fiber'
+import * as THREE from 'three'
+
+// ;<Trail
+//   width={1}
+//   length={10}
+//   local={false}
+//   color={'#F8D628'}
+//   target={ref}
+//   interval={1}
+//   decay={10}
+// />
 
 ///
+// ;<Lightformer
+//   form='circle' // circle | ring | rect (optional, default = rect)
+//   intensity={1} // power level (optional = 1)
+//   color='white' // (optional = white)
+//   scale={[1, 1]} // Scale it any way you prefer (optional = [1, 1])
+//   // target={[-10, -10, -10]} // Target position (optional = undefined)
+// />
 
 // function randomPos() {
 //   const min = 5
@@ -281,3 +299,54 @@ export default ZoomToView
 //     </>
 //   );
 // }
+
+//---------------------------------------------
+{
+  /* <Html
+              className='HTMLcontent'
+              occlude
+              onOcclude={setHtmlHidden}
+              style={{
+                // transition: 'all 0.01s',
+                opacity: htmlHidden ? 0 : 1,
+              }}
+              //  transform: `scale(${htmlHidden ? 0.5 : 1})`,
+              transform
+              rotation-x={-Math.PI / 2}
+              position={[0, 0, 0]}
+
+              // distanceFactor={10}
+              // fullscreen
+              // sprite={false}
+            >
+              <div className='grid-container'>
+                <div
+                  onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
+                  onPointerOut={(e) => (e.stopPropagation(), setHovered(false))}
+                  onClick={() => {
+                    router.push(`/imagegallery`)
+                  }}
+                >
+                  Hobbies
+                </div>
+
+                <div
+                // onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
+                // onPointerOut={(e) => (e.stopPropagation(), setHovered(false))}
+                // onClick={() => {
+                //   router.push(`/box`)
+                // }}
+                >
+                  About
+                </div>
+                <div>Project</div>
+                <div>Connect</div>
+              </div>
+            </Html> */
+}
+{
+  /* <mesh
+              material={materials['screen.001']}
+              geometry={nodes['Cube008_2'].geometry}
+            /> */
+}

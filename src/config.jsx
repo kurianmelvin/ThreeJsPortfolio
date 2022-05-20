@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-const titleDefault = 'Melvins Portfolio'
+const titleDefault = 'Melvin Kurian Portfolio'
 const url = 'https://kurianmelvin.com/'
 const description = 'My Portfolio and a bit about me.'
 const author = 'Melvin Kurian'
@@ -63,12 +63,16 @@ const Header = ({ title = titleDefault }) => {
         {/* Meta Tags for HTML pages on Mobile */}
         <meta name='format-detection' content='telephone=yes' />
         <meta name='HandheldFriendly' content='true' />
-        <meta
+        {/* <meta
           name='viewport'
           content='width=device-width, minimum-scale=1, initial-scale=1.0'
+        /> */}
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86'
         />
-        <meta name='theme-color' content='#CC9544' />
-        <link rel='shortcut icon' href='/icons/favicon.ico' />
+        {/* <meta name='theme-color' content='#CC9544' />
+        <link rel='shortcut icon' href='/icons/favicon.ico' /> */}
 
         {/* 
       Twitter Summary card
