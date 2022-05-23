@@ -1,0 +1,158 @@
+{
+    "uri": "Earth.glb",
+    "mimeType": "model/gltf-binary",
+    "validatorVersion": "2.0.0-dev.3.7",
+    "validatedAt": "2022-05-18T07:42:25.108Z",
+    "issues": {
+        "numErrors": 0,
+        "numWarnings": 1,
+        "numInfos": 3,
+        "numHints": 10,
+        "messages": [
+            {
+                "code": "BUFFER_VIEW_TARGET_MISSING",
+                "message": "bufferView.target should be set for vertex or index data.",
+                "severity": 3,
+                "pointer": "/meshes/0/primitives/0/attributes/POSITION"
+            },
+            {
+                "code": "BUFFER_VIEW_TARGET_MISSING",
+                "message": "bufferView.target should be set for vertex or index data.",
+                "severity": 3,
+                "pointer": "/meshes/0/primitives/0/attributes/NORMAL"
+            },
+            {
+                "code": "BUFFER_VIEW_TARGET_MISSING",
+                "message": "bufferView.target should be set for vertex or index data.",
+                "severity": 3,
+                "pointer": "/meshes/0/primitives/0/attributes/TEXCOORD_0"
+            },
+            {
+                "code": "BUFFER_VIEW_TARGET_MISSING",
+                "message": "bufferView.target should be set for vertex or index data.",
+                "severity": 3,
+                "pointer": "/meshes/0/primitives/0/indices"
+            },
+            {
+                "code": "BUFFER_VIEW_TARGET_MISSING",
+                "message": "bufferView.target should be set for vertex or index data.",
+                "severity": 3,
+                "pointer": "/meshes/0/primitives/1/attributes/POSITION"
+            },
+            {
+                "code": "BUFFER_VIEW_TARGET_MISSING",
+                "message": "bufferView.target should be set for vertex or index data.",
+                "severity": 3,
+                "pointer": "/meshes/0/primitives/1/attributes/NORMAL"
+            },
+            {
+                "code": "BUFFER_VIEW_TARGET_MISSING",
+                "message": "bufferView.target should be set for vertex or index data.",
+                "severity": 3,
+                "pointer": "/meshes/0/primitives/1/attributes/TEXCOORD_0"
+            },
+            {
+                "code": "UNUSED_OBJECT",
+                "message": "This object may be unused.",
+                "severity": 2,
+                "pointer": "/meshes/0/primitives/1/attributes/TEXCOORD_0"
+            },
+            {
+                "code": "BUFFER_VIEW_TARGET_MISSING",
+                "message": "bufferView.target should be set for vertex or index data.",
+                "severity": 3,
+                "pointer": "/meshes/0/primitives/2/attributes/POSITION"
+            },
+            {
+                "code": "BUFFER_VIEW_TARGET_MISSING",
+                "message": "bufferView.target should be set for vertex or index data.",
+                "severity": 3,
+                "pointer": "/meshes/0/primitives/2/attributes/NORMAL"
+            },
+            {
+                "code": "BUFFER_VIEW_TARGET_MISSING",
+                "message": "bufferView.target should be set for vertex or index data.",
+                "severity": 3,
+                "pointer": "/meshes/0/primitives/2/attributes/TEXCOORD_0"
+            },
+            {
+                "code": "UNUSED_OBJECT",
+                "message": "This object may be unused.",
+                "severity": 2,
+                "pointer": "/meshes/0/primitives/2/attributes/TEXCOORD_0"
+            },
+            {
+                "code": "IMAGE_FEATURES_UNSUPPORTED",
+                "message": "Image contains unsupported features like non-default colorspace information, non-square pixels, or animation.",
+                "severity": 1,
+                "pointer": "/images/0"
+            },
+            {
+                "code": "IMAGE_NPOT_DIMENSIONS",
+                "message": "Image has non-power-of-two dimensions: 21600x10800.",
+                "severity": 2,
+                "pointer": "/images/1"
+            }
+        ],
+        "truncated": false
+    },
+    "info": {
+        "version": "2.0",
+        "generator": "Khronos glTF Blender I/O v1.6.16",
+        "resources": [
+            {
+                "pointer": "/buffers/0",
+                "mimeType": "application/gltf-buffer",
+                "storage": "glb",
+                "byteLength": 12482176
+            },
+            {
+                "pointer": "/images/0",
+                "mimeType": "image/png",
+                "storage": "buffer-view",
+                "image": {
+                    "width": 16384,
+                    "height": 8192,
+                    "format": "luminance",
+                    "primaries": "custom",
+                    "transfer": "custom",
+                    "bits": 8
+                }
+            },
+            {
+                "pointer": "/images/1",
+                "mimeType": "image/jpeg",
+                "storage": "buffer-view",
+                "image": {
+                    "width": 21600,
+                    "height": 10800,
+                    "format": "luminance",
+                    "bits": 8
+                }
+            },
+            {
+                "pointer": "/images/2",
+                "mimeType": "image/jpeg",
+                "storage": "buffer-view",
+                "image": {
+                    "width": 8192,
+                    "height": 4096,
+                    "format": "rgb",
+                    "bits": 8
+                }
+            }
+        ],
+        "animationCount": 0,
+        "materialCount": 3,
+        "hasMorphTargets": false,
+        "hasSkins": false,
+        "hasTextures": true,
+        "hasDefaultScene": true,
+        "drawCallCount": 3,
+        "totalVertexCount": 12669,
+        "totalTriangleCount": 24192,
+        "maxUVs": 1,
+        "maxInfluences": 0,
+        "maxAttributes": 3
+    }
+}

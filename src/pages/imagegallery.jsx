@@ -1,15 +1,5 @@
-import { useEffect, useRef, Suspense } from 'react'
+import React from 'react'
 
-import {
-  OrbitControls,
-  Preload,
-  Html,
-  useProgress,
-  Loader,
-  Sky,
-  Stars,
-  FlyControls,
-} from '@react-three/drei'
 import dynamic from 'next/dynamic'
 //
 // import LoadingScreen from '@/components/canvas/LoadingScreen'

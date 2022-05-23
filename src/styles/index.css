@@ -147,7 +147,7 @@
 }
 
 .fullscreen.ready > div > a {
-  color: white;
+  color: rgb(3, 193, 6);
 }
 
 .fullscreen.clicked {

@@ -1,6 +1,5 @@
-import { useEffect, useRef, Suspense } from 'react'
-
-import { Preload, Html, useProgress, Environment } from '@react-three/drei'
+// import { useEffect, useRef, Suspense } from 'react'
+import { Preload, FlyControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 
 import useStore from '@/helpers/store'
@@ -18,22 +17,19 @@ const LCanvas = ({ children }) => {
         //   position: 'absolute',
         //   top: 0,
         // }}
+        gl={{ alpha: false }}
         camera={{ fov: 75, far: 1000, position: [0, 0, 10] }}
         dpr={[1, 2]}
         linear={true}
         flat={true}
         // legacy={true}
-        frameloop={'demand'}
+        // frameloop={'demand'}
         onCreated={(state) => state.events.connect(dom.current)}
       >
         {/* <Suspense fallback={<Loading />}> */}
         <Preload all />
         {children}
-        {/* <ambientLight intensity={0.4} /> */}
-        <pointLight castShadow position={[-0.1, -1, -8]} intensity={1} />
-
         {/* </Suspense> */}
-        {/* <Environment preset='city' /> */}
       </Canvas>
       {/* </div> */}
     </>

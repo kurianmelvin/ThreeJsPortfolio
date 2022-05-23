@@ -10,15 +10,6 @@ import useStore from '@/helpers/store'
 
 import '@/styles/index.css'
 
-// import {
-//   OrbitControls,
-//   Preload,
-//   Html,
-//   useProgress,
-//   Loader,
-//   Sky,
-//   Stars,
-// } from '@react-three/drei'
 const LCanvas = dynamic(() => import('@/components/layout/canvas'), {
   ssr: false,
 })

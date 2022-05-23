@@ -1,0 +1,281 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v1.6.16",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Earth"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        1,
+        1
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "Material.003",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Material.004",
+      "pbrMetallicRoughness": {}
+    },
+    {
+      "doubleSided": true,
+      "name": "Material.005",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.23463986814022064,
+          0.5778899192810059,
+          1,
+          1
+        ],
+        "metallicFactor": 0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Sphere.001",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        },
+        {
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5,
+            "TEXCOORD_0": 6
+          },
+          "indices": 3,
+          "material": 1
+        },
+        {
+          "attributes": {
+            "POSITION": 7,
+            "NORMAL": 8,
+            "TEXCOORD_0": 9
+          },
+          "indices": 3,
+          "material": 2
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ],
+  "images": [
+    {
+      "name": "night_lights_modified",
+      "uri": "Earth_img0.png"
+    },
+    {
+      "name": "Bump",
+      "uri": "Earth_img1.jpg"
+    },
+    {
+      "name": "Albedo",
+      "uri": "Earth_img2.jpg"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 4223,
+      "max": [
+        0.9999998807907104,
+        1,
+        0.9999997615814209
+      ],
+      "min": [
+        -0.9999996423721313,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 4223,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 4223,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 24192,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 4223,
+      "max": [
+        1.0032613277435303,
+        1.0032614469528198,
+        1.0032612085342407
+      ],
+      "min": [
+        -1.0032610893249512,
+        -1.0032614469528198,
+        -1.0032614469528198
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 4223,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 4223,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 4223,
+      "max": [
+        1.0041126012802124,
+        1.004112720489502,
+        1.0041124820709229
+      ],
+      "min": [
+        -1.0041123628616333,
+        -1.004112720489502,
+        -1.004112720489502
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5126,
+      "count": 4223,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5126,
+      "count": 4223,
+      "type": "VEC2"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 50676,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 50676,
+      "byteOffset": 50676
+    },
+    {
+      "buffer": 0,
+      "byteLength": 33784,
+      "byteOffset": 101352
+    },
+    {
+      "buffer": 0,
+      "byteLength": 48384,
+      "byteOffset": 135136
+    },
+    {
+      "buffer": 0,
+      "byteLength": 50676,
+      "byteOffset": 183520
+    },
+    {
+      "buffer": 0,
+      "byteLength": 50676,
+      "byteOffset": 234196
+    },
+    {
+      "buffer": 0,
+      "byteLength": 33784,
+      "byteOffset": 284872
+    },
+    {
+      "buffer": 0,
+      "byteLength": 50676,
+      "byteOffset": 318656
+    },
+    {
+      "buffer": 0,
+      "byteLength": 50676,
+      "byteOffset": 369332
+    },
+    {
+      "buffer": 0,
+      "byteLength": 33784,
+      "byteOffset": 420008
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "Earth_data.bin",
+      "byteLength": 453792
+    }
+  ]
+}

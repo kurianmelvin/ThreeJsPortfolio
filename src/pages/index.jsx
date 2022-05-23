@@ -1,11 +1,11 @@
-import { useEffect, useRef, Suspense } from 'react'
+import React, { useEffect, useRef, Suspense } from 'react'
 
 import { Html, useProgress } from '@react-three/drei'
 // import { useFrame, useThree } from '@react-three/fiber'
 //
 import dynamic from 'next/dynamic'
-import * as THREE from 'three'
-import { BackSide } from 'three'
+// import * as THREE from 'three'
+// import { BackSide } from 'three'
 // import Shader from '@/components/canvas/Shader/Shader'
 // import BackgroundPlane from '@/components/canvas/Shader/BackgroundPlane'
 // import ZoomToView from '@/components/canvas/ZoomToView'
@@ -23,6 +23,7 @@ const Laptop = dynamic(() => import('@/components/canvas/Laptop'), {
 //   ssr: false,
 // })
 
+import Clouds from '@/components/canvas/Clouds'
 import EarthButton from '@/components/canvas/EarthButton'
 // const EarthButton = dynamic(() => import('@/components/canvas/EarthButton'), {
 //   ssr: false,
@@ -40,6 +41,32 @@ const PhoneButtion = dynamic(() => import('@/components/canvas/PhoneButtion'), {
   ssr: false,
 })
 
+const PhoneContact = dynamic(() => import('@/components/canvas/PhoneContact'), {
+  ssr: false,
+})
+
+const SocialGithub = dynamic(() => import('@/components/canvas/SocialGithub'), {
+  ssr: false,
+})
+const SocialLinkedin = dynamic(
+  () => import('@/components/canvas/SocialLinkedin'),
+  {
+    ssr: false,
+  }
+)
+
+const SocialInstagram = dynamic(
+  () => import('@/components/canvas/SocialInstagram'),
+  {
+    ssr: false,
+  }
+)
+const SocialTwitter = dynamic(
+  () => import('@/components/canvas/SocialTwitter'),
+  {
+    ssr: false,
+  }
+)
 // import ImageGallery from '@/components/canvas/ImageGallery'
 // import Instructions from '@/components/dom/Instructions'
 //
@@ -52,6 +79,12 @@ const PhoneButtion = dynamic(() => import('@/components/canvas/PhoneButtion'), {
 // )
 //
 //
+// const BackgroundVideo = dynamic(
+//   () => import('@/components/canvas/Shader/BackgroundVideo'),
+//   {
+//     ssr: false,
+//   }
+// )
 
 //
 // Dynamic import is used to prevent a payload when the website start that will include threejs r3f etc..
@@ -83,8 +116,15 @@ const R3F = () => {
 
         <Suspense fallback={null}>
           <PhoneButtion scale={[10, 10, 10]} />
+
           <Laptop />
           <EarthButton />
+          <Clouds />
+
+          {/* <SocialInstagram />
+          <SocialTwitter />
+          <SocialGithub />
+          <SocialLinkedin /> */}
         </Suspense>
       </Suspense>
     </>
