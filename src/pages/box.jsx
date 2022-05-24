@@ -1,42 +1,42 @@
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 
-import Instructions from '@/components/dom/Instructions'
+// import Instructions from '@/components/dom/Instructions'
 
-const Box = dynamic(() => import('@/components/canvas/Box'), {
-  ssr: false,
-})
+// const Box = dynamic(() => import('@/components/canvas/Box'), {
+//   ssr: false,
+// })
 
-const DOM = () => {
-  return (
-    // Step 5 - delete Instructions components
-    <Instructions />
-  )
-}
+// const DOM = () => {
+//   return (
+//     // Step 5 - delete Instructions components
+//     <Instructions />
+//   )
+// }
 
-const R3F = () => {
-  return (
-    <>
-      <Box route='/' />
-    </>
-  )
-}
+// const R3F = () => {
+//   return (
+//     <>
+//       <Box route='/' />
+//     </>
+//   )
+// }
 
-const Page = () => {
-  return (
-    <>
-      <DOM />
-      {/* @ts-ignore */}
-      <R3F r3f />
-    </>
-  )
-}
+// const Page = () => {
+//   return (
+//     <>
+//       <DOM />
+//       {/* @ts-ignore */}
+//       <R3F r3f />
+//     </>
+//   )
+// }
 
-export default Page
+// export default Page
 
-export async function getStaticProps() {
-  return {
-    props: {
-      title: 'Box',
-    },
-  }
-}
+// export async function getStaticProps() {
+//   return {
+//     props: {
+//       title: 'Box',
+//     },
+//   }
+// }

@@ -115,16 +115,12 @@ const R3F = () => {
         <PhysicsIntro />
 
         <Suspense fallback={null}>
-          <PhoneButtion scale={[10, 10, 10]} />
-
+          <PhoneButtion position={[40, 15, -60]} scale={[10.5, 10, 10]} />
           <Laptop />
-          <EarthButton />
-          <Clouds />
-
-          {/* <SocialInstagram />
-          <SocialTwitter />
-          <SocialGithub />
-          <SocialLinkedin /> */}
+          <group position={[-40, 12, -60]}>
+            <EarthButton />
+            <Clouds />
+          </group>
         </Suspense>
       </Suspense>
     </>

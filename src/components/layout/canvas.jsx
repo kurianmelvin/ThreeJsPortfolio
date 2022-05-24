@@ -17,7 +17,7 @@ const LCanvas = ({ children }) => {
         //   position: 'absolute',
         //   top: 0,
         // }}
-        gl={{ alpha: false }}
+        gl={{ antialias: true }}
         camera={{ fov: 75, far: 1000, position: [0, 0, 10] }}
         dpr={[1, 2]}
         linear={true}

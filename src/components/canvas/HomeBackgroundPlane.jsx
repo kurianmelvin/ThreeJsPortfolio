@@ -6,6 +6,7 @@ import {
   OrbitControls,
   MapControls,
   //
+  Stars,
   FlyControls,
   Environment,
 } from '@react-three/drei'
@@ -30,7 +31,7 @@ function FloorPlane({ color, ...props }) {
         ref={ref}
         // dispose={null}
       >
-        <planeGeometry args={[500, 500]} />
+        <planeGeometry args={[200, 200]} />
         <meshStandardMaterial color={color} />
       </mesh>
     </>
@@ -39,21 +40,21 @@ function FloorPlane({ color, ...props }) {
 
 ////BACK WALL PLANE////
 
-// function BackPlane({ color, ...props }) {
-//   const [backref] = usePlane(() => ({ ...props }))
+function BackPlane({ color, ...props }) {
+  const [backref] = usePlane(() => ({ ...props }))
 
-//   return (
-//     <mesh
-//       receiveShadow
-//       ref={backref}
-//       // dispose={null}
-//     >
-//       <planeGeometry args={[500, 500]} />
-//       <meshStandardMaterial color={color} />
-//       {/* <meshStandardMaterial color='white' /> */}
-//     </mesh>
-//   )
-// }
+  return (
+    <mesh
+      receiveShadow
+      ref={backref}
+      // dispose={null}
+    >
+      <planeGeometry args={[500, 500]} />
+      <meshStandardMaterial color={color} />
+      {/* <meshStandardMaterial color='white' /> */}
+    </mesh>
+  )
+}
 
 // Lights
 //purple light
@@ -102,28 +103,59 @@ function RightLight({ brightness, color }) {
 function HomeBackgroundPlane() {
   return (
     <>
+      {/* Lighting for the whole Canvas */}
+      <Stars
+        radius={50}
+        depth={500}
+        // count?: number;
+        // factor?: number;
+        // saturation?: number;
+        // fade?: boolean;
+        // speed?: number;
+      />
+      <pointLight
+        position={[0, -1, -8]}
+        intensity={1.2}
+        distance={1000}
+        // color={'#FEFBE7'}
+        // color={'#FBF8F1'}
+        color={'#F6F6F6'}
+      />
+      {/* // */}
+      {/* // */}
+      {/* // */}
       {/* <BackPlane color={'#2a1b3f'} position={[0, 0, -100]} /> */}
 
       {/* <FloorPlane color={'#E4FBFF'} position={[0, -3.19, 0]} /> */}
-      <FloorPlane color={'#E4FBFF'} position={[0, -3.19, 0]} />
-      <Suspense fallback={null}>
+      <FloorPlane color={'#54BAB9'} position={[0, -3.19, 0]} />
+
+      {/* <Suspense fallback={null}>
         <CubeBackground scale={[2, 2, 2]} position={[0, 0, 0]} />
-      </Suspense>
-      <MiddleLight brightness={100} color={'#FFFFFF'} />
+      </Suspense> */}
 
-      <LeftLight brightness={40} color={'#30AADD'} />
-      <RightLight brightness={50} color={'#F806CC'} />
+      {/* <MiddleLight brightness={10} color={'#FFFFFF'} /> */}
 
-      <FlyControls
+      {/* <LeftLight brightness={20} color={'#30AADD'} /> */}
+      {/* <RightLight brightness={30} color={'#F806CC'} /> */}
+
+      {/* <FlyControls
         //rs = 0.005
         rollSpeed={0.03}
         //ms =0.5
         movementSpeed={10}
         dragToLook={false}
         autoForward={false}
-        position={[0, 100, 200]}
+       
+      /> */}
+      <MapControls
+        panSpeed={0.6}
+        rotateSpeed={0.009}
+        // minAzimuthAngle={-Math.PI * 0}
+        // maxAzimuthAngle={-Math.PI * 0}
+        enableZoom={false}
+        // minPolarAngle={-Math.PI}
+        // maxPolarAngle={Math.PI}
       />
-      {/* <MapControls enableRotate={false} /> */}
       {/* <OrbitControls enableDamping={false} /> */}
     </>
   )

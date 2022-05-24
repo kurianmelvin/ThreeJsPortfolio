@@ -1,23 +1,59 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-import { useGLTF, MapControls } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
+import dynamic from 'next/dynamic'
 
 //
+import SocialGithub from '@/components/canvas/SocialGithub'
+import SocialInstagram from '@/components/canvas/SocialInstagram'
+import SocialLinkedin from '@/components/canvas/SocialLinkedin'
+import SocialTwitter from '@/components/canvas/SocialTwitter'
 //
+//
+// const SocialGithub = dynamic(() => import('@/components/canvas/SocialGithub'), {
+//   ssr: false,
+// })
+
+// const SocialLinkedin = dynamic(
+//   () => import('@/components/canvas/SocialLinkedin'),
+//   {
+//     ssr: false,
+//   }
+// )
+// const SocialInstagram = dynamic(
+//   () => import('@/components/canvas/SocialInstagram'),
+//   {
+//     ssr: false,
+//   }
+// )
+
+// const SocialTwitter = dynamic(
+//   () => import('@/components/canvas/SocialTwitter'),
+//   {
+//     ssr: false,
+//   }
+// )
 
 export default function PhoneButtion(props) {
-  const group = useRef()
+  const group = useRef(null)
   const refPhone = useRef(null)
+  const gif = useRef(null)
+
   const { nodes, materials } = useGLTF('/iphone 12 pro max.glb')
   const [hovered, setHovered] = useState(false)
   useEffect(
     () => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'),
     [hovered]
   )
-  useFrame((state, delta) => {
-    refPhone.current ? (refPhone.current.rotation.z += -0.001) : null
-  })
+  // useFrame((state, delta) => {
+  //   refPhone.current ? (refPhone.current.rotation.z += -0.01) : null
+  // })
+  // useFrame(() => {
+  //   gif.current.material.zoom = 1
+  //   gif.current.scale.x = 0.26 /* prettier-ignore */
+  //   gif.current.scale.y = 0.33 /* prettier-ignore */
+  // })
   return (
     <>
       {/* <ambientLight intensity={0.5} /> */}
@@ -27,16 +63,35 @@ export default function PhoneButtion(props) {
         {...props}
         onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
         onPointerOut={(e) => setHovered(false)}
-        position={[40, 15, -60]}
-        rotation={[0, -0.5, 0]}
-        dispose={null}
+        // position={[40, 15, -60]}
+        // position={[-1, 0, -3]}
+        // rotation={[0, -0.5, 0]}
+        // dispose={null}
       >
         <group
-          //   ref={refPhone}
+          // ref={refPhone}
           name='phone005'
           rotation={[Math.PI / 2, 0, 0]}
           userData={{ name: 'phone.005' }}
         >
+          {/* position of the social media icons */}
+          <group position={[0.29, 0.001, 0.1]} scale={[0.55, 1, 0.55]}>
+            {/* top left first  */}
+            <SocialInstagram
+              position={[-1.07, 0, -1.1]}
+              rotation-x={-Math.PI / 2}
+            />
+            {/* top right second */}
+            <SocialTwitter position={[0, 0, -1.1]} rotation-x={-Math.PI / 2} />
+            {/* bottom left third */}
+            <SocialGithub
+              position={[-1.07, 0, 0.5]}
+              rotation-x={-Math.PI / 2}
+            />
+            {/* bottom right fourth */}
+            <SocialLinkedin position={[0, 0, 0.5]} rotation-x={-Math.PI / 2} />
+          </group>
+          {/* /potential position for social icon/ */}
           <mesh
             // position={[30, 0, 0]}
             name='iphone_12019'
@@ -252,7 +307,6 @@ export default function PhoneButtion(props) {
               //   material-color='white'
             />
           </group>
-
           {/* 
           start of front screen
            */}
@@ -285,22 +339,24 @@ export default function PhoneButtion(props) {
             position={[0, 0, -0.12]}
             userData={{ name: 'screen.005' }}
           >
+            {/* iphone Frame border COLOR */}
             <mesh
               //   position={[-2, 0, 0]}
               name='iphone_12015'
               geometry={nodes.iphone_12015.geometry}
               material={nodes.iphone_12015.material}
-              material-color='white'
+              material-color='#FFF9F9'
             />
+            {/* iphone Frame border COLOR */}
             <mesh
               //   position={[2, 0, 0]}
               name='iphone_12015_1'
               geometry={nodes.iphone_12017_1.geometry}
               material={nodes.iphone_12017_1.material}
-              material-color='white'
+              material-color='#FFF9F9'
             />
             <mesh
-              //   position={[0, 0, 0]}
+              // position={[0, 0, 0]}
               name='iphone_12015_2'
               geometry={nodes.iphone_12015_2.geometry}
               material={materials['?.005']}
@@ -312,22 +368,22 @@ export default function PhoneButtion(props) {
               name='iphone_12015_5'
               geometry={nodes.iphone_12015_5.geometry}
               material={materials['glass.020']}
-              material-color='white'
+              material-color='black'
             />
-            {/* <mesh
+            <mesh
               //   position={[-14, 0, 0]}
               name='iphone_12015_6'
               geometry={nodes.iphone_12015_6.geometry}
               material={materials['screen.020']}
-            /> */}
-            <mesh
-              //   position={[-4, 0, 0]}
-              geometry={nodes.iphone_12016_7.geometry}
-              material={nodes.iphone_12016_7.material}
               material-color='black'
             />
+            <mesh></mesh>
           </group>
         </group>
+
+        {/* <SocialTwitter /> */}
+        {/* <SocialGithub /> */}
+        {/* <SocialLinkedin /> */}
       </group>
     </>
   )

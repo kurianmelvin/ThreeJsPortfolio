@@ -1,9 +1,9 @@
-import React, { useMemo, Suspense, useRef } from 'react'
+import React, { useMemo, useRef } from 'react'
 
-import { usePlane, useBox, Physics } from '@react-three/cannon'
+import { useBox, Physics } from '@react-three/cannon'
 import {
-  // OrbitControls,
-  // FlyControls,
+  OrbitControls,
+  FlyControls,
   // Lightformer,
   // Preload,
   // Html,
@@ -70,8 +70,6 @@ const Char = ({ config, char, i }) => {
             // size={1024} // Size is optional, default = 1024
           />
         </meshBasicMaterial>
-
-        {/* <meshStandardMaterial color='#D89216' /> */}
       </mesh>
     </group>
   )
@@ -102,11 +100,9 @@ const Wrapper = ({ text, text2 }) => {
 
   return (
     <>
-      {/* <ambientLight /> */}
-
       {/* The Physics gravity determines how much the item bounces apart */}
       {/* increase negative YPosition have closer bounce off  */}
-      <Physics gravity={[-0, -15, -20]} step={0}>
+      <Physics gravity={[0, -15, -20]} step={0}>
         {text.split('.').map((char, i) => {
           return (
             <>
@@ -117,7 +113,6 @@ const Wrapper = ({ text, text2 }) => {
                 ref={textOne}
                 position={[-30, -0.4, -10]}
                 rotation={[0, 0.6, 0]}
-                // dispose={null}
               >
                 <Char
                   key={`${char}-${i}`}
@@ -139,8 +134,6 @@ const Wrapper = ({ text, text2 }) => {
                 ref={textTwo}
                 position={[-25, -0.45, -5]}
                 rotation={[0, -0.5, 0]}
-
-                // dispose={null}
               >
                 <Char
                   key={`${char}-${i}`}

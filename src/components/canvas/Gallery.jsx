@@ -4,22 +4,23 @@ import {
   useCursor,
   MeshReflectorMaterial,
   Image,
-  Text,
+  // Text,
   Environment,
-  MapControls,
+  // MapControls,
   FlyControls,
-  OrbitControls,
-  FirstPersonControls,
-  PointerLockControls,
-  TrackballControls,
-  ArcballControls,
+  Stars,
+  // OrbitControls,
+  // FirstPersonControls,
+  // PointerLockControls,
+  // TrackballControls,
+  // ArcballControls,
 } from '@react-three/drei'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import getUuid from 'uuid-by-string'
 import { useRoute, useLocation } from 'wouter'
 
-import useStore from '@/helpers/store'
+// import useStore from '@/helpers/store'
 
 //
 const GOLDENRATIO = 1.61803398875
@@ -33,12 +34,13 @@ function Gallery({ images }) {
       <color attach='background' args={['#191920']} />
       <fog attach='fog' args={['#191920', 0, 15]} />
       <Environment preset='city' />
+      <Stars radius={50} depth={500} />
       {/* <group position={[0, -0.5, 0]}> */}
       <group position={[0, -0.5, 0]} dispose={null}>
         <Frames images={images} />
 
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
-          <planeGeometry args={[100, 100]} />
+          <planeBufferGeometry args={[100, 100]} />
           <MeshReflectorMaterial
             blur={[300, 100]}
             resolution={2048}
@@ -97,7 +99,7 @@ function Frames({images, q = new THREE.Quaternion(),  p = new THREE.Vector3(),})
         onClick={(e) => (e.stopPropagation(),setLocation(clicked.current = '/item/' + e.object.name))} /* prettier-ignore */
         // onPointerMissed={() => setLocation('/imagegallery')}
         onPointerMissed={() => setLocation('/imagegallery')}
-        dispose={null}
+        // dispose={null}
       >
         {images.map((props) => (
           <>
@@ -142,7 +144,10 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
   })
   return (
     <>
-      <group {...props} dispose={null}>
+      <group
+        {...props}
+        // dispose={null}
+      >
         <mesh
           name={name}
           onPointerOver={(e) => (e.stopPropagation(), hover(true))}
@@ -154,14 +159,14 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
           position={[0, 1, -1]}
           // dispose={null}
         >
-          <boxGeometry />
+          <planeBufferGeometry />
           {/* the border of the image frames  */}
           <meshStandardMaterial
             color='#151515'
             // color='blue'
-            metalness={0.5}
-            roughness={0.5}
-            envMapIntensity={1}
+            // metalness={0.5}
+            // roughness={0.5}
+            // envMapIntensity={1}
           />
           {/* this mesh deals with the inside border of the image gallery frame  */}
 

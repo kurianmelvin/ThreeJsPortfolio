@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import {
   // Environment,
@@ -21,10 +21,24 @@ function EarthButton(props) {
   const [base, bump, specular] = useTexture([
     '8081_earthmap2k.jpg',
     '8081_earthbump2k.jpg',
-    '8081_earthspec2k.jpg',
+    'earth-specular.png',
   ])
   // Take care of cursor state on hover
   const [hovered, setHovered] = useState(false)
+  //
+  //
+  // const handleNavigation = () => {
+  //   window.location.href = 'https://kurianmelvin.com/'
+  // }
+
+  // useEffect(() => {
+  //   window.addEventListener('onClick', handleNavigation)
+  //   return () => {
+  //     window.removeEventListener('onClick', handleNavigation)
+  //   }
+  // }, [])
+
+  //
   useEffect(
     () => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'),
     [hovered]
@@ -34,25 +48,23 @@ function EarthButton(props) {
   })
   return (
     <>
-      {/* <ambientLight intensity={1} /> */}
-      {/* <group> */}
       <mesh
         ref={refEarth}
         {...props}
         onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
         onPointerOut={(e) => setHovered(false)}
-        position={[-40, 15, -60]}
-        // rotation={[0, 0, 0]}
+        rotation={[0, 0, 0]}
         onClick={() => {
           router.push(`/imagegallery`)
         }}
+        // onClick={(e) => (e.stopPropagation(),handleNavigation())} /* prettier-ignore */
       >
-        <sphereGeometry args={[10, 60, 60]} />
+        <sphereGeometry args={[10, 100, 100]} />
         <meshPhongMaterial
           map={base}
           specularMap={specular}
           bumpMap={bump}
-          bumpScale={0.5}
+          bumpScale={0.3}
         />
       </mesh>
       {/* </group> */}

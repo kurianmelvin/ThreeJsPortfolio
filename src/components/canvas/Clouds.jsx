@@ -20,7 +20,7 @@ function Clouds(props) {
 
   return (
     <>
-      <mesh ref={cloudsRef} {...props} position={[-40, 15, -60]}>
+      <mesh ref={cloudsRef} {...props}>
         <sphereGeometry args={[10.01, 100, 100]} />
         <meshPhongMaterial transparent={true} alphaMap={earthClouds} />
       </mesh>

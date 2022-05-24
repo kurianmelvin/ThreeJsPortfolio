@@ -1,70 +1,70 @@
-import { useRef, useState } from 'react'
+// import { useRef, useState } from 'react'
 
-import {
-  shaderMaterial,
-  Stars,
-  SpotLight,
-  Sky,
-  Sparkles,
-  Text,
-} from '@react-three/drei'
-import { useFrame, extend } from '@react-three/fiber'
-import * as THREE from 'three'
+// import {
+//   shaderMaterial,
+//   Stars,
+//   SpotLight,
+//   Sky,
+//   Sparkles,
+//   Text,
+// } from '@react-three/drei'
+// import { useFrame, extend } from '@react-three/fiber'
+// import * as THREE from 'three'
 
-import fragment from './glsl/shader.frag'
-import vertex from './glsl/shader.vert'
-import useStore from '@/helpers/store'
+// import fragment from './glsl/shader.frag'
+// import vertex from './glsl/shader.vert'
+// import useStore from '@/helpers/store'
 
-const ColorShiftMaterial = shaderMaterial(
-  {
-    time: 0,
-    color: new THREE.Color(0.05, 0.0, 0.025),
-  },
-  vertex,
-  fragment
-)
+// const ColorShiftMaterial = shaderMaterial(
+//   {
+//     time: 0,
+//     color: new THREE.Color(0.05, 0.0, 0.025),
+//   },
+//   vertex,
+//   fragment
+// )
 
-// This is the 🔑 that HMR will renew if this file is edited
-// It works for THREE.ShaderMaterial as well as for drei/shaderMaterial
-// @ts-ignore
-ColorShiftMaterial.key = THREE.MathUtils.generateUUID()
+// // This is the 🔑 that HMR will renew if this file is edited
+// // It works for THREE.ShaderMaterial as well as for drei/shaderMaterial
+// // @ts-ignore
+// ColorShiftMaterial.key = THREE.MathUtils.generateUUID()
 
-extend({ ColorShiftMaterial })
+// extend({ ColorShiftMaterial })
 
-const Shader = (props) => {
-  const meshRef = useRef(null)
-  const [hovered, setHover] = useState(false)
-  const router = useStore((state) => state.router)
+// const Shader = (props) => {
+//   const meshRef = useRef(null)
+//   const [hovered, setHover] = useState(false)
+//   const router = useStore((state) => state.router)
 
-  useFrame((state, delta) => {
-    // if (meshRef.current) {
-    //   meshRef.current.rotation.x = meshRef.current.rotation.y += 0.001
-    // }
-    if (meshRef.current.material) {
-      meshRef.current.material.uniforms.time.value +=
-        Math.sin(delta / 2) * Math.cos(delta / 2)
-    }
-  })
+//   useFrame((state, delta) => {
+//     // if (meshRef.current) {
+//     //   meshRef.current.rotation.x = meshRef.current.rotation.y += 0.001
+//     // }
+//     if (meshRef.current.material) {
+//       meshRef.current.material.uniforms.time.value +=
+//         Math.sin(delta / 2) * Math.cos(delta / 2)
+//     }
+//   })
 
-  return (
-    <>
-      <mesh
-        ref={meshRef}
-        scale={hovered ? 1.1 : 1}
-        onClick={() => {
-          router.push(`/box`)
-        }}
-        onPointerOver={(e) => setHover(true)}
-        onPointerOut={(e) => setHover(false)}
-        {...props}
-      >
-        <boxBufferGeometry args={[1, 1, 1]} />
-        {/* @ts-ignore */}
-        <colorShiftMaterial key={ColorShiftMaterial.key} time={3} />
-        {/* <SpotLight position={[0, 1, 0]} /> */}
-      </mesh>
-    </>
-  )
-}
+//   return (
+//     <>
+//       <mesh
+//         ref={meshRef}
+//         scale={hovered ? 1.1 : 1}
+//         onClick={() => {
+//           router.push(`/box`)
+//         }}
+//         onPointerOver={(e) => setHover(true)}
+//         onPointerOut={(e) => setHover(false)}
+//         {...props}
+//       >
+//         <boxBufferGeometry args={[1, 1, 1]} />
+//         {/* @ts-ignore */}
+//         <colorShiftMaterial key={ColorShiftMaterial.key} time={3} />
+//         {/* <SpotLight position={[0, 1, 0]} /> */}
+//       </mesh>
+//     </>
+//   )
+// }
 
-export default Shader
+// export default Shader

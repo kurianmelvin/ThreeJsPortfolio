@@ -1,13 +1,13 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
-import { useTexture } from '@react-three/drei'
+// import { useTexture } from '@react-three/drei'
 import { useFrame, useLoader } from '@react-three/fiber'
 import * as THREE from 'three'
 import { TextureLoader } from 'three'
 
 import './ImageFadeMaterial'
 
-function SocialTwitter() {
+function SocialTwitter(props) {
   const twitter = useRef(null)
   //
   const twitt = useLoader(TextureLoader, './twitter.png')
@@ -15,6 +15,17 @@ function SocialTwitter() {
   const trans = useLoader(TextureLoader, './st10.jpg')
   //
   const [hovered, setHover] = useState(false)
+  //
+  const handleNavigation = () => {
+    window.location.href = 'https://twitter.com/KurianMelvin/'
+  }
+
+  useEffect(() => {
+    window.addEventListener('onClick', handleNavigation)
+    return () => {
+      window.removeEventListener('onClick', handleNavigation)
+    }
+  }, [])
   //
   useFrame(() => {
     twitter.current.dispFactor = THREE.MathUtils.lerp(
@@ -25,19 +36,20 @@ function SocialTwitter() {
   })
   return (
     <>
-      <group position={[0, 0, 6]}>
+      <group position={[0, 0, 0]} {...props}>
         {/* top right second */}
         <mesh
-          position={[0, 1.1, 0]}
+          // position={[0, 0, 0]}
           onPointerMove={(e) => setHover(true)}
           onPointerOut={(e) => setHover(false)}
+          onClick={(e) => (e.stopPropagation(), handleNavigation())}
         >
           <planeBufferGeometry />
           <imageFadeMaterial
             ref={twitter}
-            tex={twitt}
+            tex={twitt2}
             tex-encoding={THREE.sRGBEncoding}
-            tex2={twitt2}
+            tex2={twitt}
             tex2-encoding={THREE.sRGBEncoding}
             disp={trans}
             disp-encoding={THREE.sRGBEncoding}
