@@ -71,15 +71,15 @@ const Header = ({ title = titleDefault }) => {
           name='viewport'
           content='width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86'
         /> */}
-        {/* <meta name='theme-color' content='#CC9544' />
-        <link rel='shortcut icon' href='/icons/favicon.ico' /> */}
+        <meta name='theme-color' content='#000000' />
+        <link rel='shortcut icon' href='/icons/favicon.ico' />
 
         {/* 
       Twitter Summary card
         documentation: https://dev.twitter.com/cards/getting-started
         Be sure validate your Twitter card markup on the documentation site. */}
-        {/* <meta name='twitter:card' content='summary' /> */}
-        {/* <meta name='twitter:site' content='@onirenaud' /> */}
+        <meta name='twitter:card' content='summary' />
+        <meta name='twitter:site' content='@kurianmelvin' />
       </Head>
     </>
   )

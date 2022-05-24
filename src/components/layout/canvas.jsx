@@ -1,5 +1,6 @@
-// import { useEffect, useRef, Suspense } from 'react'
-import { Preload, FlyControls } from '@react-three/drei'
+import { useEffect, useRef, Suspense } from 'react'
+
+import { Preload, FlyControls, Loader } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 
 import useStore from '@/helpers/store'
@@ -10,7 +11,6 @@ const LCanvas = ({ children }) => {
   const dom = useStore((state) => state.dom)
   return (
     <>
-      {/* <div className='container'> */}
       <Canvas
         mode='concurrent'
         // style={{
@@ -26,12 +26,13 @@ const LCanvas = ({ children }) => {
         // frameloop={'demand'}
         onCreated={(state) => state.events.connect(dom.current)}
       >
-        {/* <Suspense fallback={<Loading />}> */}
-        <Preload all />
-        {children}
-        {/* </Suspense> */}
+        <Suspense fallback={null}>
+          <Preload all />
+          {children}
+        </Suspense>
       </Canvas>
-      {/* </div> */}
+
+      <Loader />
     </>
   )
 }
