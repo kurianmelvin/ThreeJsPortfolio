@@ -1,6 +1,6 @@
 {
-  "name": "R3F Next Starter",
-  "short_name": "R3F Next Starter",
+  "name": "Melvin Kurian Portfolio",
+  "short_name": "Melvin Kurian Portfolio",
   "icons": [
     {
       "src": "/icons/favicon.ico",
@@ -24,6 +24,6 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "theme_color": "#fff",
-  "background_color": "#fff"
+  "theme_color": "#000000",
+  "background_color": "#000000"
 }
