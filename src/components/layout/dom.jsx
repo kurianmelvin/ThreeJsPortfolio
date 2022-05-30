@@ -1,7 +1,12 @@
 import { useEffect, useRef } from 'react'
 
+import { Loader } from '@react-three/drei'
+
 import useStore from '@/helpers/store'
 
+//
+//
+const containerStyles = { transform: 'scale(5)' }
 const Dom = ({ children }) => {
   const ref = useRef(null)
   useEffect(() => {
@@ -10,10 +15,22 @@ const Dom = ({ children }) => {
 
   return (
     <div
-      className='absolute top-0 left-0 z-10 w-screen h-screen overflow-hidden dom'
+      // className='fullscreen'
+      // style={{
+      //   // position: 'relative',
+      //   // top: 0,
+      //   // backgroundColor: '#FFC300',
+      //   // height: '100vh',
+      //   // width: '100vW',
+      //   // zIndex: -1,
+      //   // color: 'yellow',
+      // }}
       ref={ref}
     >
+      {/* helo */}
       {children}
+      {/* hello */}
+      <Loader containerStyles={containerStyles} />
     </div>
   )
 }

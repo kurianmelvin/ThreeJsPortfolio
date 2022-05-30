@@ -91,7 +91,7 @@ export default function PhoneButtion(props) {
             {/* bottom right fourth */}
             <SocialLinkedin position={[0, 0, 0.5]} rotation-x={-Math.PI / 2} />
           </group>
-          {/* /potential position for social icon/ */}
+          {/*  social icons/ */}
           <mesh
             // position={[30, 0, 0]}
             name='iphone_12019'

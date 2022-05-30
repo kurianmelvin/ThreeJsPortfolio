@@ -21,7 +21,7 @@ function Clouds(props) {
   return (
     <>
       <mesh ref={cloudsRef} {...props}>
-        <sphereGeometry args={[10.01, 100, 100]} />
+        <sphereBufferGeometry args={[10.01, 100, 100]} />
         <meshPhongMaterial transparent={true} alphaMap={earthClouds} />
       </mesh>
     </>

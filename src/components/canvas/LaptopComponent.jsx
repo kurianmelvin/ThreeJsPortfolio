@@ -19,8 +19,9 @@ import {
 } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import dynamic from 'next/dynamic'
-// import * as THREE from 'three'
 
+// import * as THREE from 'three'
+import SocialGithub from '@/components/canvas/SocialGithub'
 import useStore from '@/helpers/store'
 // import LoadingScreen from '@/components/canvas/LoadingScreen'
 const LaptopGif = dynamic(() => import('@/components/canvas/LaptopGif'), {
@@ -36,15 +37,14 @@ function LaptopComponent({ open, hinge, ...props }) {
   const { nodes, materials } = useGLTF('/mac-draco.glb')
   // Take care of cursor state on hover
   const [hovered, setHovered] = useState(false)
-  useEffect(
-    () => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'),
-    [hovered]
-  )
-  useFrame(() => {
-    gif.current.material.zoom = 1
-    gif.current.scale.x = 0.26 /* prettier-ignore */
-    gif.current.scale.y = 0.33 /* prettier-ignore */
-  })
+  useEffect(() => {
+    document.body.style.cursor = hovered ? 'pointer' : 'auto'
+  }, [hovered])
+  // useFrame(() => {
+  //   gif.current.material.zoom = 1
+  //   gif.current.scale.x = 0.26 /* prettier-ignore */
+  //   gif.current.scale.y = 0.33 /* prettier-ignore */
+  // })
 
   // Events and spring animations were added afterwards
   return (
@@ -52,20 +52,20 @@ function LaptopComponent({ open, hinge, ...props }) {
       <group
         ref={group}
         {...props}
-        onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
-        onPointerOut={(e) => setHovered(false)}
         //position responsible for the placement of the whole laptop
         position={[0, -3, -10]}
         rotation={[0, 0, 0]}
         // dispose={null}
       >
-        <three.group rotation-x={hinge} position={[0, -0.04, 0.41]}>
+        <three.group rotation-x={hinge} position={[0, -0.04, 0.43]}>
           <group
-            position={[0, 2.96, -0.13]}
+            position={[0, 2.96, -0.1]}
             rotation={[Math.PI / 2, 0, 0]}
             // dispose={null}
           >
             <mesh
+              onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
+              onPointerOut={(e) => setHovered(false)}
               geometry={nodes.Cube008.geometry}
               material={nodes.Cube008.material}
             />
@@ -73,11 +73,14 @@ function LaptopComponent({ open, hinge, ...props }) {
               geometry={nodes.Cube008_1.geometry}
               material={materials['matte.001']}
             />
+            {/* getting the videos from the LaptopGif Component */}
             <mesh
-              ref={gif}
-              {...props}
               rotation-x={-Math.PI / 2}
-              position={[0, 0, -0.1]}
+              position={[0, 0, 0]}
+              scale={[8.5, 5.6, 1]}
+              onClick={() => {
+                router.push(`/about`)
+              }}
             >
               <LaptopGif />
             </mesh>

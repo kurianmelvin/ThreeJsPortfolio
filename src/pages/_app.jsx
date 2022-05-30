@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 
+import { Loader } from '@react-three/drei'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 
@@ -24,6 +25,7 @@ const Balance = ({ child }) => {
     </>
   )
 }
+
 //Title should be "index"
 function App({ Component, pageProps = { title: 'index' } }) {
   const router = useRouter()

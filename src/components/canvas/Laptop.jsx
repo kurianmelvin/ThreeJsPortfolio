@@ -46,7 +46,7 @@ function Laptop() {
       >
         <LaptopComponent
           open={open}
-          scale={[1.5, 1.5, 1.5]}
+          scale={[1.5, 1.5, 1.3]}
           hinge={props.open.to([0, 1.3], [1.575, -0.425])}
         />
       </group>

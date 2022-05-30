@@ -41,32 +41,33 @@ const PhoneButtion = dynamic(() => import('@/components/canvas/PhoneButtion'), {
   ssr: false,
 })
 
-const PhoneContact = dynamic(() => import('@/components/canvas/PhoneContact'), {
-  ssr: false,
-})
+// const PhoneContact = dynamic(() => import('@/components/canvas/PhoneContact'), {
+//   ssr: false,
+// })
 
-const SocialGithub = dynamic(() => import('@/components/canvas/SocialGithub'), {
-  ssr: false,
-})
-const SocialLinkedin = dynamic(
-  () => import('@/components/canvas/SocialLinkedin'),
-  {
-    ssr: false,
-  }
-)
+// const SocialGithub = dynamic(() => import('@/components/canvas/SocialGithub'), {
+//   ssr: false,
+// })
+// const SocialLinkedin = dynamic(
+//   () => import('@/components/canvas/SocialLinkedin'),
+//   {
+//     ssr: false,
+//   }
+// )
 
-const SocialInstagram = dynamic(
-  () => import('@/components/canvas/SocialInstagram'),
-  {
-    ssr: false,
-  }
-)
-const SocialTwitter = dynamic(
-  () => import('@/components/canvas/SocialTwitter'),
-  {
-    ssr: false,
-  }
-)
+// const SocialInstagram = dynamic(
+//   () => import('@/components/canvas/SocialInstagram'),
+//   {
+//     ssr: false,
+//   }
+// )
+// const SocialTwitter = dynamic(
+//   () => import('@/components/canvas/SocialTwitter'),
+//   {
+//     ssr: false,
+//   }
+// )
+
 // import ImageGallery from '@/components/canvas/ImageGallery'
 // import Instructions from '@/components/dom/Instructions'
 //
@@ -99,29 +100,21 @@ const SocialTwitter = dynamic(
 
 //
 
-function Loading() {
-  const { progress } = useProgress()
-  return (
-    <Html className='HTMLcontent' center>
-      {progress} % loaded
-    </Html>
-  )
-}
 // canvas components goes here
 const R3F = () => {
   return (
     <>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={null}>
         <PhysicsIntro />
-
-        <Suspense fallback={null}>
+        {/* <Suspense fallback={null}>
           <PhoneButtion position={[40, 15, -60]} scale={[10.5, 10, 10]} />
           <Laptop />
           <group position={[-40, 12, -60]}>
             <EarthButton />
             <Clouds />
           </group>
-        </Suspense>
+        </Suspense> */}
+        {/* <AboutMe /> */}
       </Suspense>
     </>
   )
