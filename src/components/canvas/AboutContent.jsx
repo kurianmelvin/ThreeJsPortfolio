@@ -1,33 +1,4 @@
-import {
-  Suspense,
-  useRef,
-  useState,
-  useCallback,
-  useEffect,
-  forwardRef,
-} from 'react'
-import {
-  Preload,
-  ScrollControls,
-  Scroll,
-  useScroll,
-  Image,
-  useFBO,
-  PerspectiveCamera,
-  //   Text,
-  Plane,
-  TorusKnot,
-  useAspect,
-  Line,
-  Html,
-  OrbitControls,
-  Environment,
-} from '@react-three/drei'
-
-import { useFrame, useThree, useLoader } from '@react-three/fiber'
-import { Flex, Box, useFlexSize, useReflow } from '@react-three/flex'
-import { Color, TextureLoader } from 'three'
-import * as THREE from 'three'
+import { ScrollControls, Scroll, PerspectiveCamera } from '@react-three/drei'
 
 //
 import dynamic from 'next/dynamic'
@@ -74,7 +45,7 @@ function AboutContent() {
       <ScrollControls damping={3} pages={5}>
         <Scroll>
           <AboutCubeBackground />
-          <group position={[0, 0, -10]} rotation={[0.2, 0, 0]}>
+          <group position={[0, 10, -10]} rotation={[0.2, 0, 0]}>
             <AboutMe />
             <HomeButton
               scale={[2, 2, 2]}

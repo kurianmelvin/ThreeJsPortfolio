@@ -1,7 +1,10 @@
 import React from 'react'
 
+//
+//
 import dynamic from 'next/dynamic'
-import { PerspectiveCamera, FlyControls } from '@react-three/drei'
+//
+//
 const HomeButton = dynamic(() => import('@/components/canvas/HomeButton'), {
   ssr: false,
 })
@@ -20,15 +23,19 @@ const ImageGallery = dynamic(() => import('@/components/canvas/ImageGallery'), {
   ssr: false,
 })
 
+///
+///
+//
+
 function GalleryContent() {
   return (
     //
     //
     <>
       {/* <PerspectiveCamera makeDefault position={[-1, 2, 27]} /> */}
-      <ImageGallery />
 
       <group>
+        <ImageGallery />
         <HomeButton
           position={[-1, -0.45, 7]}
           scale={[0.12, 0.12, 0.12]}

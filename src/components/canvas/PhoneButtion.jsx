@@ -1,39 +1,39 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import { useGLTF } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
+// import { useFrame } from '@react-three/fiber'
 import dynamic from 'next/dynamic'
 
 //
-import SocialGithub from '@/components/canvas/SocialGithub'
-import SocialInstagram from '@/components/canvas/SocialInstagram'
-import SocialLinkedin from '@/components/canvas/SocialLinkedin'
-import SocialTwitter from '@/components/canvas/SocialTwitter'
+// import SocialGithub from '@/components/canvas/SocialGithub'
+// import SocialInstagram from '@/components/canvas/SocialInstagram'
+// import SocialLinkedin from '@/components/canvas/SocialLinkedin'
+// import SocialTwitter from '@/components/canvas/SocialTwitter'
 //
 //
-// const SocialGithub = dynamic(() => import('@/components/canvas/SocialGithub'), {
-//   ssr: false,
-// })
+const SocialGithub = dynamic(() => import('@/components/canvas/SocialGithub'), {
+  ssr: false,
+})
 
-// const SocialLinkedin = dynamic(
-//   () => import('@/components/canvas/SocialLinkedin'),
-//   {
-//     ssr: false,
-//   }
-// )
-// const SocialInstagram = dynamic(
-//   () => import('@/components/canvas/SocialInstagram'),
-//   {
-//     ssr: false,
-//   }
-// )
+const SocialLinkedin = dynamic(
+  () => import('@/components/canvas/SocialLinkedin'),
+  {
+    ssr: false,
+  }
+)
+const SocialInstagram = dynamic(
+  () => import('@/components/canvas/SocialInstagram'),
+  {
+    ssr: false,
+  }
+)
 
-// const SocialTwitter = dynamic(
-//   () => import('@/components/canvas/SocialTwitter'),
-//   {
-//     ssr: false,
-//   }
-// )
+const SocialTwitter = dynamic(
+  () => import('@/components/canvas/SocialTwitter'),
+  {
+    ssr: false,
+  }
+)
 
 export default function PhoneButtion(props) {
   const group = useRef(null)
@@ -46,18 +46,9 @@ export default function PhoneButtion(props) {
     () => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'),
     [hovered]
   )
-  // useFrame((state, delta) => {
-  //   refPhone.current ? (refPhone.current.rotation.z += -0.01) : null
-  // })
-  // useFrame(() => {
-  //   gif.current.material.zoom = 1
-  //   gif.current.scale.x = 0.26 /* prettier-ignore */
-  //   gif.current.scale.y = 0.33 /* prettier-ignore */
-  // })
+
   return (
     <>
-      {/* <ambientLight intensity={0.5} /> */}
-      {/* <MapControls /> */}
       <group
         ref={group}
         {...props}

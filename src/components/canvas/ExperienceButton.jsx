@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import useStore from '@/helpers/store'
 //
@@ -20,9 +20,6 @@ export default function ExperienceButton(props) {
   }, [hovered])
   return (
     <>
-      {/* <ambientLight></ambientLight> */}
-      {/* <pointLight position={[0, 1, 5]} intensity={5} color={'white'} /> */}
-
       <group
         ref={group}
         {...props}

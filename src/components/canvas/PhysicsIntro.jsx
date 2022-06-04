@@ -1,25 +1,8 @@
-import React, { useMemo, useRef, useState, useEffect } from 'react'
+import React, { useMemo, useRef } from 'react'
 
 import { useBox, Physics } from '@react-three/cannon'
-import {
-  OrbitControls,
-  FlyControls,
-  // Lightformer,
-  // Preload,
-  // Html,
-  // useProgress,
-  // Loader,
-  // Sky,
-  // Cloud,
-  // Stars,
-  // Line,
-  // softShadows,
-  // Text,
-  // Stage,
-  // Trail,
-  GradientTexture,
-} from '@react-three/drei'
-import { extend, useLoader } from '@react-three/fiber'
+import { GradientTexture } from '@react-three/drei'
+import { extend } from '@react-three/fiber'
 import dynamic from 'next/dynamic'
 // import * as THREE from 'three'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
@@ -164,14 +147,7 @@ function PhysicsIntro() {
   return (
     <>
       <Wrapper />
-      {/* <FlyControls
-        //rs = 0.005
-        rollSpeed={0}
-        //ms =0.5
-        movementSpeed={3}
-        dragToLook={false}
-        autoForward={false}
-      /> */}
+
       {/* <OrbitControls /> */}
     </>
   )

@@ -1,11 +1,10 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import useStore from '@/helpers/store'
-import shallow from 'zustand/shallow'
 //
 
 //
-import { useRoute, useLocation } from 'wouter'
+import { useLocation } from 'wouter'
 // const setRouter = () =>
 //   useStore.setState((state) => {
 //     state.router = [...state.router, '/']

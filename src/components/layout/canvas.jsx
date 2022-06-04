@@ -1,9 +1,8 @@
-import { useEffect, useRef, Suspense } from 'react'
+import { Suspense } from 'react'
 
-import { Preload, Loader } from '@react-three/drei'
+import { Preload } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 
-import Effects from '@/components/canvas/Effects'
 import useStore from '@/helpers/store'
 
 // softShadows()

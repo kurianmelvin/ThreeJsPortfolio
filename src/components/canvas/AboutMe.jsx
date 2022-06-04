@@ -1,31 +1,9 @@
-import {
-  Suspense,
-  useRef,
-  useState,
-  useCallback,
-  useEffect,
-  forwardRef,
-} from 'react'
+import { useRef } from 'react'
 
-import {
-  Preload,
-  ScrollControls,
-  Scroll,
-  useScroll,
-  Image,
-  useFBO,
-  PerspectiveCamera,
-  //   Text,
-  Plane,
-  TorusKnot,
-  useAspect,
-  Line,
-  Html,
-  OrbitControls,
-} from '@react-three/drei'
+import { useAspect } from '@react-three/drei'
 import { useFrame, useThree, useLoader } from '@react-three/fiber'
-import { Flex, Box, useFlexSize, useReflow } from '@react-three/flex'
-import { Color, TextureLoader } from 'three'
+import { Flex, Box } from '@react-three/flex'
+import { TextureLoader } from 'three'
 import * as THREE from 'three'
 
 import aboutMeData from './aboutMeData'
@@ -146,7 +124,8 @@ function Page({ text, tag, images, textScaleFactor, left = false }) {
       <Box marginLeft={1.5} marginRight={1.5} marginTop={2}>
         <Text
           // the green tag text
-          position={[left ? -2 : 5, 10, 1]}
+          position={[left ? -5 : -1, 2.5, 1]}
+          rotation={[-0.2, 0, 0]}
           fontSize={textScaleFactor}
           lineHeight={1}
           letterSpacing={-0.05}
@@ -167,7 +146,8 @@ function Page({ text, tag, images, textScaleFactor, left = false }) {
       >
         <Text
           bold
-          // position-z={0.5}
+          position={[left ? -5 : -1, 0.5, 1]}
+          rotation={[-0.2, 0, 0]}
           textAlign={left ? 'left' : 'right'}
           fontSize={1.5 * textScaleFactor}
           lineHeight={1}
@@ -228,14 +208,14 @@ function Content(props) {
           size={[viewport.width, viewport.height, 0]}
         >
           {/* /// */}
-          {/* {aboutMeData.content.map((props, index) => (
+          {aboutMeData.content.map((props, index) => (
             <Page
               key={index}
               left={!(index % 2)}
               textScaleFactor={scale}
               {...props}
             />
-          ))} */}
+          ))}
           {/* //// */}
           <Box
             dir='row'
@@ -246,10 +226,11 @@ function Content(props) {
           >
             {/* //// */}
             <Box centerAnchor>
-              {/* /// */}
+              {/* /the words located by the tree trunk// */}
               <Text
                 bold
-                position={[2, 1, -10]}
+                position={[2, -0.2, 0]}
+                rotation={[-0.1, 0, 0]}
                 // position-z={0.5}
                 anchorX='center'
                 anchorY='middle'
@@ -269,10 +250,8 @@ function Content(props) {
           </Box>
 
           {/* /// */}
-          {/* // */}
-          {/* /// */}
           {/* /start of layout card// */}
-          {/* <Box
+          <Box
             dir='row'
             width='100%'
             height='100%'
@@ -280,21 +259,20 @@ function Content(props) {
             justify='center'
           >
             {/* /// */}
-          {/* <Box> */}
-          {/* //// */}
-          {/* <Layercard
-                {...aboutMeData.depthbox[0]}
-                text={aboutMeData.depthbox[1].text}
-                boxWidth={bW}
-                boxHeight={bH}
-                map={texture}
-                textScaleFactor={scale}
-              /> */}
-          {/* //// */}
-          {/* </Box> */}
-          {/* /// */}
-          {/* </Box> */}
-          {/* /// */}
+            <Box>
+              {/* //the picture with the words at the very bottom// */}
+              <mesh position={[0, -4, 20]} rotation={[-0.15, 0, 0]}>
+                <Layercard
+                  {...aboutMeData.depthbox[0]}
+                  text={aboutMeData.depthbox[1].text}
+                  boxWidth={bW}
+                  boxHeight={bH}
+                  map={texture}
+                  textScaleFactor={scale}
+                />
+              </mesh>
+            </Box>
+          </Box>
         </Flex>
         {/* //// */}
       </group>

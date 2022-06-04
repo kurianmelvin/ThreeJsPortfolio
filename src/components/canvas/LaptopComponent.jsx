@@ -1,27 +1,11 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 // import Instructions from '@/components/dom/Instructions'
 import { a as three } from '@react-spring/three'
-import {
-  // Environment,
-  // ContactShadows,
-  // shaderMaterial,
-  useGLTF,
-  // Stars,
-  // SpotLight,
-  // Sky,
-  // Sparkles,
-  // Text,
-  // Html,
-  // OrbitControls,
-  // Loader,
-  // Sparkles,
-} from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
+import { useGLTF } from '@react-three/drei'
 import dynamic from 'next/dynamic'
 
 // import * as THREE from 'three'
-import SocialGithub from '@/components/canvas/SocialGithub'
 import useStore from '@/helpers/store'
 // import LoadingScreen from '@/components/canvas/LoadingScreen'
 const LaptopGif = dynamic(() => import('@/components/canvas/LaptopGif'), {

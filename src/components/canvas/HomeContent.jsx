@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, Suspense, useState } from 'react'
+import React from 'react'
 
-import { Html, PerspectiveCamera } from '@react-three/drei'
+import { PerspectiveCamera } from '@react-three/drei'
 
 import dynamic from 'next/dynamic'
 

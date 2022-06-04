@@ -1,10 +1,7 @@
-import { useRef, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
-import { useAspect } from '@react-three/drei'
-import { useFrame, useLoader } from '@react-three/fiber'
 import * as THREE from 'three'
 import './ImageFadeMaterial'
-import { TextureLoader, VideoTexture, sRGBEncoding } from 'three'
 //
 
 function LaptopGif(props) {
@@ -31,7 +28,6 @@ function LaptopGif(props) {
     })
   )
 
-  // useEffect(() => void video1.current.play(), [])
   useEffect(() => {
     // console.log('rendering over and over')
     document.body.style.cursor = hovered ? 'pointer' : 'auto'

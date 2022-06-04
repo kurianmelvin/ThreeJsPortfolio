@@ -25,7 +25,7 @@ const aboutMeData = {
       depth: 0,
       color: '#cccccc',
       textColor: '#ffffff',
-      text: 'For the first time in the past decades we will have the opportunity to change how to surf the web. So my future wishes are to be in a role related to that, as a web developer or creative director.',
+      text: 'For the first time we finally have the ability to change how we surf the web. So my future wishes are to be in a role related to that, as a Web or Mobile Developer.',
       image: '/cAKwexj.jpg',
     },
     {

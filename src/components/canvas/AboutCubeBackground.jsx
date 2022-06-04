@@ -1,12 +1,4 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react'
-import dynamic from 'next/dynamic'
-import {
-  useGLTF,
-  OrbitControls,
-  MeshReflectorMaterial,
-  Environment,
-} from '@react-three/drei'
-import * as THREE from 'three'
+import React, { useRef } from 'react'
 import { BackSide } from 'three'
 
 function AboutCubeBackground(props) {

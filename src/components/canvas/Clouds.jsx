@@ -1,13 +1,6 @@
 import React, { useRef } from 'react'
 
-import {
-  // Environment,
-  // useGLTF,
-  // ContactShadows,
-  // Text,
-  // Preload,
-  useTexture,
-} from '@react-three/drei'
+import { useTexture } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 
 function Clouds(props) {

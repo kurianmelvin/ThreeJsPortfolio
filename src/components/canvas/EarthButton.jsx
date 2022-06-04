@@ -1,17 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import {
-  // Environment,
-  // useGLTF,
-  // ContactShadows,
-  // Text,
-  // Preload,
-  useTexture,
-  // TrackballControls,
-  // OrbitControls,
-} from '@react-three/drei'
+import { useTexture } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
 
 import useStore from '@/helpers/store'
 

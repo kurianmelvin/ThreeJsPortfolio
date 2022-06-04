@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 
 // import {
 //   OrbitControls,
@@ -84,27 +84,7 @@ const images = [
 function ImageGallery() {
   return (
     <>
-      {/* <Suspense fallback={null}> */}
-      {/* <Stars
-        // radius={100}
-        // depth={1000}
-        // count={5000}
-        // factor={50}
-        // saturation={10}
-        // fade={true}
-        /> */}
-      {/* <Sky
-          distance={1000}
-          sunPosition={[0, 10, 0]}
-          // inclination={10}
-          // azimuth={10}
-          mieCoefficient={100}
-          mieDirectionalG={1}
-          rayleigh={100}
-          turbidity={100}
-        /> */}
       <Gallery images={images} />
-      {/* </Suspense> */}
     </>
   )
 }

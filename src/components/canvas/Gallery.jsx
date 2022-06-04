@@ -4,9 +4,9 @@ import {
   useCursor,
   MeshReflectorMaterial,
   Image,
-  Text,
+  // Text,
   Environment,
-  FlyControls,
+  // FlyControls,
   Stars,
 } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
@@ -70,7 +70,7 @@ function Frames({images, q = new THREE.Quaternion(),  p = new THREE.Vector3(),})
     if (clicked.current) {
       clicked.current.parent.updateWorldMatrix(true, true)
       //after clicking the image , this sets the location YPosition determines how close you get to the image
-      clicked.current.parent.localToWorld(p.set(0, GOLDENRATIO / 2, 0.5))
+      clicked.current.parent.localToWorld(p.set(0, GOLDENRATIO / 1.65, 1))
       clicked.current.parent.getWorldQuaternion(q)
     } else {
       //defalut position moving the frames back when the window loads
@@ -98,14 +98,14 @@ function Frames({images, q = new THREE.Quaternion(),  p = new THREE.Vector3(),})
         {images.map((props) => (
           <>
             <Frame key={props.url} {...props} />
-            <FlyControls
+            {/* <FlyControls
               //rl speed 0.015
               // rollSpeed={0.015}
               //movSpeed 0.05
               movementSpeed={0.04}
               dragToLook={false}
               // autoForward = {false}
-            />
+            /> */}
           </>
         ))}
       </group>
@@ -126,7 +126,7 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
   useFrame(() => {
     // inside image zoom and scale
     // image.current.material.zoom = 2 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 3) / 2 /* prettier-ignore */
-    image.current.material.zoom = 1 /* prettier-ignore */
+    // image.current.material.zoom = 1 /* prettier-ignore */
     //inside image scale
     image.current.scale.x = THREE.MathUtils.lerp(image.current.scale.x, (hovered ? 1 : 1),0.05) /* prettier-ignore */
     image.current.scale.y = THREE.MathUtils.lerp(image.current.scale.y, (hovered ? 1.2 : 1),0.05) /* prettier-ignore */

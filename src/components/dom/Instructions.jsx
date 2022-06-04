@@ -1,7 +1,7 @@
 export default function Instructions() {
   return (
     <>
-      <p>Click Here to Check out my Portfolio</p>
+      <p>Melvin Kurian Portfolio</p>
     </>
   )
 }

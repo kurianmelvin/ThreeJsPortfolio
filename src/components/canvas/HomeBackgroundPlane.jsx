@@ -1,15 +1,8 @@
-import React, { Suspense, useState, useEffect } from 'react'
+import React from 'react'
 
 //
-import { usePlane, useBox, Physics } from '@react-three/cannon'
-import {
-  OrbitControls,
-  MapControls,
-  //
-  Stars,
-  FlyControls,
-  Environment,
-} from '@react-three/drei'
+import { usePlane } from '@react-three/cannon'
+import { MapControls, Stars } from '@react-three/drei'
 //
 //
 import dynamic from 'next/dynamic'
@@ -40,65 +33,65 @@ function FloorPlane({ color, ...props }) {
 
 ////BACK WALL PLANE////
 
-function BackPlane({ color, ...props }) {
-  const [backref] = usePlane(() => ({ ...props }))
+// function BackPlane({ color, ...props }) {
+//   const [backref] = usePlane(() => ({ ...props }))
 
-  return (
-    <mesh
-      receiveShadow
-      ref={backref}
-      // dispose={null}
-    >
-      <planeGeometry args={[500, 500]} />
-      <meshStandardMaterial color={color} />
-      {/* <meshStandardMaterial color='white' /> */}
-    </mesh>
-  )
-}
+//   return (
+//     <mesh
+//       receiveShadow
+//       ref={backref}
+//       // dispose={null}
+//     >
+//       <planeGeometry args={[500, 500]} />
+//       <meshStandardMaterial color={color} />
+//       {/* <meshStandardMaterial color='white' /> */}
+//     </mesh>
+//   )
+// }
 
 // Lights
 //purple light
 //    <BackPlane position={[0, -1, -100]} />
-function MiddleLight({ brightness, color }) {
-  return (
-    <rectAreaLight
-      width={0.2}
-      height={100.01}
-      color={color}
-      intensity={brightness}
-      position={[0, 0, -99.9]}
-      // lookAt={[0, 0, 0]}
+// function MiddleLight({ brightness, color }) {
+//   return (
+//     <rectAreaLight
+//       width={0.2}
+//       height={100.01}
+//       color={color}
+//       intensity={brightness}
+//       position={[0, 0, -99.9]}
+//       // lookAt={[0, 0, 0]}
 
-      castShadow
-    />
-  )
-}
+//       castShadow
+//     />
+//   )
+// }
 //blue light
-function LeftLight({ brightness, color }) {
-  return (
-    <rectAreaLight
-      width={20}
-      height={100}
-      intensity={brightness}
-      color={color}
-      position={[-0.6, 0, -100]}
-      rotation={[0, 90, -0.11]}
-    />
-  )
-}
+// function LeftLight({ brightness, color }) {
+//   return (
+//     <rectAreaLight
+//       width={20}
+//       height={100}
+//       intensity={brightness}
+//       color={color}
+//       position={[-0.6, 0, -100]}
+//       rotation={[0, 90, -0.11]}
+//     />
+//   )
+// }
 //purple light
-function RightLight({ brightness, color }) {
-  return (
-    <rectAreaLight
-      width={20}
-      height={100}
-      intensity={brightness}
-      color={color}
-      position={[0.6, 0, -100]}
-      rotation={[0, 180, 0.11]}
-    />
-  )
-}
+// function RightLight({ brightness, color }) {
+//   return (
+//     <rectAreaLight
+//       width={20}
+//       height={100}
+//       intensity={brightness}
+//       color={color}
+//       position={[0.6, 0, -100]}
+//       rotation={[0, 180, 0.11]}
+//     />
+//   )
+// }
 
 function HomeBackgroundPlane() {
   return (
