@@ -16,8 +16,8 @@ function SocialInstagram(props) {
   //
 
   const insta = useLoader(TextureLoader, './instagram1.png')
-  const insta2 = useLoader(TextureLoader, './instagram2.png')
-  const trans = useLoader(TextureLoader, './st10.jpg')
+  // const insta2 = useLoader(TextureLoader, './instagram2.png')
+  // const trans = useLoader(TextureLoader, './st10.jpg')
   //
   const [hovered, setHover] = useState(false)
   //
@@ -57,9 +57,9 @@ function SocialInstagram(props) {
             ref={instagram}
             tex={insta}
             tex-encoding={THREE.sRGBEncoding}
-            tex2={insta2}
+            tex2={insta}
             tex2-encoding={THREE.sRGBEncoding}
-            disp={trans}
+            disp={insta}
             disp-encoding={THREE.sRGBEncoding}
             toneMapped={true}
           />

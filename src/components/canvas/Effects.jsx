@@ -7,7 +7,7 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
 import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader'
 
-import state from './state'
+import state from './aboutMeData'
 import { WaterPass } from './WaterPass'
 
 extend({ EffectComposer, ShaderPass, RenderPass, WaterPass })

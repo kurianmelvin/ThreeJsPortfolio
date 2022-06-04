@@ -380,10 +380,6 @@ export default function PhoneButtion(props) {
             <mesh></mesh>
           </group>
         </group>
-
-        {/* <SocialTwitter /> */}
-        {/* <SocialGithub /> */}
-        {/* <SocialLinkedin /> */}
       </group>
     </>
   )

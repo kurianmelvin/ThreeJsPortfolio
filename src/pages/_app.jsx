@@ -32,7 +32,30 @@ function App({ Component, pageProps = { title: 'index' } }) {
 
   useEffect(() => {
     useStore.setState({ router })
-  }, [router])
+  }, [])
+
+  //
+  //
+  //
+  // const router = useRouter()
+
+  // useEffect(() => {
+  //   const handleRouteChange = (url, { shallow }) => {
+  //     console.log(
+  //       `App is changing to ${url} ${
+  //         shallow ? 'with' : 'without'
+  //       } shallow routing`
+  //     )
+  //   }
+  //   useStore.setState({ router })
+  //   router.events.on('routeChangeStart', handleRouteChange)
+
+  //   // If the component is unmounted, unsubscribe
+  //   // from the event with the `off` method:
+  //   return () => {
+  //     router.events.off('routeChangeStart', handleRouteChange)
+  //   }
+  // }, [])
 
   const child = Component(pageProps).props.children
 

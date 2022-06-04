@@ -23,7 +23,7 @@ import {
 import LaptopComponent from '@/components/canvas/LaptopComponent'
 // import useStore from '@/helpers/store'
 
-function Laptop() {
+function Laptop(items) {
   const [open, setOpen] = useState(false)
   const props = useSpring({ open: Number(open) })
   // const router = useStore((state) => state.router)
@@ -41,6 +41,7 @@ function Laptop() {
 
       {/* <three.pointLight position={[-0.1, 4, -8.5]} intensity={1.4} /> */}
       <group
+        {...items}
         onClick={(e) => (e.stopPropagation(), setOpen(!open))}
         // dispose={null}
       >

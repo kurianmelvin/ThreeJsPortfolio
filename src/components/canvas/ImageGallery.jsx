@@ -21,38 +21,41 @@ const images = [
   {
     position: [-2, 0, 6],
     rotation: [0, Math.PI / 2.5, 0],
-    url: '/b1.jpeg',
+    url: '/g1.jpg',
+    text: `The Hiramic\nLegend`,
   },
   // 2 left middle 2
   {
     position: [-2.15, 0, 4],
     rotation: [0, Math.PI / 2.5, 0],
-    url: '/b2.jpeg',
+    url: '/g3.jpg',
+    text: `The Hiramic\nLegend`,
   },
   //3 Left back 3
   {
     position: [-2, 0, 2],
     rotation: [0, Math.PI / 2.5, 0],
-    url: '/b3.JPEG',
+    url: '/g2.jpg',
+    text: `The Hiramic\nLegend`,
   },
 
   ///
   //4 Back left
-  { position: [-1.8, 0, 1], rotation: [0, 0, 0], url: '/b4.jpeg' },
+  // { position: [-1.8, 0, 1], rotation: [0, 0, 0], url: '/b4.jpeg' },
   //
   ////
   // // 5 MIDDLE m3
   // { position: [0.5, 0, 2.5], rotation: [0, 0, 0], url: '/b11.JPG' },
   // //
   // 5 MIDDLE m2
-  { position: [0, 0, 0], rotation: [0, 0, 0], url: '/b11.jpg' },
+  // { position: [0, 0, 0], rotation: [0, 0, 0], url: '/b11.jpg' },
   //
   // 5 MIDDLE m1
-  { position: [0, 0, 6], rotation: [0, 0, 0], url: '/b5.JPG' },
+  { position: [0, 0, 2], rotation: [0, 0, 0], url: '/g4.jpg' },
   //
   //
   //6 // Back right
-  { position: [1.8, 0, 1], rotation: [0, 0, 0], url: '/b6.jpeg' },
+  // { position: [1.8, 0, 1], rotation: [0, 0, 0], url: '/b6.jpeg' },
   ////
   ////
   //7 Right back 3
@@ -60,26 +63,29 @@ const images = [
     position: [2, 0, 2],
     rotation: [0, -Math.PI / 2.5, 0],
     url: '/b7.JPEG',
+    text: `The Hiramic\nLegend`,
   },
   //8 Right middle 2
   {
     position: [2.15, 0, 4],
     rotation: [0, -Math.PI / 2.5, 0],
     url: '/b8.jpeg',
+    text: `The Hiramic\nLegend`,
   },
   //9 right front 1
   {
     position: [2, 0, 6],
     rotation: [0, -Math.PI / 2.5, 0],
-    url: '/b9.jpeg',
+    url: '/g5.jpg',
+    text: `The Hiramic\nLegend`,
   },
 ]
 
 function ImageGallery() {
   return (
     <>
-      <Suspense fallback={null}>
-        {/* <Stars
+      {/* <Suspense fallback={null}> */}
+      {/* <Stars
         // radius={100}
         // depth={1000}
         // count={5000}
@@ -87,7 +93,7 @@ function ImageGallery() {
         // saturation={10}
         // fade={true}
         /> */}
-        {/* <Sky
+      {/* <Sky
           distance={1000}
           sunPosition={[0, 10, 0]}
           // inclination={10}
@@ -97,8 +103,8 @@ function ImageGallery() {
           rayleigh={100}
           turbidity={100}
         /> */}
-        <Gallery images={images} />
-      </Suspense>
+      <Gallery images={images} />
+      {/* </Suspense> */}
     </>
   )
 }

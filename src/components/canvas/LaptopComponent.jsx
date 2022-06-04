@@ -32,7 +32,7 @@ const LaptopGif = dynamic(() => import('@/components/canvas/LaptopGif'), {
 function LaptopComponent({ open, hinge, ...props }) {
   const router = useStore((state) => state.router)
   const group = useRef()
-  const gif = useRef()
+
   // Load model
   const { nodes, materials } = useGLTF('/mac-draco.glb')
   // Take care of cursor state on hover
@@ -40,11 +40,6 @@ function LaptopComponent({ open, hinge, ...props }) {
   useEffect(() => {
     document.body.style.cursor = hovered ? 'pointer' : 'auto'
   }, [hovered])
-  // useFrame(() => {
-  //   gif.current.material.zoom = 1
-  //   gif.current.scale.x = 0.26 /* prettier-ignore */
-  //   gif.current.scale.y = 0.33 /* prettier-ignore */
-  // })
 
   // Events and spring animations were added afterwards
   return (
@@ -53,7 +48,7 @@ function LaptopComponent({ open, hinge, ...props }) {
         ref={group}
         {...props}
         //position responsible for the placement of the whole laptop
-        position={[0, -3, -10]}
+        // position={[0, -3, -10]}
         rotation={[0, 0, 0]}
         // dispose={null}
       >
@@ -81,6 +76,7 @@ function LaptopComponent({ open, hinge, ...props }) {
               onClick={() => {
                 router.push(`/about`)
               }}
+              // onClick={(e) => (e.stopPropagation(), router.push(`/about`))}
             >
               <LaptopGif />
             </mesh>

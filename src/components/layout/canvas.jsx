@@ -13,10 +13,11 @@ const LCanvas = ({ children }) => {
   return (
     <>
       <Canvas
+        // className='canvas'
         mode='concurrent'
         style={{ height: '100vh', width: '100vw' }}
         gl={{ antialias: true }}
-        camera={{ fov: 75, far: 1000, position: [0, 1, 10] }}
+        camera={{ position: [0, 1, 10] }}
         dpr={[1, 2]}
         linear={true}
         flat={true}

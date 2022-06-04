@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, Suspense } from 'react'
+import React, { useEffect, useRef, Suspense, useState } from 'react'
 
 import { Html, useProgress } from '@react-three/drei'
 // import { useFrame, useThree } from '@react-three/fiber'
@@ -36,8 +36,14 @@ const PhysicsIntro = dynamic(() => import('@/components/canvas/PhysicsIntro'), {
 })
 //
 //
+// const HomeButton = dynamic(() => import('@/components/canvas/HomeButton'), {
+//   ssr: false,
+// })
 //
 const PhoneButtion = dynamic(() => import('@/components/canvas/PhoneButtion'), {
+  ssr: false,
+})
+const HomeContent = dynamic(() => import('@/components/canvas/HomeContent'), {
   ssr: false,
 })
 
@@ -87,7 +93,13 @@ const PhoneButtion = dynamic(() => import('@/components/canvas/PhoneButtion'), {
 //   }
 // )
 
-//
+// const ExperienceButton = dynamic(
+//   () => import('@/components/canvas/ExperienceButton'),
+//   {
+//     ssr: false,
+//   }
+// )
+
 // Dynamic import is used to prevent a payload when the website start that will include threejs r3f etc..
 // WARNING ! errors might get obfuscated by using dynamic import.
 // If something goes wrong go back to a static import to show the error.
@@ -101,29 +113,19 @@ const PhoneButtion = dynamic(() => import('@/components/canvas/PhoneButtion'), {
 //
 
 // canvas components goes here
-const R3F = () => {
+const R3F = (props) => {
   return (
     <>
-      <Suspense fallback={null}>
-        <PhysicsIntro />
-        {/* <Suspense fallback={null}>
-          <PhoneButtion position={[40, 15, -60]} scale={[10.5, 10, 10]} />
-          <Laptop />
-          <group position={[-40, 12, -60]}>
-            <EarthButton />
-            <Clouds />
-          </group>
-        </Suspense> */}
-        {/* <AboutMe /> */}
-      </Suspense>
+      <HomeContent route='/' />
     </>
   )
 }
 
-const Page = () => {
+const Page = (props) => {
   return (
     <>
       {/* @ts-ignore */}
+
       <R3F r3f />
     </>
   )

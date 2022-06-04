@@ -11,9 +11,9 @@ function SocialLinkedin(props) {
   const linkedin = useRef(null)
 
   //
-  const linked = useLoader(TextureLoader, './linkedin.png')
+  // const linked = useLoader(TextureLoader, './linkedin.png')
   const linked2 = useLoader(TextureLoader, './linkedin2.png')
-  const trans = useLoader(TextureLoader, './st10.jpg')
+  // const trans = useLoader(TextureLoader, './st10.jpg')
   //
   const [hovered, setHover] = useState(false)
   //
@@ -47,9 +47,9 @@ function SocialLinkedin(props) {
             ref={linkedin}
             tex={linked2}
             tex-encoding={THREE.sRGBEncoding}
-            tex2={linked}
+            tex2={linked2}
             tex2-encoding={THREE.sRGBEncoding}
-            disp={trans}
+            disp={linked2}
             disp-encoding={THREE.sRGBEncoding}
             toneMapped={false}
           />

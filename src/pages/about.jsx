@@ -1,15 +1,16 @@
 // import Instructions from '@/components/dom/Instructions'
 import dynamic from 'next/dynamic'
-
+import { PerspectiveCamera } from '@react-three/drei'
 // import AboutMe from '@/components/canvas/AboutMe'
 
 // const AboutMe = dynamic(() => import('@/components/dom/AboutMe'), {
 //   ssr: false,
 // })
 
-const ScrollAbout = dynamic(() => import('@/components/canvas/ScrollAbout'), {
+const AboutContent = dynamic(() => import('@/components/canvas/AboutContent'), {
   ssr: false,
 })
+
 // const Box = dynamic(() => import('@/components/canvas/Box'), {
 //   ssr: false,
 // })
@@ -24,7 +25,8 @@ const ScrollAbout = dynamic(() => import('@/components/canvas/ScrollAbout'), {
 const R3F = () => {
   return (
     <>
-      <ScrollAbout route='/ScrollAbout' />
+      <AboutContent route='/about' />
+      {/* <AboutCubeBackground /> */}
     </>
   )
 }

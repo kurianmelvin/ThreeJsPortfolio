@@ -17,13 +17,13 @@ const Dom = ({ children }) => {
     <div
       // className='fullscreen'
       // style={{
-      //   // position: 'relative',
-      //   // top: 0,
-      //   // backgroundColor: '#FFC300',
+      //   position: 'relative',
+      //   top: 0,
+      //   backgroundColor: '#FFC300',
       //   // height: '100vh',
       //   // width: '100vW',
-      //   // zIndex: -1,
-      //   // color: 'yellow',
+      //   zIndex: -0.1,
+      //   //   color: 'yellow',
       // }}
       ref={ref}
     >

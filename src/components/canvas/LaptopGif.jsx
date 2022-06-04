@@ -60,7 +60,7 @@ function LaptopGif(props) {
   return (
     <>
       <mesh
-        dispose={true}
+        // dispose={true}
         // position={[0, 0.5, 1]}
         {...props}
         onPointerMove={(e) => setHover(true)}

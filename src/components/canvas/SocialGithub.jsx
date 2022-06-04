@@ -11,8 +11,8 @@ function SocialGithub(props) {
 
   const git = useLoader(TextureLoader, './github.png')
 
-  const git2 = useLoader(TextureLoader, './github2.png')
-  const trans = useLoader(TextureLoader, './st10.jpg')
+  // const git2 = useLoader(TextureLoader, './github2.png')
+  // const trans = useLoader(TextureLoader, './st10.jpg')
   //
   const [hovered, setHover] = useState(false)
   //
@@ -47,9 +47,9 @@ function SocialGithub(props) {
             ref={github}
             tex={git}
             tex-encoding={THREE.sRGBEncoding}
-            tex2={git2}
+            tex2={git}
             tex2-encoding={THREE.sRGBEncoding}
-            disp={trans}
+            disp={git}
             disp-encoding={THREE.sRGBEncoding}
             toneMapped={false}
           />

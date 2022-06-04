@@ -1,25 +1,16 @@
-import React from 'react'
-
 import dynamic from 'next/dynamic'
 //
-// import LoadingScreen from '@/components/canvas/LoadingScreen'
-// const LoadingScreen = dynamic(
-//   () => import('@/components/canvas/LoadingScreen'),
-//   {
-//     ssr: false,
-//   }
-// )
-//
-//
 
-const ImageGallery = dynamic(() => import('@/components/canvas/ImageGallery'), {
-  ssr: false,
-})
-
+const GalleryContent = dynamic(
+  () => import('@/components/canvas/GalleryContent'),
+  {
+    ssr: false,
+  }
+)
 const R3F = () => {
   return (
     <>
-      <ImageGallery route='/ImageGallery' />
+      <GalleryContent route='/imagegallery' />
     </>
   )
 }

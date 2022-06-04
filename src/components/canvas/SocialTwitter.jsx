@@ -10,9 +10,9 @@ import './ImageFadeMaterial'
 function SocialTwitter(props) {
   const twitter = useRef(null)
   //
-  const twitt = useLoader(TextureLoader, './twitter.png')
+  // const twitt = useLoader(TextureLoader, './twitter.png')
   const twitt2 = useLoader(TextureLoader, './twitter2.png')
-  const trans = useLoader(TextureLoader, './st10.jpg')
+  // const trans = useLoader(TextureLoader, './st10.jpg')
   //
   const [hovered, setHover] = useState(false)
   //
@@ -49,9 +49,9 @@ function SocialTwitter(props) {
             ref={twitter}
             tex={twitt2}
             tex-encoding={THREE.sRGBEncoding}
-            tex2={twitt}
+            tex2={twitt2}
             tex2-encoding={THREE.sRGBEncoding}
-            disp={trans}
+            disp={twitt2}
             disp-encoding={THREE.sRGBEncoding}
             toneMapped={false}
           />

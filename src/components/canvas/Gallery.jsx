@@ -4,16 +4,10 @@ import {
   useCursor,
   MeshReflectorMaterial,
   Image,
-  // Text,
+  Text,
   Environment,
-  // MapControls,
   FlyControls,
   Stars,
-  // OrbitControls,
-  // FirstPersonControls,
-  // PointerLockControls,
-  // TrackballControls,
-  // ArcballControls,
 } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -29,14 +23,14 @@ const GOLDENRATIO = 1.61803398875
 // Function "Gallery" is the Scene layout.
 function Gallery({ images }) {
   return (
-    // <Canvas gl={{ alpha: false }} dpr={[1, 1.5]} camera={{ fov: 70, position: [0, 2, 15] }}>
     <>
-      <color attach='background' args={['#191920']} />
-      <fog attach='fog' args={['#191920', 0, 15]} />
       <Environment preset='city' />
       <Stars radius={50} depth={500} />
       {/* <group position={[0, -0.5, 0]}> */}
-      <group position={[0, -0.5, 0]} dispose={null}>
+      <group
+        position={[0, -0.5, 0]}
+        //  dispose={null}
+      >
         <Frames images={images} />
 
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
@@ -76,11 +70,11 @@ function Frames({images, q = new THREE.Quaternion(),  p = new THREE.Vector3(),})
     if (clicked.current) {
       clicked.current.parent.updateWorldMatrix(true, true)
       //after clicking the image , this sets the location YPosition determines how close you get to the image
-      clicked.current.parent.localToWorld(p.set(0, GOLDENRATIO / 2, 0.3))
+      clicked.current.parent.localToWorld(p.set(0, GOLDENRATIO / 2, 0.5))
       clicked.current.parent.getWorldQuaternion(q)
     } else {
       //defalut position moving the frames back when the window loads
-      p.set(0, 0.5, 9)
+      p.set(0, 0.5, 10)
       q.identity()
     }
   })
@@ -106,7 +100,7 @@ function Frames({images, q = new THREE.Quaternion(),  p = new THREE.Vector3(),})
             <Frame key={props.url} {...props} />
             <FlyControls
               //rl speed 0.015
-              rollSpeed={0.015}
+              // rollSpeed={0.015}
               //movSpeed 0.05
               movementSpeed={0.04}
               dragToLook={false}
@@ -211,4 +205,5 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
     </>
   )
 }
+// Gallery.dispose()
 export default Gallery

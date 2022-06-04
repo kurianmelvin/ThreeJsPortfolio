@@ -4,7 +4,7 @@ import { useGLTF, MeshDistortMaterial, Shadow } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
-import state from './state'
+import state from './aboutMeData'
 import Text from './Text'
 
 export default function Model(props) {
@@ -29,7 +29,11 @@ export default function Model(props) {
     )
   })
   return (
-    <group {...props} dispose={null}>
+    <group
+      {...props}
+      // dispose={null}
+      //
+    >
       <group ref={group}>
         <mesh geometry={nodes.geo.geometry} castShadow receiveShadow>
           <MeshDistortMaterial

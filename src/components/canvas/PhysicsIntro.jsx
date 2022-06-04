@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react'
+import React, { useMemo, useRef, useState, useEffect } from 'react'
 
 import { useBox, Physics } from '@react-three/cannon'
 import {
@@ -54,24 +54,27 @@ const Char = ({ config, char, i }) => {
   }))
 
   return (
-    <group
-    // dispose={null}
-    >
-      {/* this is the text mesh, adjusting the position here positions the text on the canvas */}
-      <mesh
-        ref={ref}
-        // dispose={null}
+    <>
+      {/* <ambientLight /> */}
+      <group
+      // dispose={null}
       >
-        <textGeometry args={[char, config]} />
-        <meshBasicMaterial>
-          <GradientTexture
-            stops={[0, 1]} // As many stops as you want
-            colors={['#fff', '#30475E']} // Colors need to match the number of stops
-            // size={1024} // Size is optional, default = 1024
-          />
-        </meshBasicMaterial>
-      </mesh>
-    </group>
+        {/* this is the text mesh, adjusting the position here positions the text on the canvas */}
+        <mesh
+          ref={ref}
+          // dispose={null}
+        >
+          <textGeometry args={[char, config]} />
+          <meshBasicMaterial>
+            <GradientTexture
+              stops={[0, 1]} // As many stops as you want
+              colors={['#fff', '#30475E']} // Colors need to match the number of stops
+              // size={1024} // Size is optional, default = 1024
+            />
+          </meshBasicMaterial>
+        </mesh>
+      </group>
+    </>
   )
 }
 

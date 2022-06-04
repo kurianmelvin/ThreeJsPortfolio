@@ -350,3 +350,36 @@
 //               geometry={nodes['Cube008_2'].geometry}
 //             /> */
 // }
+// -----------------------------
+//
+//
+//
+// function Test() {
+//   const camera = useThree((state) => state.camera)
+//   useEffect(() => {
+//     camera.position.set([0, 0, 0])
+//     //  camera.rotation.set(0, 0.5, 0)
+//     camera.updateProjectionMatrix()
+//   }, [])
+//   return null
+// }
+
+// const handleNavigation = () => {
+//   window.location.href = 'https://github.com/kurianmelvin'
+// }
+
+// function SceneCamera() {
+//   const { camera } = useThree()
+
+//   useEffect(() => {
+//     // camera.fov = 75
+//     // camera.near = 1
+//     // camera.far = 1000
+//     camera.position.set([0, 0, 25])
+//     // camera.rotateY(60)
+//     camera.updateProjectionMatrix()
+//   }, [])
+//   return <PerspectiveCamera makeDefault></PerspectiveCamera>
+// }
+//
+//

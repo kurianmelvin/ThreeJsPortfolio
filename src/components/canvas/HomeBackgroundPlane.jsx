@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useState, useEffect } from 'react'
 
 //
 import { usePlane, useBox, Physics } from '@react-three/cannon'
@@ -14,7 +14,7 @@ import {
 //
 import dynamic from 'next/dynamic'
 const CubeBackground = dynamic(
-  () => import('@/components/canvas/CubeBackground'),
+  () => import('@/components/canvas/AboutCubeBackground'),
   {
     ssr: false,
   }
@@ -113,10 +113,11 @@ function HomeBackgroundPlane() {
         // fade?: boolean;
         // speed?: number;
       />
+      {/* <hemisphereLight></hemisphereLight> */}
       <pointLight
         position={[0, -1, -8]}
         intensity={1.2}
-        distance={1000}
+        // distance={1000}
         // color={'#FEFBE7'}
         // color={'#FBF8F1'}
         color={'#F6F6F6'}
