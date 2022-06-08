@@ -81,7 +81,7 @@ const images = [
   },
 ]
 
-function ImageGallery() {
+function ImageGallery(props) {
   return (
     <>
       <Gallery images={images} />

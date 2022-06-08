@@ -3,6 +3,7 @@ import React from 'react'
 //
 //
 import dynamic from 'next/dynamic'
+
 //
 //
 const HomeButton = dynamic(() => import('@/components/canvas/HomeButton'), {
@@ -23,6 +24,12 @@ const ImageGallery = dynamic(() => import('@/components/canvas/ImageGallery'), {
   ssr: false,
 })
 
+const GalleryCubeBackground = dynamic(
+  () => import('@/components/canvas/GalleryCubeBackground'),
+  {
+    ssr: false,
+  }
+)
 ///
 ///
 //
@@ -34,9 +41,11 @@ function GalleryContent() {
     <>
       {/* <PerspectiveCamera makeDefault position={[-1, 2, 27]} /> */}
 
-      <group>
+      <group position={[0, 0, 0]}>
         <ImageGallery />
-        <HomeButton
+        <GalleryCubeBackground position={[0, 0, 0]} scale={[1, 1, 1]} />
+
+        {/* <HomeButton
           position={[-1, -0.45, 7]}
           scale={[0.12, 0.12, 0.12]}
           rotation={[0, 0.5, 0]}
@@ -45,15 +54,15 @@ function GalleryContent() {
           scale={[7, 7, 7]}
           rotation={[0, 1.2, 0]}
           position={[1, -0.45, 7]}
-        />
+        /> */}
         <mesh rotation={[0, 0.15, 0]}>
-          <spotLight
+          {/* <spotLight
             color={'white'}
             position={[0, 0, 40]}
             intensity={2}
             angle={Math.PI / 80}
             // distance={20}
-          />
+          /> */}
         </mesh>
       </group>
     </>

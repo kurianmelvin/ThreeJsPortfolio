@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
+
 import { useGLTF } from '@react-three/drei'
+import { useLocation } from 'wouter'
+
 import useStore from '@/helpers/store'
 //
 
 //
-import { useLocation } from 'wouter'
 // const setRouter = () =>
 //   useStore.setState((state) => {
 //     state.router = [...state.router, '/']

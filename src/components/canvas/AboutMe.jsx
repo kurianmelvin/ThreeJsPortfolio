@@ -7,7 +7,7 @@ import { TextureLoader } from 'three'
 import * as THREE from 'three'
 
 import aboutMeData from './aboutMeData'
-import Text from './Text'
+import Text from '@/components/canvas/Text'
 
 //
 
@@ -124,8 +124,8 @@ function Page({ text, tag, images, textScaleFactor, left = false }) {
       <Box marginLeft={1.5} marginRight={1.5} marginTop={2}>
         <Text
           // the green tag text
-          position={[left ? -5 : -1, 2.5, 1]}
-          rotation={[-0.2, 0, 0]}
+          position={[left ? -8 : -5, 2.5, -1]}
+          rotation={[-0.2, 0.5, 0]}
           fontSize={textScaleFactor}
           lineHeight={1}
           letterSpacing={-0.05}
@@ -146,8 +146,8 @@ function Page({ text, tag, images, textScaleFactor, left = false }) {
       >
         <Text
           bold
-          position={[left ? -5 : -1, 0.5, 1]}
-          rotation={[-0.2, 0, 0]}
+          position={[left ? -8 : -1, 0.5, 1]}
+          rotation={[-0.2, 1, 0]}
           textAlign={left ? 'left' : 'right'}
           fontSize={1.5 * textScaleFactor}
           lineHeight={1}
@@ -229,8 +229,8 @@ function Content(props) {
               {/* /the words located by the tree trunk// */}
               <Text
                 bold
-                position={[2, -0.2, 0]}
-                rotation={[-0.1, 0, 0]}
+                position={[-40, 25, -20]}
+                rotation={[0, 1.3, 0]}
                 // position-z={0.5}
                 anchorX='center'
                 anchorY='middle'

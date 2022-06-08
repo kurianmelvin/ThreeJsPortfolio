@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/order
 import { ScrollControls, Scroll, PerspectiveCamera } from '@react-three/drei'
 
 //
@@ -40,7 +41,7 @@ function AboutContent() {
     //
     <>
       {/* need to change the default camera position for the aboutMeData  */}
-      <PerspectiveCamera makeDefault position={[0, 0, 25]} />
+      {/* <PerspectiveCamera makeDefault position={[0, 1, 100]} /> */}
 
       <ScrollControls damping={3} pages={5}>
         <Scroll>

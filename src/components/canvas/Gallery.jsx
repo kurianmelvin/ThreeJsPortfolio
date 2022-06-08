@@ -24,16 +24,15 @@ const GOLDENRATIO = 1.61803398875
 function Gallery({ images }) {
   return (
     <>
-      <Environment preset='city' />
-      <Stars radius={50} depth={500} />
-      {/* <group position={[0, -0.5, 0]}> */}
+      <Environment preset='night' />
+
       <group
         position={[0, -0.5, 0]}
         //  dispose={null}
       >
         <Frames images={images} />
 
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
+        {/* <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
           <planeBufferGeometry args={[100, 100]} />
           <MeshReflectorMaterial
             blur={[300, 100]}
@@ -47,7 +46,7 @@ function Gallery({ images }) {
             color='#101010'
             metalness={0.5}
           />
-        </mesh>
+        </mesh> */}
       </group>
     </>
   )
@@ -128,8 +127,8 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
     // image.current.material.zoom = 2 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 3) / 2 /* prettier-ignore */
     // image.current.material.zoom = 1 /* prettier-ignore */
     //inside image scale
-    image.current.scale.x = THREE.MathUtils.lerp(image.current.scale.x, (hovered ? 1 : 1),0.05) /* prettier-ignore */
-    image.current.scale.y = THREE.MathUtils.lerp(image.current.scale.y, (hovered ? 1.2 : 1),0.05) /* prettier-ignore */
+    image.current.scale.x = THREE.MathUtils.lerp(image.current.scale.x, (hovered ? 1 : 1),0.005) /* prettier-ignore */
+    image.current.scale.y = THREE.MathUtils.lerp(image.current.scale.y, (hovered ? 1.2 : 1),0.005) /* prettier-ignore */
     //the border and hover color of the frames
 
     // frame.current.scale.x = THREE.MathUtils.lerp(frame.current.scale.x, 0.85 * (hovered ? 2.85 : 1),0.01) /* prettier-ignore */
@@ -148,34 +147,14 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
           onPointerOut={() => hover(false)}
           //scales the frames
           // scale={[1, 2, 0.05]}
-          scale={[hovered ? 3 : 1, GOLDENRATIO, 0.05]}
+          scale={[hovered ? 3 : 1, GOLDENRATIO, 0.1]}
           // positions the frames
           position={[0, 1, -1]}
           // dispose={null}
         >
           <planeBufferGeometry />
           {/* the border of the image frames  */}
-          <meshStandardMaterial
-            color='#151515'
-            // color='blue'
-            // metalness={0.5}
-            // roughness={0.5}
-            // envMapIntensity={1}
-          />
-          {/* this mesh deals with the inside border of the image gallery frame  */}
-
-          {/* <mesh
-            ref={frame}
-            raycast={() => null}
-            // scale={[0.9, 0.93, 0.9]}
-            scale={[0.9, 0.93, 0.9]}
-            // position={[0, 0, 0.2]}
-            position={[0, 0, 0.1]}
-          > */}
-          {/* <boxGeometry /> */}
-          {/* inside border of the frame */}
-          {/* <meshBasicMaterial color='white' toneMapped={false} fog={false} /> */}
-          {/* </mesh> */}
+          <meshStandardMaterial color='#fff' />
 
           {/* this is the Image component coming from DREI lib and the information from here is what is being passed down to the rest of the function */}
           <Image
@@ -185,7 +164,7 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
             raycast={() => null}
             toneMapped={true}
             //this positions the images infront of the frame
-            position={[0, 0, 1]}
+            position={[0, 0, 0.02]}
             url={url}
             // scale={[5, 3, 0]}
             alt={''}

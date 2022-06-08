@@ -8,7 +8,7 @@ function Clouds(props) {
   const cloudsRef = useRef(null)
 
   useFrame((state, delta) => {
-    cloudsRef.current ? (cloudsRef.current.rotation.y += 0.0008) : null
+    cloudsRef.current ? (cloudsRef.current.rotation.y += 0.002) : null
   })
 
   return (

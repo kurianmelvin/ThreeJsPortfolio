@@ -1,11 +1,12 @@
 import React, { useRef } from 'react'
-import dynamic from 'next/dynamic'
+
 import {
   useGLTF,
   // OrbitControls,
   MeshReflectorMaterial,
 } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
+import dynamic from 'next/dynamic'
 
 // ExperienceButton
 
@@ -16,7 +17,7 @@ function Tree(props) {
   const { nodes, materials } = useGLTF('/tree1.glb')
 
   useFrame((state, delta) => {
-    tree.current ? (tree.current.rotation.y += 0.00009) : null
+    tree.current ? (tree.current.rotation.y += 0.0005) : null
   })
   return (
     <>
@@ -49,10 +50,10 @@ function Tree(props) {
           />
         </group>
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
-          <planeBufferGeometry args={[50, 40]} />
+          <boxBufferGeometry args={[50, 40]} />
 
           <MeshReflectorMaterial
-            blur={[0, 100]}
+            blur={[100, 300]}
             resolution={1080}
             mixBlur={0}
             mixStrength={40}
@@ -60,7 +61,7 @@ function Tree(props) {
             depthScale={1.2}
             minDepthThreshold={0.4}
             maxDepthThreshold={1.4}
-            color='#101010'
+            color='#fff'
             metalness={0.5}
           />
         </mesh>

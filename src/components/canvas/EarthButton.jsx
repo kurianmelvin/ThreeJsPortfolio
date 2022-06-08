@@ -34,7 +34,7 @@ function EarthButton(props) {
     [hovered]
   )
   useFrame((state, delta) => {
-    refEarth.current ? (refEarth.current.rotation.y += 0.001) : null
+    refEarth.current ? (refEarth.current.rotation.y += 0.002) : null
   })
   return (
     <>

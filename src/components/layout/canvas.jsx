@@ -18,8 +18,8 @@ const LCanvas = ({ children }) => {
         gl={{ antialias: true }}
         camera={{ position: [0, 1, 10] }}
         dpr={[1, 2]}
-        linear={true}
-        flat={true}
+        // linear={true}
+        // flat={true}
         // legacy={true}
         // frameloop={'demand'}
         // onCreated={(state) => state.events.connect(dom.current)}
