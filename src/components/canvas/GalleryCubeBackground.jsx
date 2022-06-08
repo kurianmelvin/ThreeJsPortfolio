@@ -33,11 +33,11 @@ import {
 // softShadows()
 
 function GalleryBackground(props) {
-  const galleryBackgroundImage = useLoader(TextureLoader, './3d13.jpg')
+  const galleryBackgroundImage = useLoader(TextureLoader, './3d22.jpg')
 
   return (
     <>
-      <group {...props} position={[0, 5, 5]}>
+      <group {...props} position={[0, 4, 5]}>
         <mesh>
           <boxBufferGeometry attach='geometry' args={[12, 12, 12]} />
           <meshStandardMaterial map={galleryBackgroundImage} side={BackSide} />
@@ -50,7 +50,7 @@ function GalleryBackground(props) {
 function GalleryCubeBackground() {
   return (
     <>
-      <ambientLight intensity={0.2} />
+      <ambientLight intensity={0.1} />
       <group>
         <GalleryBackground />
       </group>

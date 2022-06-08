@@ -19,14 +19,14 @@ import Gallery from '@/components/canvas/Gallery'
 const images = [
   //1 LEFT FRONT 1
   {
-    position: [-2, 0, 6],
+    position: [-2, 0, 8],
     rotation: [0, Math.PI / 2.5, 0],
     url: '/g1.jpg',
     text: `The Hiramic\nLegend`,
   },
   // 2 left middle 2
   {
-    position: [-2.15, 0, 4],
+    position: [-2, 0, 5],
     rotation: [0, Math.PI / 2.5, 0],
     url: '/g3.jpg',
     text: `The Hiramic\nLegend`,
@@ -51,7 +51,7 @@ const images = [
   // { position: [0, 0, 0], rotation: [0, 0, 0], url: '/b11.jpg' },
   //
   // 5 MIDDLE m1
-  { position: [0, 0, 2], rotation: [0, 0, 0], url: '/g4.jpg' },
+  { position: [0, 0, 0], rotation: [0, 0, 0], url: '/g4.jpg' },
   //
   //
   //6 // Back right
@@ -67,14 +67,14 @@ const images = [
   },
   //8 Right middle 2
   {
-    position: [2.15, 0, 4],
+    position: [2, 0, 5],
     rotation: [0, -Math.PI / 2.5, 0],
     url: '/b8.jpeg',
     text: `The Hiramic\nLegend`,
   },
   //9 right front 1
   {
-    position: [2, 0, 6],
+    position: [2, 0, 8],
     rotation: [0, -Math.PI / 2.5, 0],
     url: '/g5.jpg',
     text: `The Hiramic\nLegend`,

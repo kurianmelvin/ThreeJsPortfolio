@@ -43,7 +43,7 @@ function GalleryContent() {
 
       <group position={[0, 0, 0]}>
         <ImageGallery />
-        <GalleryCubeBackground position={[0, 0, 0]} scale={[1, 1, 1]} />
+        <GalleryCubeBackground />
 
         {/* <HomeButton
           position={[-1, -0.45, 7]}
