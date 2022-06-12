@@ -8,23 +8,18 @@ import Hello from '@/components/canvas/Hello'
 import useStore from '@/helpers/store'
 
 function EarthButton(props) {
-  const image = useRef()
-  const materialColor = useRef()
+  // Take care of cursor state on hover
+  const [hovered, setHovered] = useState(false)
+  const buttonText = useRef()
   const refEarth = useRef(null)
   const router = useStore((state) => state.router)
+  //texture import
   const [base, bump, specular] = useTexture([
     '8081_earthmap2k.jpg',
     '8081_earthbump2k.jpg',
     'earth-specular.png',
   ])
-  //
-  let mColor = new THREE.Color()
-  // Take care of cursor state on hover
-  const [hovered, setHovered] = useState(false)
-  // materialColor.current.material.color = THREE.MathUtils.lerp(materialColor.current.material.color, (hovered ? 'green' : 'blue'), 0.1) /* prettier-ignore */
-  // mColor = THREE.MathUtils.lerp(mColor.set(hovered ? '#2C061F' : '#F7F7F7'), 0.01) /* prettier-ignore */
 
-  //
   //
   // const handleNavigation = () => {
   //   window.location.href = 'https://kurianmelvin.com/'
@@ -48,13 +43,13 @@ function EarthButton(props) {
   })
   useFrame(() => {
     // h? T : F
-    image.current.scale.x = THREE.MathUtils.lerp(image.current.scale.x, (hovered ? 5 : 0),0.05) /* prettier-ignore */
-    image.current.scale.y = THREE.MathUtils.lerp(image.current.scale.y, (hovered ? 5 :0),0.05) /* prettier-ignore */
-    image.current.scale.z= THREE.MathUtils.lerp(image.current.scale.z, (hovered ? 5 :0),0.05) /* prettier-ignore */
+    buttonText.current.scale.x = THREE.MathUtils.lerp(buttonText.current.scale.x, (hovered ? 5 : 0),0.05) /* prettier-ignore */
+    buttonText.current.scale.y = THREE.MathUtils.lerp(buttonText.current.scale.y, (hovered ? 5 :0),0.05) /* prettier-ignore */
+    buttonText.current.scale.z= THREE.MathUtils.lerp(buttonText.current.scale.z, (hovered ? 5 :0),0.05) /* prettier-ignore */
     //position
-    image.current.position.x= THREE.MathUtils.lerp(image.current.position.x, (hovered ? -15 :0),0.02) /* prettier-ignore */
-    image.current.position.y= THREE.MathUtils.lerp(image.current.position.y, (hovered ? 10.4 :0),0.4) /* prettier-ignore */
-    image.current.position.z= THREE.MathUtils.lerp(image.current.position.z, (hovered ? 5 :0),0.005) /* prettier-ignore */
+    buttonText.current.position.x= THREE.MathUtils.lerp(buttonText.current.position.x, (hovered ? -15 :0),0.02) /* prettier-ignore */
+    buttonText.current.position.y= THREE.MathUtils.lerp(buttonText.current.position.y, (hovered ? 10.4 :0),0.4) /* prettier-ignore */
+    buttonText.current.position.z= THREE.MathUtils.lerp(buttonText.current.position.z, (hovered ? 5 :0),0.005) /* prettier-ignore */
   })
   return (
     <>
@@ -82,7 +77,7 @@ function EarthButton(props) {
 
         <group>
           <Text3D
-            ref={image}
+            ref={buttonText}
             font={'/kanit.json'}
             curveSegments={14}
             bevelEnabled={true}
