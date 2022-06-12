@@ -25,7 +25,7 @@ function Tree(props) {
       <group
         ref={group}
         {...props}
-        scale={[1.5, 1.5, 1.5]}
+        scale={[1.8, 1.8, 1.8]}
 
         // dispose={null}
       >
@@ -49,7 +49,7 @@ function Tree(props) {
             material={nodes.mesh_1.material}
           />
         </group>
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
+        {/* <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
           <boxBufferGeometry args={[50, 40]} />
 
           <MeshReflectorMaterial
@@ -61,10 +61,10 @@ function Tree(props) {
             depthScale={1.2}
             minDepthThreshold={0.4}
             maxDepthThreshold={1.4}
-            color='#fff'
+            color='#413F42'
             metalness={0.5}
           />
-        </mesh>
+        </mesh> */}
       </group>
     </>
   )

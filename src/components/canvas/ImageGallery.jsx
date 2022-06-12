@@ -35,7 +35,7 @@ const images = [
   {
     position: [-2, 0, 2],
     rotation: [0, Math.PI / 2.5, 0],
-    url: '/g2.jpg',
+    url: '/g6.jpeg',
     text: `The Hiramic\nLegend`,
   },
 
@@ -76,7 +76,7 @@ const images = [
   {
     position: [2, 0, 8],
     rotation: [0, -Math.PI / 2.5, 0],
-    url: '/g5.jpg',
+    url: '/b6.jpeg',
     text: `The Hiramic\nLegend`,
   },
 ]

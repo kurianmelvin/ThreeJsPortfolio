@@ -3,7 +3,7 @@ import { extend } from '@react-three/fiber'
 
 export const ImageFadeMaterial = shaderMaterial(
   {
-    effectFactor: 0.45,
+    effectFactor: 0.5,
     dispFactor: 1,
     tex: undefined,
     tex2: undefined,
@@ -30,9 +30,10 @@ export const ImageFadeMaterial = shaderMaterial(
         vec4 _texture2 = texture2D(tex2, distortedPosition2);
         vec4 finalTexture = mix(_texture, _texture2, dispFactor);
         gl_FragColor = finalTexture;
-        #include <tonemapping_fragment>
+      
         #include <encodings_fragment>
       }`
 )
 
 extend({ ImageFadeMaterial })
+// #include <tonemapping_fragment>

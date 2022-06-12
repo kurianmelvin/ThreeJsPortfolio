@@ -13,7 +13,7 @@ function SocialLinkedin(props) {
   //
   // const linked = useLoader(TextureLoader, './linkedin.png')
   const linked2 = useLoader(TextureLoader, './linkedin2.png')
-  // const trans = useLoader(TextureLoader, './st10.jpg')
+  const trans = useLoader(TextureLoader, './st10.jpg')
   //
   const [hovered, setHover] = useState(false)
   //
@@ -49,7 +49,7 @@ function SocialLinkedin(props) {
             tex-encoding={THREE.sRGBEncoding}
             tex2={linked2}
             tex2-encoding={THREE.sRGBEncoding}
-            disp={linked2}
+            disp={trans}
             disp-encoding={THREE.sRGBEncoding}
             toneMapped={false}
           />

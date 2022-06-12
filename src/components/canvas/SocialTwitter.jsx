@@ -12,7 +12,7 @@ function SocialTwitter(props) {
   //
   // const twitt = useLoader(TextureLoader, './twitter.png')
   const twitt2 = useLoader(TextureLoader, './twitter2.png')
-  // const trans = useLoader(TextureLoader, './st10.jpg')
+  const trans = useLoader(TextureLoader, './st10.jpg')
   //
   const [hovered, setHover] = useState(false)
   //
@@ -51,7 +51,7 @@ function SocialTwitter(props) {
             tex-encoding={THREE.sRGBEncoding}
             tex2={twitt2}
             tex2-encoding={THREE.sRGBEncoding}
-            disp={twitt2}
+            disp={trans}
             disp-encoding={THREE.sRGBEncoding}
             toneMapped={false}
           />

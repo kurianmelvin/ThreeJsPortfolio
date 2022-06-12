@@ -5,6 +5,15 @@ const AboutContent = dynamic(() => import('@/components/canvas/AboutContent'), {
   ssr: false,
 })
 
+// const DOM = () => {
+//   return (
+//     // Step 5 - delete Instructions components
+//     <>
+//       <FramerMotion />
+//     </>
+//   )
+// }
+
 const R3F = () => {
   return (
     <>
@@ -30,3 +39,6 @@ export async function getStaticProps() {
     },
   }
 }
+//  {
+//    /* <DOM /> */
+//  }

@@ -6,17 +6,29 @@ import dynamic from 'next/dynamic'
 
 //
 //
-const HomeButton = dynamic(() => import('@/components/canvas/HomeButton'), {
-  ssr: false,
-})
+// const HomeButton = dynamic(() => import('@/components/canvas/HomeButton'), {
+//   ssr: false,
+// })
 
 // ExperienceButton
-const ExperienceButton = dynamic(
-  () => import('@/components/canvas/ExperienceButton'),
+// const ExperienceButton = dynamic(
+//   () => import('@/components/canvas/ExperienceButton'),
+//   {
+//     ssr: false,
+//   }
+// )
+
+const ItemStand = dynamic(() => import('@/components/canvas/ItemStand'), {
+  ssr: false,
+})
+// import RobotButton from './RobotButton'
+const RobotButtonAbout = dynamic(
+  () => import('@/components/canvas/RobotButtonAbout'),
   {
     ssr: false,
   }
 )
+
 //
 //
 //
@@ -44,25 +56,33 @@ function GalleryContent() {
       <group position={[0, 0, 0]}>
         <ImageGallery />
         <GalleryCubeBackground />
-
         {/* <HomeButton
           position={[-1, -0.45, 7]}
           scale={[0.12, 0.12, 0.12]}
           rotation={[0, 0.5, 0]}
-        />
-        <ExperienceButton
-          scale={[7, 7, 7]}
-          rotation={[0, 1.2, 0]}
-          position={[1, -0.45, 7]}
         /> */}
+        <group position={[0, -0.2, 2]} scale={0.8}>
+          <ItemStand
+            scale={[0.2, 0.2, 0.2]}
+            rotation={[0, 0, 0]}
+            position={[0, -1.84, 5]}
+          />
+          <RobotButtonAbout
+            position={[0, -0.55, 5]}
+            scale={[0.2, 0.2, 0.2]}
+            rotation={[0, 0.1, 0]}
+          />
+        </group>
         <mesh rotation={[0, 0.15, 0]}>
-          {/* <spotLight
-            color={'white'}
-            position={[0, 0, 40]}
-            intensity={2}
-            angle={Math.PI / 80}
-            // distance={20}
-          /> */}
+          <spotLight
+            color={'#FFE3A9'}
+            // decay={0}
+            position={[0, 500, 350]}
+            intensity={1}
+            angle={Math.PI / 300}
+            // distance={20000}
+            penumbra={0.08}
+          />
         </mesh>
       </group>
     </>

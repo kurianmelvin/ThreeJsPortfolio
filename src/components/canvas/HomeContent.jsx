@@ -13,6 +13,8 @@ const Laptop = dynamic(() => import('@/components/canvas/Laptop'), {
 
 import Clouds from '@/components/canvas/Clouds'
 import EarthButton from '@/components/canvas/EarthButton'
+import Hello from '@/components/canvas/Hello'
+import RobotButton from '@/components/canvas/RobotButton'
 
 const Table = dynamic(() => import('@/components/canvas/Table'), {
   ssr: false,
@@ -41,24 +43,33 @@ function HomeContent() {
 
       <group position={[0, 60, -55]}>
         <HomeBackgroundPlane />
+
         <group position={[0, -100, 0]}>
-          <group position={[40, 20.5, -30]}>
-            <PhoneButtion position={[-0.5, 3.5, 0]} scale={[10.5, 10, 10]} />
-            <SmallTable position={[0, -21, 0]} scale={[10, 10, 10]} />
-          </group>
+          {/* <group position={[40, 20.5, -30]}> */}
+          {/* <SmallTable position={[0, -21, 0]} scale={[10, 10, 10]} /> */}
+          {/* </group> */}
 
           <group>
-            <Laptop scale={[1.5, 1.5, 1.5]} position={[0, 16.5, -7]} />
-            <Table scale={[20, 20, 20]} />
+            <PhoneButtion
+              position={[30, 27, 0]}
+              // rotation={[-Math.PI / 2, 0, 0]}
+              scale={[8.5, 8, 8]}
+            />
+            <Laptop scale={[2, 2, 2.5]} position={[0, 16.5, -11]} />
+            <Table scale={[55, 20, 30]} />
           </group>
 
-          <group position={[-40, 20.5, -30]}>
+          <group position={[-30, 26, 0]}>
             <EarthButton />
             <Clouds />
-            <SmallTable position={[2, -21, 0]} scale={[10, 10, 10]} />
           </group>
         </group>
       </group>
+      <RobotButton
+        rotation={[0, 0.1, 0]}
+        position={[0, -40, -90]}
+        scale={[8.5, 8, 8]}
+      />
     </>
   )
   //

@@ -10,7 +10,10 @@ import {
   //   useAnimations,
 } from '@react-three/drei'
 
-export default function RobotButton(props) {
+import useStore from '@/helpers/store'
+
+export default function RobotButtonAbout(props) {
+  const router = useStore((state) => state.router)
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/robot.glb')
 
@@ -20,7 +23,7 @@ export default function RobotButton(props) {
   //
   // Hover and animation-index states
   const [hovered, setHovered] = useState(false)
-  let [index, setIndex] = useState(12)
+  let [index, setIndex] = useState(0)
   //
   //
   //   useEffect()
@@ -44,6 +47,9 @@ export default function RobotButton(props) {
         dispose={null}
         onPointerEnter={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
+        onClick={() => {
+          router.push('/about')
+        }}
       >
         <group name='Root_Scene'>
           <group

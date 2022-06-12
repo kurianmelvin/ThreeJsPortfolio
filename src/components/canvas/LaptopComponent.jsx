@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+const Tree = dynamic(() => import('@/components/canvas/Tree'), {
+  ssr: false,
+})
 // import Instructions from '@/components/dom/Instructions'
 import { a as three } from '@react-spring/three'
 import { useGLTF } from '@react-three/drei'
@@ -55,14 +58,16 @@ function LaptopComponent({ open, hinge, ...props }) {
             {/* getting the videos from the LaptopGif Component */}
             <mesh
               rotation-x={-Math.PI / 2}
-              position={[0, 0, 0]}
-              scale={[8.5, 5.6, 1]}
+              position={[0, 0, 2.5]}
+              // scale={[8.5, 5.6, 1]}
+              scale={[0.1, 0.1, 0.001]}
               onClick={() => {
                 router.push(`/about`)
               }}
               // onClick={(e) => (e.stopPropagation(), router.push(`/about`))}
             >
-              <LaptopGif />
+              {/* <LaptopGif /> */}
+              <Tree />
             </mesh>
           </group>
         </three.group>

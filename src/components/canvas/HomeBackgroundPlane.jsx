@@ -53,8 +53,8 @@ function HomeBackgroundPlane() {
       <group>
         <HomeCubeBackground />
       </group>
-      {/* <FlyControls movementSpeed={20} rollSpeed={0.05} sp /> */}
-      {/* <OrbitControls /> */}
+      {/* <FlyControls movementSpeed={20} rollSpeed={0.05} /> */}
+      <OrbitControls />
     </>
   )
 }

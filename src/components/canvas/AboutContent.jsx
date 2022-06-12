@@ -1,5 +1,10 @@
 // eslint-disable-next-line import/order
-import { ScrollControls, Scroll, PerspectiveCamera } from '@react-three/drei'
+import {
+  ScrollControls,
+  Scroll,
+  PerspectiveCamera,
+  OrbitControls,
+} from '@react-three/drei'
 
 //
 import dynamic from 'next/dynamic'
@@ -33,7 +38,12 @@ const ArtStandButton = dynamic(
 const AboutMe = dynamic(() => import('@/components/canvas/AboutMe'), {
   ssr: false,
 })
-
+const AboutTimeline = dynamic(
+  () => import('@/components/canvas/AboutTimeline'),
+  {
+    ssr: false,
+  }
+)
 //
 function AboutContent() {
   return (
@@ -41,24 +51,15 @@ function AboutContent() {
     //
     <>
       {/* need to change the default camera position for the aboutMeData  */}
-      {/* <PerspectiveCamera makeDefault position={[0, 1, 100]} /> */}
+      <PerspectiveCamera makeDefault position={[0, 0, 50]} />
 
-      <ScrollControls damping={3} pages={5}>
+      <ScrollControls damping={3} pages={6}>
         <Scroll>
           <AboutCubeBackground />
-          <group position={[0, 10, -10]} rotation={[0.2, 0, 0]}>
+          {/* <AboutTimeline /> */}
+          <group position={[0, 10, -10]} rotation={[0, 0, 0]}>
             <AboutMe />
-            <HomeButton
-              scale={[2, 2, 2]}
-              position={[-20, -49, -10]}
-              rotation={[0, 0.5, 0]}
-            />
-            <ArtStandButton
-              scale={[6, 6, 6]}
-              position={[20, -49.9, -8]}
-              rotation={[0, -0.5, 0]}
-            />
-            <Tree position={[0, -50, -25]} />
+            <Tree position={[1, -105, -38]} />
           </group>
         </Scroll>
       </ScrollControls>
