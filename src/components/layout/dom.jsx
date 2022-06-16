@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, Suspense } from 'react'
 
 import { Loader } from '@react-three/drei'
 
@@ -14,24 +14,27 @@ const Dom = ({ children }) => {
   }, [])
 
   return (
-    <div
-      // className='fullscreen'
-      // style={{
-      //   position: 'relative',
-      //   top: 0,
-      //   backgroundColor: '#FFC300',
-      //   // height: '100vh',
-      //   // width: '100vW',
-      //   zIndex: -0.1,
-      //   //   color: 'yellow',
-      // }}
-      ref={ref}
-    >
-      {/* helo */}
-      {children}
-      {/* hello */}
+    <>
       <Loader containerStyles={containerStyles} />
-    </div>
+
+      {/* <Suspense fallback={null}> */}
+      <div
+        // className='fullscreen'
+        // style={{
+        //   position: 'relative',
+        //   top: 0,
+        //   backgroundColor: '#FFC300',
+        //   // height: '100vh',
+        //   // width: '100vW',
+        //   zIndex: -0.1,
+        //   //   color: 'yellow',
+        // }}
+        ref={ref}
+      >
+        {children}
+      </div>
+      {/* </Suspense> */}
+    </>
   )
 }
 

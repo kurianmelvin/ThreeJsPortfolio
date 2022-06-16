@@ -25,7 +25,12 @@ import {
 } from 'three'
 
 function AboutCubeBackground(props) {
-  const homeBackgroundImage = useLoader(TextureLoader, './3d41.jpg')
+  // const aboutBackgroundImage = useLoader(TextureLoader, './3d41.jpg')
+  // const aboutBackgroundImage = useLoader(TextureLoader, './3d18.jpg')
+  // const aboutBackgroundImage = useLoader(TextureLoader, './3d13.jpg')
+  // const aboutBackgroundImage = useLoader(TextureLoader, './3d42.jpg')
+  // const aboutBackgroundImage = useLoader(TextureLoader, './3d47.jpg')
+  const aboutBackgroundImage = useLoader(TextureLoader, './3d18.jpg')
   const ref = useRef()
   return (
     <>
@@ -34,8 +39,15 @@ function AboutCubeBackground(props) {
       <group {...props}>
         {/* <Tree scale={[2.5, 2.2, 2.2]} position={[0, -60, -50]} /> */}
         <mesh ref={ref} position={[0, -20, -20]}>
-          <boxBufferGeometry attach='geometry' args={[150, 150, 150]} />
-          <meshStandardMaterial map={homeBackgroundImage} side={BackSide} />
+          <boxBufferGeometry attach='geometry' args={[400, 150, 150]} />
+          <meshStandardMaterial
+            map={aboutBackgroundImage}
+            side={BackSide}
+            roughness={0.65}
+            metalness={0}
+            fog
+            emissive={'#D89216'}
+          />
         </mesh>
       </group>
       {/* <OrbitControls /> */}

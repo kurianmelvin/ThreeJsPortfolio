@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 
-import { Preload } from '@react-three/drei'
+import { Preload, FlyControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 
 import useStore from '@/helpers/store'
@@ -24,10 +24,11 @@ const LCanvas = ({ children }) => {
         // frameloop={'demand'}
         // onCreated={(state) => state.events.connect(dom.current)}
       >
-        <Suspense fallback={null}>
-          <Preload all />
-          {children}
-        </Suspense>
+        {/* <Suspense fallback={null}> */}
+        <Preload all />
+        {children}
+        {/* </Suspense> */}
+        <FlyControls />
       </Canvas>
 
       {/* <Loader /> */}

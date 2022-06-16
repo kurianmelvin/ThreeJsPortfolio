@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import { useGLTF } from '@react-three/drei'
+import { useGLTF, Text3D, useCursor } from '@react-three/drei'
 // import { useFrame } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber'
 import dynamic from 'next/dynamic'
-
 //
+import * as THREE from 'three'
 // import SocialGithub from '@/components/canvas/SocialGithub'
 // import SocialInstagram from '@/components/canvas/SocialInstagram'
 // import SocialLinkedin from '@/components/canvas/SocialLinkedin'
@@ -34,19 +35,33 @@ const SocialTwitter = dynamic(
     ssr: false,
   }
 )
+//
+//
 
 export default function PhoneButtion(props) {
+  const [hovered, setHovered] = useState(false)
+  const buttonText = useRef()
   const group = useRef(null)
   const refPhone = useRef(null)
-  const gif = useRef(null)
+  // const gif = useRef(null)
 
   const { nodes, materials } = useGLTF('/iphone 12 pro max.glb')
-  const [hovered, setHovered] = useState(false)
-  useEffect(
-    () => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'),
-    [hovered]
-  )
 
+  // useEffect(
+  //   () => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'),
+  //   [hovered]
+  // )
+  useCursor(hovered)
+  useFrame(() => {
+    // h? T : F
+    buttonText.current.scale.x = THREE.MathUtils.lerp(buttonText.current.scale.x, (hovered ? 120: 0),0.05) /* prettier-ignore */
+    buttonText.current.scale.y = THREE.MathUtils.lerp(buttonText.current.scale.y, (hovered ? 120:0),0.05) /* prettier-ignore */
+    buttonText.current.scale.z= THREE.MathUtils.lerp(buttonText.current.scale.z, (hovered ? 120:0),0.05) /* prettier-ignore */
+    //position
+    buttonText.current.position.x= THREE.MathUtils.lerp(buttonText.current.position.x, (hovered ? -400:0),0.06) /* prettier-ignore */
+    buttonText.current.position.y= THREE.MathUtils.lerp(buttonText.current.position.y, (hovered ? 700:640),0.06) /* prettier-ignore */
+    buttonText.current.position.z= THREE.MathUtils.lerp(buttonText.current.position.z, (hovered ? 0 :0),0.6) /* prettier-ignore */
+  })
   return (
     <>
       <group
@@ -59,6 +74,29 @@ export default function PhoneButtion(props) {
         // rotation={[0, -0.5, 0]}
         // dispose={null}
       >
+        <group scale={0.002}>
+          <Text3D
+            ref={buttonText}
+            font={'/kanit.json'}
+            curveSegments={14}
+            bevelEnabled={true}
+            bevelThickness={0.02}
+            bevelSize={0.05}
+            bevelOffset={-0.001}
+            bevelSegments={8}
+            // rotation={[0, -0.5, 0]}
+          >
+            <meshStandardMaterial
+              attach='material'
+              color={'#F77E21'}
+              // color={'#F77E21'}
+              roughness={0.1}
+              metalness={0.1}
+              flatShading={true}
+            />
+            CONTACT
+          </Text3D>
+        </group>
         <group
           // ref={refPhone}
           name='phone005'
@@ -133,6 +171,7 @@ export default function PhoneButtion(props) {
               material={nodes.Circle059_1.material}
             />
           </group>
+
           <group
             name='camera013'
             // position={[18, 0, 0]}
@@ -368,7 +407,6 @@ export default function PhoneButtion(props) {
               material={materials['screen.020']}
               material-color='black'
             />
-            <mesh></mesh>
           </group>
         </group>
       </group>

@@ -1,22 +1,17 @@
 import React, { useRef, useState, useEffect } from 'react'
 
-import {
-  useGLTF,
-  useAnimations,
-  Environment,
-  Lightformer,
-  OrbitControls,
-  useCursor,
-  //   useAnimations,
-} from '@react-three/drei'
+import { useGLTF, useAnimations, Text3D } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
+import dynamic from 'next/dynamic'
+import * as THREE from 'three'
 
 import useStore from '@/helpers/store'
 
-export default function RobotButtonAbout(props) {
+export default function GalleryRobotButton(props) {
   const router = useStore((state) => state.router)
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/robot.glb')
-
+  const buttonText = useRef()
   const { ref, actions, names } = useAnimations(animations)
   //
   //
@@ -38,18 +33,28 @@ export default function RobotButtonAbout(props) {
     // In the clean-up phase, fade it out
     return () => actions[names[index]]
   }, [index, actions, names, hovered])
+
+  useFrame(() => {
+    // h? T : F
+    buttonText.current.scale.x = THREE.MathUtils.lerp(buttonText.current.scale.x, (hovered ? 3: 0),0.05) /* prettier-ignore */
+    buttonText.current.scale.y = THREE.MathUtils.lerp(buttonText.current.scale.y, (hovered ? 3: 0),0.05) /* prettier-ignore */
+    buttonText.current.scale.z= THREE.MathUtils.lerp(buttonText.current.scale.z, (hovered ? 3: 0),0.05) /* prettier-ignore */
+    //position
+    buttonText.current.position.x= THREE.MathUtils.lerp(buttonText.current.position.x, (hovered ? -6:0),0.06) /* prettier-ignore */
+    buttonText.current.position.y= THREE.MathUtils.lerp(buttonText.current.position.y, (hovered ? -12:0),0.06) /* prettier-ignore */
+    buttonText.current.position.z= THREE.MathUtils.lerp(buttonText.current.position.z, (hovered ? 0 :0),0.06) /* prettier-ignore */
+  })
   return (
     <>
-      {/* <ambientLight intensity={2} /> */}
       <group
         ref={ref}
         {...props}
         dispose={null}
         onPointerEnter={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
-        onClick={() => {
-          router.push('/about')
-        }}
+        // onClick={() => {
+        //   router.push('/')
+        // }}
       >
         <group name='Root_Scene'>
           <group
@@ -64,6 +69,29 @@ export default function RobotButtonAbout(props) {
               scale={100}
               userData={{ name: 'RobotArmature' }}
             >
+              <group scale={0.002}>
+                <Text3D
+                  ref={buttonText}
+                  font={'/kanit.json'}
+                  curveSegments={14}
+                  bevelEnabled={true}
+                  bevelThickness={0.02}
+                  bevelSize={0.05}
+                  bevelOffset={-0.001}
+                  bevelSegments={8}
+                  rotation={[1.5, 0, 0]}
+                >
+                  <meshStandardMaterial
+                    attach='material'
+                    color={'#D89216'}
+                    // color={'#F77E21'}
+                    roughness={0.1}
+                    metalness={0.1}
+                    flatShading={true}
+                  />
+                  HOME
+                </Text3D>
+              </group>
               <primitive object={nodes.Bone} />
             </group>
 

@@ -54,7 +54,7 @@ function GalleryCubeBackground() {
       <group>
         <GalleryBackground />
       </group>
-      <FlyControls movementSpeed={0.5} rollSpeed={0.05} />
+      {/* <FlyControls movementSpeed={0.5} rollSpeed={0.05} /> */}
       {/* <OrbitControls /> */}
     </>
   )

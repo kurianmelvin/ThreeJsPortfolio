@@ -1,42 +1,60 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+import { a as three } from '@react-spring/three'
+import { useGLTF, Text3D, useCursor } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
+import dynamic from 'next/dynamic'
+import * as THREE from 'three'
+
+import useStore from '@/helpers/store'
+
+// const LaptopGif = dynamic(() => import('@/components/canvas/LaptopGif'), {
+//   ssr: false,
+// })
+
 const Tree = dynamic(() => import('@/components/canvas/Tree'), {
   ssr: false,
 })
-// import Instructions from '@/components/dom/Instructions'
-import { a as three } from '@react-spring/three'
-import { useGLTF } from '@react-three/drei'
-import dynamic from 'next/dynamic'
-
-// import * as THREE from 'three'
-import useStore from '@/helpers/store'
-// import LoadingScreen from '@/components/canvas/LoadingScreen'
-const LaptopGif = dynamic(() => import('@/components/canvas/LaptopGif'), {
-  ssr: false,
-})
-// const vec = new THREE.Vector3()
+//
 
 function LaptopComponent({ open, hinge, ...props }) {
+  // Take care of cursor state on hover
+  const [hovered, setHovered] = useState(false)
+  const buttonText = useRef()
   const router = useStore((state) => state.router)
   const group = useRef()
 
   // Load model
   const { nodes, materials } = useGLTF('/mac-draco.glb')
-  // Take care of cursor state on hover
-  const [hovered, setHovered] = useState(false)
-  useEffect(() => {
-    document.body.style.cursor = hovered ? 'pointer' : 'auto'
-  }, [hovered])
+
+  // useEffect(() => {
+  //   document.body.style.cursor = hovered ? 'pointer' : 'auto'
+  // }, [hovered])
 
   // Events and spring animations were added afterwards
+
+  useCursor(hovered)
+  useFrame(() => {
+    // h? T : F
+    buttonText.current.scale.x = THREE.MathUtils.lerp(buttonText.current.scale.x, (hovered ? 1.5 : 0),0.05) /* prettier-ignore */
+    buttonText.current.scale.y = THREE.MathUtils.lerp(buttonText.current.scale.y, (hovered ? 1.5 :0),0.05) /* prettier-ignore */
+    buttonText.current.scale.z= THREE.MathUtils.lerp(buttonText.current.scale.z, (hovered ? 1.5 :0),0.05) /* prettier-ignore */
+    //position
+    buttonText.current.position.x= THREE.MathUtils.lerp(buttonText.current.position.x, (hovered ? -5 :0),0.06) /* prettier-ignore */
+    buttonText.current.position.y= THREE.MathUtils.lerp(buttonText.current.position.y, (hovered ? 0.5:-3),0.06) /* prettier-ignore */
+    buttonText.current.position.z= THREE.MathUtils.lerp(buttonText.current.position.z, (hovered ? 5 :0),0.06) /* prettier-ignore */
+  })
   return (
     <>
       <group
+        scale={[1.5, 1.5, 1.3]}
+        onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
+        onPointerOut={(e) => setHovered(false)}
         ref={group}
         {...props}
         //position responsible for the placement of the whole laptop
         // position={[0, -3, -10]}
-        rotation={[0, 0, 0]}
+        // rotation={[0, 0, 0]}
         // dispose={null}
       >
         <three.group rotation-x={hinge} position={[0, -0.04, 0.43]}>
@@ -46,11 +64,10 @@ function LaptopComponent({ open, hinge, ...props }) {
             // dispose={null}
           >
             <mesh
-              onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
-              onPointerOut={(e) => setHovered(false)}
               geometry={nodes.Cube008.geometry}
               material={nodes.Cube008.material}
             />
+
             <mesh
               geometry={nodes.Cube008_1.geometry}
               material={materials['matte.001']}
@@ -67,7 +84,8 @@ function LaptopComponent({ open, hinge, ...props }) {
               // onClick={(e) => (e.stopPropagation(), router.push(`/about`))}
             >
               {/* <LaptopGif /> */}
-              <Tree />
+
+              <Tree scale={[1.75, 1.75, 1.5]} />
             </mesh>
           </group>
         </three.group>
@@ -75,8 +93,16 @@ function LaptopComponent({ open, hinge, ...props }) {
           geometry={nodes.keyboard.geometry}
           material={materials.keys}
           position={[1.79, 0, 3.45]}
+          onClick={() => {
+            router.push(`/about`)
+          }}
         />
-        <group position={[0, -0.1, 3.39]}>
+        <group
+          position={[0, -0.1, 3.39]}
+          // onClick={() => {
+          //   router.push(`/about`)
+          // }}
+        >
           <mesh
             geometry={nodes.Cube002.geometry}
             material={nodes.Cube002.material}
@@ -92,6 +118,33 @@ function LaptopComponent({ open, hinge, ...props }) {
           geometry={nodes.touchbar.geometry}
           position={[0, -0.03, 1.2]}
         />
+      </group>
+      <group
+        onClick={() => {
+          router.push(`/about`)
+        }}
+      >
+        <Text3D
+          ref={buttonText}
+          font={'/kanit.json'}
+          curveSegments={14}
+          bevelEnabled={true}
+          bevelThickness={0.02}
+          bevelSize={0.05}
+          bevelOffset={-0.001}
+          bevelSegments={8}
+          rotation={[-1, 0, 0]}
+        >
+          <meshStandardMaterial
+            attach='material'
+            color={'#F77E21'}
+            // color={'#F77E21'}
+            roughness={0.1}
+            metalness={0.1}
+            flatShading={true}
+          />
+          ABOUT ME
+        </Text3D>
       </group>
     </>
   )

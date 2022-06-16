@@ -3,14 +3,14 @@ import React, { useRef, useState, useEffect } from 'react'
 import {
   useGLTF,
   useAnimations,
-  Environment,
-  Lightformer,
-  OrbitControls,
+  // Environment,
+  // Lightformer,
+  // OrbitControls,
   useCursor,
   //   useAnimations,
 } from '@react-three/drei'
 
-export default function RobotButton(props) {
+export default function HomeRobotButton(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/robot.glb')
 
@@ -20,7 +20,7 @@ export default function RobotButton(props) {
   //
   // Hover and animation-index states
   const [hovered, setHovered] = useState(false)
-  let [index, setIndex] = useState(12)
+  let [index, setIndex] = useState(0)
   //
   //
   //   useEffect()

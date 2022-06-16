@@ -73,7 +73,7 @@ function Frames({images, q = new THREE.Quaternion(),  p = new THREE.Vector3(),})
       clicked.current.parent.getWorldQuaternion(q)
     } else {
       //defalut position moving the frames back when the window loads
-      p.set(0, 0.5, 10)
+      p.set(0, 0.5, 12)
       q.identity()
     }
   })

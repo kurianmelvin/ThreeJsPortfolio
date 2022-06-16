@@ -25,11 +25,12 @@ function Tree(props) {
       <group
         ref={group}
         {...props}
-        scale={[1.8, 1.8, 1.8]}
+        // scale={[1.8, 1.8, 1.8]}
 
         // dispose={null}
       >
-        <group ref={tree} scale={1}>
+        {/* <group ref={tree}> */}
+        <group>
           <mesh
             castShadow
             receiveShadow

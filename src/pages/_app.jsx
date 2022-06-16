@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 
+import { FlyControls } from '@react-three/drei'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 

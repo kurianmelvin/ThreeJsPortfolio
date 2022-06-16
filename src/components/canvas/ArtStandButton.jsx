@@ -1,5 +1,7 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react'
+
 import { useGLTF } from '@react-three/drei'
+
 import useStore from '@/helpers/store'
 
 export default function ArtStandButton(props) {

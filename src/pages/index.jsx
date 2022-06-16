@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import dynamic from 'next/dynamic'
 
@@ -10,7 +10,9 @@ const HomeContent = dynamic(() => import('@/components/canvas/HomeContent'), {
 const R3F = () => {
   return (
     <>
-      <HomeContent route='/' />
+      <Suspense fallback={null}>
+        <HomeContent route='/' />
+      </Suspense>
     </>
   )
 }

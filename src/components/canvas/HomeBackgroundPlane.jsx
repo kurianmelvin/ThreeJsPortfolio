@@ -50,11 +50,11 @@ function HomeCubeBackground(props) {
 function HomeBackgroundPlane() {
   return (
     <>
-      <group>
-        <HomeCubeBackground />
-      </group>
+      {/* <group> */}
+      <HomeCubeBackground />
+      {/* </group> */}
       {/* <FlyControls movementSpeed={20} rollSpeed={0.05} /> */}
-      <OrbitControls />
+      {/* <OrbitControls /> */}
     </>
   )
 }
