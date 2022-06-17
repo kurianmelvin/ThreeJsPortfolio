@@ -2,15 +2,11 @@ import React, { useRef, useState, useEffect } from 'react'
 
 import { useGLTF, useAnimations, Text3D } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import dynamic from 'next/dynamic'
 import * as THREE from 'three'
 
-import useStore from '@/helpers/store'
 
 export default function GalleryRobotButton(props) {
-  const router = useStore((state) => state.router)
-  const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/robot.glb')
+  const { nodes, animations } = useGLTF('/robot.glb')
   const buttonText = useRef()
   const { ref, actions, names } = useAnimations(animations)
   //
@@ -20,10 +16,7 @@ export default function GalleryRobotButton(props) {
   const [hovered, setHovered] = useState(false)
   let [index, setIndex] = useState(0)
   //
-  //
-  //   useEffect()
-  // Change animation when the index changes
-  //   useCursor(hovered)
+
   useEffect(() => {
     document.body.style.cursor = hovered
       ? actions[names[index]].setDuration(4).setLoop(2, 2).play() && 'pointer'
@@ -41,8 +34,8 @@ export default function GalleryRobotButton(props) {
     buttonText.current.scale.z= THREE.MathUtils.lerp(buttonText.current.scale.z, (hovered ? 3: 0),0.05) /* prettier-ignore */
     //position
     buttonText.current.position.x= THREE.MathUtils.lerp(buttonText.current.position.x, (hovered ? -6:0),0.06) /* prettier-ignore */
-    buttonText.current.position.y= THREE.MathUtils.lerp(buttonText.current.position.y, (hovered ? -12:0),0.06) /* prettier-ignore */
-    buttonText.current.position.z= THREE.MathUtils.lerp(buttonText.current.position.z, (hovered ? 0 :0),0.06) /* prettier-ignore */
+    buttonText.current.position.y= THREE.MathUtils.lerp(buttonText.current.position.y, (hovered ? -10:0),0.06) /* prettier-ignore */
+    buttonText.current.position.z= THREE.MathUtils.lerp(buttonText.current.position.z, (hovered ? -1 :0),0.06) /* prettier-ignore */
   })
   return (
     <>
@@ -65,7 +58,7 @@ export default function GalleryRobotButton(props) {
           >
             <group
               name='RobotArmature'
-              rotation={[-Math.PI / 2, 0, 0]}
+              rotation={[-Math.PI / 2, 0, -0.05]}
               scale={100}
               userData={{ name: 'RobotArmature' }}
             >
@@ -79,7 +72,7 @@ export default function GalleryRobotButton(props) {
                   bevelSize={0.05}
                   bevelOffset={-0.001}
                   bevelSegments={8}
-                  rotation={[1.5, 0, 0]}
+                  rotation={[1, -0.0, 0]}
                 >
                   <meshStandardMaterial
                     attach='material'
@@ -123,7 +116,7 @@ export default function GalleryRobotButton(props) {
             <group
               name='HandL'
               position={[0, 2.37, -0.02]}
-              rotation={[-Math.PI / 2, 0, 0]}
+              rotation={[-Math.PI / 2, 0, -0.6]}
               scale={100}
               userData={{ name: 'Hand.L' }}
             >

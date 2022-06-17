@@ -69,10 +69,6 @@ export default function PhoneButtion(props) {
         {...props}
         onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
         onPointerOut={(e) => setHovered(false)}
-        // position={[40, 15, -60]}
-        // position={[-1, 0, -3]}
-        // rotation={[0, -0.5, 0]}
-        // dispose={null}
       >
         <group scale={0.002}>
           <Text3D

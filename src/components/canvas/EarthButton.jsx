@@ -4,7 +4,6 @@ import { useTexture, Text, Text3D, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
-import Hello from '@/components/canvas/Hello'
 import useStore from '@/helpers/store'
 
 function EarthButton(props) {
@@ -60,7 +59,6 @@ function EarthButton(props) {
         onClick={() => {
           router.push(`/imagegallery`)
         }}
-        // onClick={(e) => (e.stopPropagation(),handleNavigation())} /* prettier-ignore */
       >
         <mesh
           ref={refEarth}

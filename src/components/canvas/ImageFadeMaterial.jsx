@@ -3,7 +3,7 @@ import { extend } from '@react-three/fiber'
 
 export const ImageFadeMaterial = shaderMaterial(
   {
-    effectFactor: 0.5,
+    effectFactor: 2,
     dispFactor: 1,
     tex: undefined,
     tex2: undefined,

@@ -2,15 +2,12 @@ import React, { useRef, useState, useEffect } from 'react'
 
 import { useGLTF, useAnimations, Text3D } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import dynamic from 'next/dynamic'
 import * as THREE from 'three'
 
 import useStore from '@/helpers/store'
 
 export default function GalleryRobotButton(props) {
-  const router = useStore((state) => state.router)
-  const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/robot.glb')
+  const { nodes, animations } = useGLTF('/robot.glb')
   const buttonText = useRef()
   const { ref, actions, names } = useAnimations(animations)
   //
@@ -52,9 +49,6 @@ export default function GalleryRobotButton(props) {
         dispose={null}
         onPointerEnter={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
-        // onClick={() => {
-        //   router.push('/imagegallery')
-        // }}
       >
         <group name='Root_Scene'>
           <group
@@ -64,7 +58,7 @@ export default function GalleryRobotButton(props) {
           >
             <group
               name='RobotArmature'
-              rotation={[-Math.PI / 2, 0, 0]}
+              rotation={[-Math.PI / 2, 0, -0.7]}
               scale={100}
               userData={{ name: 'RobotArmature' }}
             >
@@ -78,11 +72,11 @@ export default function GalleryRobotButton(props) {
                   bevelSize={0.05}
                   bevelOffset={-0.001}
                   bevelSegments={8}
-                  rotation={[1.5, 0, 0]}
+                  rotation={[1, 0, 0]}
                 >
                   <meshStandardMaterial
                     attach='material'
-                    color={'#D89216'}
+                    color={'#346751'}
                     // color={'#F77E21'}
                     roughness={0.1}
                     metalness={0.1}
@@ -147,7 +141,6 @@ export default function GalleryRobotButton(props) {
           </group>
         </group>
       </group>
-      {/* <OrbitControls /> */}
     </>
   )
 }

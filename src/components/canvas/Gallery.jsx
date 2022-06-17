@@ -2,12 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 
 import {
   useCursor,
-  MeshReflectorMaterial,
   Image,
   // Text,
   Environment,
-  // FlyControls,
-  Stars,
 } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -31,22 +28,6 @@ function Gallery({ images }) {
         //  dispose={null}
       >
         <Frames images={images} />
-
-        {/* <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
-          <planeBufferGeometry args={[100, 100]} />
-          <MeshReflectorMaterial
-            blur={[300, 100]}
-            resolution={2048}
-            mixBlur={0}
-            mixStrength={40}
-            roughness={1}
-            depthScale={1.2}
-            minDepthThreshold={0.4}
-            maxDepthThreshold={1.4}
-            color='#101010'
-            metalness={0.5}
-          />
-        </mesh> */}
       </group>
     </>
   )
@@ -73,7 +54,7 @@ function Frames({images, q = new THREE.Quaternion(),  p = new THREE.Vector3(),})
       clicked.current.parent.getWorldQuaternion(q)
     } else {
       //defalut position moving the frames back when the window loads
-      p.set(0, 0.5, 12)
+      p.set(0, 0.5, 11)
       q.identity()
     }
   })
@@ -97,14 +78,7 @@ function Frames({images, q = new THREE.Quaternion(),  p = new THREE.Vector3(),})
         {images.map((props) => (
           <>
             <Frame key={props.url} {...props} />
-            {/* <FlyControls
-              //rl speed 0.015
-              // rollSpeed={0.015}
-              //movSpeed 0.05
-              movementSpeed={0.04}
-              dragToLook={false}
-              // autoForward = {false}
-            /> */}
+           
           </>
         ))}
       </group>
@@ -123,17 +97,10 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
   //
   useCursor(hovered)
   useFrame(() => {
-    // inside image zoom and scale
-    // image.current.material.zoom = 2 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 3) / 2 /* prettier-ignore */
-    // image.current.material.zoom = 1 /* prettier-ignore */
     //inside image scale
     image.current.scale.x = THREE.MathUtils.lerp(image.current.scale.x, (hovered ? 3 : 1),0.005) /* prettier-ignore */
     image.current.scale.y = THREE.MathUtils.lerp(image.current.scale.y, (hovered ? 1.5 :1),0.005) /* prettier-ignore */
     //the border and hover color of the frames
-
-    // frame.current.scale.x = THREE.MathUtils.lerp(frame.current.scale.x, 0.85 * (hovered ? 2.85 : 1),0.01) /* prettier-ignore */
-    // frame.current.scale.y = THREE.MathUtils.lerp(frame.current.scale.y,0.905 * (hovered ? 2.905 : 1),0.01) /* prettier-ignore */
-    // frame.current.material.color.lerp(c.set(hovered ? '#2C061F' : '#F7F7F7'),0.01) /* prettier-ignore */
   })
   return (
     <>
@@ -145,13 +112,8 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
           name={name}
           onPointerOver={(e) => (e.stopPropagation(), hover(true))}
           onPointerOut={() => hover(false)}
-          //scales the frames
           scale={[2, 2, 0.1]}
-          // scale={[hovered ? 2 : 1, GOLDENRATIO, 0.001]}
-          // positions the frames
           position={[0, 1, -1]}
-
-          // dispose={null}
         >
           <planeBufferGeometry />
           {/* the border of the image frames  */}
@@ -160,30 +122,19 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
           {/* this is the Image component coming from DREI lib and the information from here is what is being passed down to the rest of the function */}
           <Image
             //The Raycast allows you to click the image and get the infomation on what was clicked
-            // raycast={() => null}
+
             ref={image}
             raycast={() => null}
             toneMapped={false}
             //this positions the images infront of the frame
             position={[0, 0, 0.2]}
             url={url}
-            // scale={[5, 3, 0]}
             alt={''}
           />
         </mesh>
-        {/* <Text
-          maxWidth={0.1}
-          anchorX='left'
-          anchorY='top'
-          position={[0.5, GOLDENRATIO, 0]}
-          fontSize={0.1}
-          color={'tomato'}
-        >
-          X
-        </Text> */}
       </group>
     </>
   )
 }
-// Gallery.dispose()
+
 export default Gallery

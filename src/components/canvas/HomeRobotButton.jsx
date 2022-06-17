@@ -3,29 +3,22 @@ import React, { useRef, useState, useEffect } from 'react'
 import {
   useGLTF,
   useAnimations,
-  // Environment,
-  // Lightformer,
-  // OrbitControls,
-  useCursor,
   //   useAnimations,
 } from '@react-three/drei'
 
 export default function HomeRobotButton(props) {
-  const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/robot.glb')
+  const { nodes, animations } = useGLTF('/robot.glb')
 
   const { ref, actions, names } = useAnimations(animations)
   //
-  //
-  //
+ 
   // Hover and animation-index states
   const [hovered, setHovered] = useState(false)
   let [index, setIndex] = useState(0)
-  //
-  //
-  //   useEffect()
+  
+
   // Change animation when the index changes
-  //   useCursor(hovered)
+
   useEffect(() => {
     document.body.style.cursor = hovered
       ? actions[names[index]].setDuration(4).setLoop(2, 2).play() && 'pointer'

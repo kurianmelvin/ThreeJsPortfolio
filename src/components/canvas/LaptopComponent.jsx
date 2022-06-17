@@ -41,8 +41,8 @@ function LaptopComponent({ open, hinge, ...props }) {
     buttonText.current.scale.z= THREE.MathUtils.lerp(buttonText.current.scale.z, (hovered ? 1.5 :0),0.05) /* prettier-ignore */
     //position
     buttonText.current.position.x= THREE.MathUtils.lerp(buttonText.current.position.x, (hovered ? -5 :0),0.06) /* prettier-ignore */
-    buttonText.current.position.y= THREE.MathUtils.lerp(buttonText.current.position.y, (hovered ? 0.5:-3),0.06) /* prettier-ignore */
-    buttonText.current.position.z= THREE.MathUtils.lerp(buttonText.current.position.z, (hovered ? 5 :0),0.06) /* prettier-ignore */
+    buttonText.current.position.y= THREE.MathUtils.lerp(buttonText.current.position.y, (hovered ? 4:0),0.05) /* prettier-ignore */
+    buttonText.current.position.z= THREE.MathUtils.lerp(buttonText.current.position.z, (hovered ? 4 :0),0.06) /* prettier-ignore */
   })
   return (
     <>
@@ -120,6 +120,7 @@ function LaptopComponent({ open, hinge, ...props }) {
         />
       </group>
       <group
+        position={[0, -3, 2]}
         onClick={() => {
           router.push(`/about`)
         }}

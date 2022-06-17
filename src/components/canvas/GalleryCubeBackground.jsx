@@ -1,36 +1,11 @@
-import React, { useLayoutEffect } from 'react'
+import React from 'react'
 
 //
 // import { usePlane } from '@react-three/cannon'
-import {
-  MapControls,
-  Stars,
-  PerspectiveCamera,
-  Environment,
-  FlyControls,
-  OrbitControls,
-} from '@react-three/drei'
 //
 //
-import { useFrame, useLoader, useThree } from '@react-three/fiber'
-import dynamic from 'next/dynamic'
-import * as THREE from 'three'
-import {
-  TextureLoader,
-  CubeTextureLoader,
-  BackSide,
-  NormalBlending,
-  AdditiveBlending,
-  GreaterDepth,
-} from 'three'
-
-// const CubeBackground = dynamic(
-//   () => import('@/components/canvas/AboutCubeBackground'),
-//   {
-//     ssr: false,
-//   }
-// )
-// softShadows()
+import { useLoader } from '@react-three/fiber'
+import { TextureLoader, BackSide } from 'three'
 
 function GalleryBackground(props) {
   const galleryBackgroundImage = useLoader(TextureLoader, './3d22.jpg')
@@ -39,7 +14,7 @@ function GalleryBackground(props) {
     <>
       <group {...props} position={[0, 4, 5]}>
         <mesh>
-          <boxBufferGeometry attach='geometry' args={[12, 12, 12]} />
+          <boxBufferGeometry attach='geometry' args={[12, 12, 20]} />
           <meshStandardMaterial map={galleryBackgroundImage} side={BackSide} />
         </mesh>
       </group>
@@ -54,8 +29,6 @@ function GalleryCubeBackground() {
       <group>
         <GalleryBackground />
       </group>
-      {/* <FlyControls movementSpeed={0.5} rollSpeed={0.05} /> */}
-      {/* <OrbitControls /> */}
     </>
   )
 }
