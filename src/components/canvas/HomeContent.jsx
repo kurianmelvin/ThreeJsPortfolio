@@ -56,8 +56,8 @@ function HomeContent() {
           position={[0, -40, -90]}
           scale={[8.5, 8, 8]}
         />
-        <FlyControls movementSpeed={20} rollSpeesaswd={0.5} />
       </group>
+      <FlyControls movementSpeed={20} rollSpeed={0.05} />
     </>
   )
   //
