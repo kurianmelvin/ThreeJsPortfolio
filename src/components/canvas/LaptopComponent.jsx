@@ -15,7 +15,10 @@ import useStore from '@/helpers/store'
 const Tree = dynamic(() => import('@/components/canvas/Tree'), {
   ssr: false,
 })
-//
+const LaptopGif = dynamic(() => import('@/components/canvas/LaptopGif'), {
+  ssr: false,
+})
+
 
 function LaptopComponent({ open, hinge, ...props }) {
   // Take care of cursor state on hover
@@ -57,10 +60,13 @@ function LaptopComponent({ open, hinge, ...props }) {
         // rotation={[0, 0, 0]}
         // dispose={null}
       >
-        <three.group rotation-x={hinge} position={[0, -0.04, 0.43]}>
+        {/* the hinge */}
+        <three.group rotation-x={hinge} position={[0, 3, -2.5]}>
           <group
-            position={[0, 2.96, -0.1]}
-            rotation={[Math.PI / 2, 0, 0]}
+            position={[0, 2.96, 0]}
+            // position={[0, 2.96, -0.1]}
+            // rotation={[Math.PI / 2, 0, 0]}
+            rotation={[0, 0, 0]}
             // dispose={null}
           >
             <mesh
@@ -77,15 +83,15 @@ function LaptopComponent({ open, hinge, ...props }) {
               rotation-x={-Math.PI / 2}
               position={[0, 0, 2.5]}
               // scale={[8.5, 5.6, 1]}
-              scale={[0.1, 0.1, 0.001]}
+              scale={[1, 1, 0.01]}
               onClick={() => {
                 router.push(`/about`)
               }}
               // onClick={(e) => (e.stopPropagation(), router.push(`/about`))}
             >
-              {/* <LaptopGif /> */}
+              <LaptopGif />
 
-              <Tree scale={[1.75, 1.75, 1.5]} />
+              {/* <Tree scale={[1.75, 1.75, 1.5]} /> */}
             </mesh>
           </group>
         </three.group>
@@ -99,9 +105,9 @@ function LaptopComponent({ open, hinge, ...props }) {
         />
         <group
           position={[0, -0.1, 3.39]}
-          // onClick={() => {
-          //   router.push(`/about`)
-          // }}
+          onClick={() => {
+            router.push(`/about`)
+          }}
         >
           <mesh
             geometry={nodes.Cube002.geometry}

@@ -22,7 +22,7 @@ const LCanvas = ({ children }) => {
           <Preload all />
           {children}
         </Suspense>
-        <FlyControls />
+        {/* <FlyControls /> */}
       </Canvas>
     </>
   )

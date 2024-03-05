@@ -24,13 +24,14 @@ function Tree(props) {
       {/* <ambientLight /> */}
       <group
         ref={group}
+        
         {...props}
         // scale={[1.8, 1.8, 1.8]}
 
         // dispose={null}
       >
         {/* <group ref={tree}> */}
-        <group>
+        {/* <group>
           <mesh
             castShadow
             receiveShadow
@@ -49,7 +50,7 @@ function Tree(props) {
             geometry={nodes.mesh_1.geometry}
             material={nodes.mesh_1.material}
           />
-        </group>
+        </group> */}
         {/* <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
           <boxBufferGeometry args={[50, 40]} />
 

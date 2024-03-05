@@ -39,12 +39,12 @@ function AboutContent() {
     <>
       {/* need to change the default camera position for the aboutMeData  */}
       <PerspectiveCamera makeDefault position={[0, 0, 50]}>
-        <ScrollControls damping={3} pages={6}>
+        <ScrollControls damping={3} pages={4}>
           <Scroll>
             <group position={[0, 0, -90]}>
               <AboutCubeBackground />
               <AboutRobotButton
-                scale={3}
+                scale={5}
                 position={[50, -95, 20]}
                 // rotation={[0, -0.6, 0]}
                 onClick={() => router.push('/imagegallery')}
@@ -52,17 +52,17 @@ function AboutContent() {
               <group position={[0, 10, -10]} rotation={[0, 0, 0]}>
                 <AboutMe />
                 {/* Big Tree */}
-                <Tree
+                {/* <Tree
                   scale={3.5}
                   position={[-60, -105, -30]}
                   rotation={[0, 0.71, 0]}
-                />
+                /> */}
                 {/* small Tree */}
-                <Tree
-                  scale={3}
+                {/* <Tree
+                  scale={2}
                   position={[61, -105, -30]}
                   // rotation={[0, -3, 0]}
-                />
+                /> */}
               </group>
             </group>
           </Scroll>

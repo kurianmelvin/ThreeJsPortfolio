@@ -21,13 +21,13 @@ function Laptop(items) {
       {/* <three.pointLight position={[-0.1, 4, -8.5]} intensity={1.4} /> */}
       <group
         {...items}
-        onClick={(e) => (e.stopPropagation(), setOpen(!open))}
+        onClick={(e) => (e.stopPropagation(), setOpen(open))}
         // dispose={null}
       >
         <LaptopComponent
           open={open}
           // scale={[1.5, 1.5, 1.3]}
-          hinge={props.open.to([0, 1.3], [1.575, -0.425])}
+          hinge={props.open.to([0, -1.3], [1.575, -0.425])}
         />
       </group>
     </>

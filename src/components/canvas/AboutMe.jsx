@@ -1,51 +1,62 @@
 import { useState, useEffect } from 'react'
 
 import { Text } from '@react-three/drei'
+import dynamic from 'next/dynamic'
+ 
+import PhoneButtion from './PhoneButtion' 
+
+// const PhoneButtion = dynamic(() => import('@/components/canvas/PhoneButtion'), {
+//   ssr: false,
+// })
+
 
 function AboutMe() {
   return (
     <>
       <group>
-        <AboutStatementImage
-          scale={0.85}
+        {/* <AboutStatementImage
+          scale={0.5}
           position={[20, 20, -70]}
           rotation={[0, -0.01, 0]}
-        />
+        /> */}
         <AboutStatement
           TextData='I’m Melvin Kurian'
-          TextScale={[50, 50, 1]}
-          TextPosition={[-2, 5, 40]}
+          TextScale={[10, 10, 1]}
+          TextPosition={[-2, 10, 40]}
         />
         <AboutStatement
-          TextData=' A Software Engineer from The United States.'
-          TextScale={[40, 40, 1]}
+          TextData=' A Software Engineer.'
+          TextScale={[10, 10, 1]}
           TextPosition={[-2, 0, 35]}
         />
         <AboutStatement
           TextData=' I enjoy creating websites that provide an interactive and immersive user experience,'
-          TextScale={[40, 40, 1]}
-          TextPosition={[-2, -5, 30]}
+          TextScale={[5, 5, 1]}
+          TextPosition={[-2, -15, 30]}
         />
 
         <AboutStatement
           TextData='What you see, is just a small representation
             of what is possible.'
-          TextScale={[40, 40, 1]}
-          TextPosition={[-2, -10, 25]}
+          TextScale={[5, 5, 1]}
+          TextPosition={[-2, -20, 25]}
         />
-      </group>
-      <group rotation={[0, 0.1, 0]} position={[1, 1, 0]}>
-        <AboutStatement
-          TextData='I am Currently seeking new positions.'
-          TextScale={[40, 40, 1]}
-          TextPosition={[-5, -110, 0]}
-        />
+        
         <AboutStatement
           TextData='If interested contact me via LinkedIn'
-          TextScale={[40, 40, 1]}
-          TextPosition={[-20, -119, 72]}
+          TextScale={[5, 5, 1]}
+          TextPosition={[-15, -110, 90]}
         />
-      </group>
+      </group>  
+      <PhoneButtion scale={20}  position={[0,-70,-20]}  />
+      {/* <group rotation={[0, 0.1, 0]} position={[1, 1, 0]}> */}
+        {/* <AboutStatement
+          TextData='I am Currently seeking new positions.'
+          TextScale={[20, 20, 1]}
+          TextPosition={[-5, -110, 0]}
+        /> */}
+      
+      {/* </group> */}
     </>
   )
 }
@@ -62,7 +73,7 @@ function AboutStatement({ TextScale, TextPosition, TextData }) {
     <>
       <mesh
         position={[20, 15, -70]}
-        rotation={[0, -0.05, -0.01]}
+        rotation={[0, -0.05, -0.001]}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
       >

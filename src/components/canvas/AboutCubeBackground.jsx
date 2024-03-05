@@ -12,7 +12,7 @@ function AboutCubeBackground(props) {
       <ambientLight intensity={1} />
       <group {...props}>
         <mesh ref={ref} position={[0, -20, -20]}>
-          <boxBufferGeometry attach='geometry' args={[400, 150, 150]} />
+          <boxBufferGeometry attach='geometry' args={[400, 300, 150]} />
           <meshStandardMaterial
             map={aboutBackgroundImage}
             side={BackSide}

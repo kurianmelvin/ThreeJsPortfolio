@@ -29,7 +29,7 @@ const HomeBackgroundPlane = dynamic(
 function HomeContent() {
   return (
     <>
-      <pointLight position={[0, 10, 10]} intensity={1.2} color={'#F6F6F6'} />
+      <pointLight position={[0, 10, 10]} intensity={1} color={'#F6F6F6'} />
       <group position={[0, 0, -8]}>
         <group position={[0, 60, -55]}>
           <HomeBackgroundPlane />
@@ -57,7 +57,8 @@ function HomeContent() {
           scale={[8.5, 8, 8]}
         />
       </group>
-      <FlyControls movementSpeed={20} rollSpeed={0.05} />
+      <FlyControls movementSpeed={20} rollSpeed={0} />
+ 
     </>
   )
   //
